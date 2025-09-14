@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/drag-drop/src/overview/app/app.component.ts", "src/content/examples/drag-drop/src/overview/app/app.component.html"],
+  "sourcesContent": ["import {CdkDrag} from '@angular/cdk/drag-drop';\nimport {Component} from '@angular/core';\n\n/**\n * @title Basic Drag&Drop\n */\n@Component({\n  selector: 'cdk-drag-drop-overview-example',\n  templateUrl: 'app.component.html',\n  styleUrl: 'app.component.css',\n  standalone: true,\n  imports: [CdkDrag],\n})\nexport class CdkDragDropOverviewExample {}\n", "<div class=\"example-box\" cdkDrag>\n  Drag me around\n</div>\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAaM,IAAO,8BAAP,MAAO,4BAA0B;;AAAA;cAA1B;mCAAA,6BAA0B;AAAA;cAA1B,8FAAA,6BAA0B,WAAA,CAAA,CAAA,gCAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,QAAA,CAAA,CAAA,WAAA,IAAA,GAAA,aAAA,CAAA,GAAA,UAAA,gCAAA,oCAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACbvC,IAAA,yBAAA,GAAA,OAAA,CAAA;AACE,IAAA,iBAAA,GAAA,mBAAA;AACF,IAAA,uBAAA;;GDWuC,uDAF3B,OAAO,GAAA,QAAA,CAAA,2uBAAA,EAAA,CAAA;AAEb,IAAO,6BAAP;;sEAAO,4BAA0B,CAAA;UAPtC;uBACW,kCAAgC,YAG9B,MAAI,SACP,CAAC,OAAO,GAAC,UAAA,iEAAA,QAAA,CAAA,4wBAAA,EAAA,CAAA;;;;6EAEP,4BAA0B,EAAA,WAAA,8BAAA,UAAA,oEAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

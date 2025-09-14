@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/routing-with-urlmatcher/src/app/app.component.ts", "src/content/examples/routing-with-urlmatcher/src/app/app.component.html"],
+  "sourcesContent": ["import {Component, VERSION} from '@angular/core';\nimport {RouterLink, RouterOutlet} from '@angular/router';\n\n@Component({\n  selector: 'app-root',\n  imports: [RouterOutlet, RouterLink],\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.css'],\n})\nexport class AppComponent {\n  name = 'Angular ' + VERSION.major;\n}\n", "<h2>Routing with Custom Matching</h2>\n\nNavigate to <a routerLink=\"/@Angular\">my profile</a>\n\n<router-outlet></router-outlet>"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;AASM,IAAO,gBAAP,MAAO,cAAY;EACvB,OAAO,aAAa,QAAQ;;AADL;cAAZ;mCAAA,eAAY;AAAA;cAAZ,gFAAA,eAAY,WAAA,CAAA,CAAA,UAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,QAAA,CAAA,CAAA,cAAA,WAAA,CAAA,GAAA,UAAA,gCAAA,sBAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACTzB,IAAA,yBAAA,GAAA,IAAA;AAAI,IAAA,iBAAA,GAAA,8BAAA;AAA4B,IAAA,uBAAA;AAEhC,IAAA,iBAAA,GAAA,eAAA;AAAY,IAAA,yBAAA,GAAA,KAAA,CAAA;AAA0B,IAAA,iBAAA,GAAA,YAAA;AAAU,IAAA,uBAAA;AAEhD,IAAA,oBAAA,GAAA,eAAA;;GDKyB,yCAJb,cAAc,UAAU,GAAA,QAAA,CAAA,oGAAA,EAAA,CAAA;AAI9B,IAAO,eAAP;;sEAAO,cAAY,CAAA;UANxB;uBACW,YAAU,SACX,CAAC,cAAc,UAAU,GAAC,UAAA,oIAAA,QAAA,CAAA,6JAAA,EAAA,CAAA;;;;6EAIxB,cAAY,EAAA,WAAA,gBAAA,UAAA,yEAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;f0092ce131b75016711d4d69db7b303609ee3db9aa8a3cf1f238c1b8ff8455d0;/private/var/tmp/_bazel_wzc/9dd57f1bf43e7c8b8d91b30eefed3698/sandbox/darwin-sandbox/217/execroot/_main/bazel-out/darwin_x86_64-fastbuild/bin/adev/src/content/examples/forms/src/app/actor-form/actor-form.component.html"],
+  "sourcesContent": ["\n  .no-style .ng-valid {\n  border-left: 1px  solid #CCC\n}\n\n  .no-style .ng-invalid {\n  border-left: 1px  solid #CCC\n}\n"],
+  "mappings": ";AACE,CAAC,SAAS,CAAC;AACX,eAAa,IAAK,MAAM;AAC1B;AAEE,CAJC,SAIS,CAAC;AACX,eAAa,IAAK,MAAM;AAC1B;",
+  "names": []
+}

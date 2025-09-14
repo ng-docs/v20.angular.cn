@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/forms-overview/src/app/reactive/favorite-color/favorite-color.component.ts"],
+  "sourcesContent": ["import {Component} from '@angular/core';\nimport {FormControl, ReactiveFormsModule} from '@angular/forms';\n\n@Component({\n  selector: 'app-reactive-favorite-color',\n  template: `\n    Favorite Color: <input type=\"text\" [formControl]=\"favoriteColorControl\">\n  `,\n  imports: [ReactiveFormsModule],\n})\nexport class FavoriteColorReactiveComponent {\n  favoriteColorControl = new FormControl('');\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;AAUM,IAAO,kCAAP,MAAO,gCAA8B;EACzC,uBAAuB,IAAI,YAAY,EAAE;;AADA;cAA9B;mCAAA,iCAA8B;AAAA;cAA9B,kGAAA,iCAA8B,WAAA,CAAA,CAAA,6BAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,QAAA,CAAA,CAAA,QAAA,QAAA,GAAA,aAAA,CAAA,GAAA,UAAA,gCAAA,wCAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;AAJvC,IAAA,iBAAA,GAAA,mBAAA;AAAgB,IAAA,oBAAA,GAAA,SAAA,CAAA;;;AAAmB,IAAA,oBAAA;AAAA,IAAA,qBAAA,eAAA,IAAA,oBAAA;;GAII,2DAF/B,qBAAmB,sBAAA,iBAAA,oBAAA,GAAA,eAAA,EAAA,CAAA;AAEzB,IAAO,iCAAP;;sEAAO,gCAA8B,CAAA;UAP1C;WAAU;MACT,UAAU;MACV,UAAU;;;MAGV,SAAS,CAAC,mBAAmB;KAC9B;;;;6EACY,gCAA8B,EAAA,WAAA,kCAAA,UAAA,mGAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

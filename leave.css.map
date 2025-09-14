@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/enter-and-leave/leave.css"],
+  "sourcesContent": [":host {\n  display: block;\n  height: 200px;\n}\n\n.leave-container {\n  border: 1px solid #dddddd;\n  margin-top: 1em;\n  padding: 20px 20px 0px 20px;\n  font-weight: bold;\n  font-size: 20px;\n  opacity: 1;\n  transition: opacity 200ms ease-in;\n\n  @starting-style {\n    opacity: 0;\n  }\n}\n\n.leaving {\n  opacity: 0;\n  transform: translateY(20px);\n  transition: opacity 500ms ease-out, transform 500ms ease-out;\n}\n"],
+  "mappings": ";AAAA;AACE,WAAS;AACT,UAAQ;AACV;AAEA,CAAC;AACC,UAAQ,IAAI,MAAM;AAClB,cAAY;AACZ,WAAS,KAAK,KAAK,IAAI;AACvB,eAAa;AACb,aAAW;AACX,WAAS;AACT,cAAY,QAAQ,MAAM;AAK5B;AAHE;AAAA,EATF,CAAC;AAUG,aAAS;AAAA;AACX;AAGF,CAAC;AACC,WAAS;AACT,aAAW,WAAW;AACtB,cAAY,QAAQ,MAAM,QAAQ,EAAE,UAAU,MAAM;AACtD;",
+  "names": []
+}

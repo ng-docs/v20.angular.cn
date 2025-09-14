@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/drag-drop/src/axis-lock/app/app.component.ts", "src/content/examples/drag-drop/src/axis-lock/app/app.component.html"],
+  "sourcesContent": ["import {CdkDrag} from '@angular/cdk/drag-drop';\nimport {Component} from '@angular/core';\n\n/**\n * @title Drag&Drop position locking\n */\n@Component({\n  selector: 'cdk-drag-drop-axis-lock-example',\n  templateUrl: 'app.component.html',\n  styleUrl: 'app.component.css',\n  standalone: true,\n  imports: [CdkDrag],\n})\nexport class CdkDragDropAxisLockExample {}\n", "<div class=\"example-box\" cdkDragLockAxis=\"y\" cdkDrag>\n  I can only be dragged up/down\n</div>\n\n<div class=\"example-box\" cdkDragLockAxis=\"x\" cdkDrag>\n  I can only be dragged left/right\n</div>\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAaM,IAAO,8BAAP,MAAO,4BAA0B;;AAAA;cAA1B;mCAAA,6BAA0B;AAAA;cAA1B,8FAAA,6BAA0B,WAAA,CAAA,CAAA,iCAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,QAAA,CAAA,CAAA,mBAAA,KAAA,WAAA,IAAA,GAAA,aAAA,GAAA,CAAA,mBAAA,KAAA,WAAA,IAAA,GAAA,aAAA,CAAA,GAAA,UAAA,gCAAA,oCAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACbvC,IAAA,yBAAA,GAAA,OAAA,CAAA;AACE,IAAA,iBAAA,GAAA,kCAAA;AACF,IAAA,uBAAA;AAEA,IAAA,yBAAA,GAAA,OAAA,CAAA;AACE,IAAA,iBAAA,GAAA,qCAAA;AACF,IAAA,uBAAA;;GDOuC,uDAF3B,OAAO,GAAA,QAAA,CAAA,ywBAAA,EAAA,CAAA;AAEb,IAAO,6BAAP;;sEAAO,4BAA0B,CAAA;UAPtC;uBACW,mCAAiC,YAG/B,MAAI,SACP,CAAC,OAAO,GAAC,UAAA,yMAAA,QAAA,CAAA,2yBAAA,EAAA,CAAA;;;;6EAEP,4BAA0B,EAAA,WAAA,8BAAA,UAAA,qEAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

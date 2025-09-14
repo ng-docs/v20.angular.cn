@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/native-css/open-close.component.css"],
+  "sourcesContent": [":host {\n  display: block;\n  margin-top: 1rem;\n}\n\n.open-close-container {\n  border: 1px solid #dddddd;\n  margin-top: 1em;\n  padding: 20px 20px 0px 20px;\n  font-weight: bold;\n  font-size: 20px;\n  height: 100px;\n  opacity: 0.8;\n  background-color: blue;\n  color: #ebebeb;\n  transition-property: height, opacity, background-color, color;\n  transition-duration: 1s;\n}\n\n.open {\n  transition-duration: 0.5s;\n  height: 200px;\n  opacity: 1;\n  background-color: yellow;\n  color: #000000;\n}\n"],
+  "mappings": ";AAAA;AACE,WAAS;AACT,cAAY;AACd;AAEA,CAAC;AACC,UAAQ,IAAI,MAAM;AAClB,cAAY;AACZ,WAAS,KAAK,KAAK,IAAI;AACvB,eAAa;AACb,aAAW;AACX,UAAQ;AACR,WAAS;AACT,oBAAkB;AAClB,SAAO;AACP;AAAA,IAAqB,MAAM;AAAA,IAAE,OAAO;AAAA,IAAE,gBAAgB;AAAA,IAAE;AACxD,uBAAqB;AACvB;AAEA,CAAC;AACC,uBAAqB;AACrB,UAAQ;AACR,WAAS;AACT,oBAAkB;AAClB,SAAO;AACT;",
+  "names": []
+}

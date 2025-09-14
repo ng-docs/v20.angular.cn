@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/toggle-animations-page.component.ts"],
+  "sourcesContent": ["import {Component} from '@angular/core';\nimport {OpenCloseChildComponent} from './open-close.component.4';\n\n@Component({\n  selector: 'app-toggle-animations-child-page',\n  template: `\n    <section>\n      <h2>Toggle Animations</h2>\n\n      <app-open-close-toggle></app-open-close-toggle>\n    </section>\n  `,\n  imports: [OpenCloseChildComponent],\n})\nexport class ToggleAnimationsPageComponent {}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAcM,IAAO,iCAAP,MAAO,+BAA6B;;AAAA;cAA7B;mCAAA,gCAA6B;AAAA;cAA7B,iGAAA,gCAA6B,WAAA,CAAA,CAAA,kCAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,uCAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;AARtC,IAAA,yBAAA,GAAA,SAAA,EAAS,GAAA,IAAA;AACH,IAAA,iBAAA,GAAA,mBAAA;AAAiB,IAAA,uBAAA;AAErB,IAAA,oBAAA,GAAA,uBAAA;AACF,IAAA,uBAAA;;GAIsC,0DAF9B,uBAAuB,GAAA,eAAA,EAAA,CAAA;AAE7B,IAAO,gCAAP;;sEAAO,+BAA6B,CAAA;UAXzC;WAAU;MACT,UAAU;MACV,UAAU;;;;;;;MAOV,SAAS,CAAC,uBAAuB;KAClC;;;;6EACY,+BAA6B,EAAA,WAAA,iCAAA,UAAA,+EAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

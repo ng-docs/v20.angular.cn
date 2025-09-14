@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/hello-world/src/app/app.component.ts", "src/content/examples/hello-world/src/app/app.component.html"],
+  "sourcesContent": ["import {Component} from '@angular/core';\n\n@Component({\n  selector: 'hello-world',\n  templateUrl: 'app.component.html',\n  styleUrl: 'app.component.css',\n})\nexport class HelloWorldComponent {\n  message = 'Hello Angular World!';\n}\n", "<h1>{{ message }}</h1>\n"],
+  "mappings": ";;;;;;;;;;;;;;;AAOM,IAAO,uBAAP,MAAO,qBAAmB;EAC9B,UAAU;;AADoB;cAAnB;mCAAA,sBAAmB;AAAA;cAAnB,uFAAA,sBAAmB,WAAA,CAAA,CAAA,aAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,6BAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACPhC,IAAA,4BAAA,GAAA,IAAA;AAAI,IAAA,iBAAA,CAAA;AAAa,IAAA,0BAAA;;;AAAb,IAAA,oBAAA;AAAA,IAAA,4BAAA,IAAA,OAAA;;GDO4B;AAA1B,IAAO,sBAAP;;sEAAO,qBAAmB,CAAA;UAL/B;uBACW,eAAa,UAAA,4BAAA,QAAA,CAAA,gVAAA,EAAA,CAAA;;;;6EAIZ,qBAAmB,EAAA,WAAA,uBAAA,UAAA,6DAAA,YAAA,EAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

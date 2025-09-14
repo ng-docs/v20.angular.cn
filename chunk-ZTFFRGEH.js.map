@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/about.component.ts", "src/content/examples/animations/src/app/about.component.html"],
+  "sourcesContent": ["import {Component} from '@angular/core';\n\n@Component({\n  selector: 'app-about',\n  templateUrl: './about.component.html',\n  styleUrls: ['./about.component.css'],\n})\nexport class AboutComponent {}\n", "<p>\n  Angular's animations library makes it easy to define and apply animation effects such as page and list transitions.\n</p>\n"],
+  "mappings": ";;;;;;;;;;;;;AAOM,IAAO,kBAAP,MAAO,gBAAc;;AAAA;cAAd;mCAAA,iBAAc;AAAA;cAAd,kFAAA,iBAAc,WAAA,CAAA,CAAA,WAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,wBAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACP3B,IAAA,4BAAA,GAAA,GAAA;AACE,IAAA,iBAAA,GAAA,wHAAA;AACF,IAAA,0BAAA;;GDK2B;AAArB,IAAO,iBAAP;;sEAAO,gBAAc,CAAA;UAL1B;uBACW,aAAW,UAAA,qIAAA,CAAA;;;;6EAIV,gBAAc,EAAA,WAAA,kBAAA,UAAA,8DAAA,YAAA,EAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

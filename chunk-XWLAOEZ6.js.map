@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/forms-overview/src/app/template/favorite-color/favorite-color.component.ts"],
+  "sourcesContent": ["import {Component} from '@angular/core';\nimport {FormsModule} from '@angular/forms';\n\n@Component({\n  selector: 'app-template-favorite-color',\n  template: `\n    Favorite Color: <input type=\"text\" [(ngModel)]=\"favoriteColor\">\n  `,\n  imports: [FormsModule],\n})\nexport class FavoriteColorTemplateComponent {\n  favoriteColor = '';\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;;AAUM,IAAO,kCAAP,MAAO,gCAA8B;EACzC,gBAAgB;;AADyB;cAA9B;mCAAA,iCAA8B;AAAA;cAA9B,kGAAA,iCAA8B,WAAA,CAAA,CAAA,6BAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,QAAA,CAAA,CAAA,QAAA,QAAA,GAAA,iBAAA,SAAA,CAAA,GAAA,UAAA,gCAAA,wCAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;AAJvC,IAAA,iBAAA,GAAA,mBAAA;AAAgB,IAAA,yBAAA,GAAA,SAAA,CAAA;AAAmB,IAAA,2BAAA,iBAAA,gCAAA,uEAAA,QAAA;AAAA,MAAA,6BAAA,IAAA,eAAA,MAAA,MAAA,IAAA,gBAAA;AAAA,aAAA;IAAA,GAAA,yEAAA;AAAnB,IAAA,uBAAA;;;AAAmB,IAAA,oBAAA;AAAA,IAAA,2BAAA,WAAA,IAAA,aAAA;;GAII,2DAF/B,aAAW,sBAAA,iBAAA,OAAA,GAAA,eAAA,EAAA,CAAA;AAEjB,IAAO,iCAAP;;sEAAO,gCAA8B,CAAA;UAP1C;WAAU;MACT,UAAU;MACV,UAAU;;;MAGV,SAAS,CAAC,WAAW;KACtB;;;;6EACY,gCAA8B,EAAA,WAAA,kCAAA,UAAA,mGAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

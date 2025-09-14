@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/animations-package/insert-remove.component.css"],
+  "sourcesContent": [":host {\n  display: block;\n}\n\n.insert-remove-container {\n  border: 1px solid #dddddd;\n  margin-top: 1em;\n  padding: 20px 20px 0px 20px;\n  color: #000000;\n  font-weight: bold;\n  font-size: 20px;\n}\n"],
+  "mappings": ";AAAA;AACE,WAAS;AACX;AAEA,CAAC;AACC,UAAQ,IAAI,MAAM;AAClB,cAAY;AACZ,WAAS,KAAK,KAAK,IAAI;AACvB,SAAO;AACP,eAAa;AACb,aAAW;AACb;",
+  "names": []
+}

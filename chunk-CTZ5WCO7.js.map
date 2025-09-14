@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/drag-drop/src/boundary/app/app.component.ts", "src/content/examples/drag-drop/src/boundary/app/app.component.html"],
+  "sourcesContent": ["import {CdkDrag} from '@angular/cdk/drag-drop';\nimport {Component} from '@angular/core';\n\n/**\n * @title Drag&Drop boundary\n */\n@Component({\n  selector: 'cdk-drag-drop-boundary-example',\n  templateUrl: 'app.component.html',\n  styleUrl: 'app.component.css',\n  standalone: true,\n  imports: [CdkDrag],\n})\nexport class CdkDragDropBoundaryExample {}\n", "<div class=\"example-boundary\">\n  <div class=\"example-box\" cdkDragBoundary=\".example-boundary\" cdkDrag>\n    I can only be dragged within the dotted container\n  </div>\n</div>\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAaM,IAAO,8BAAP,MAAO,4BAA0B;;AAAA;cAA1B;mCAAA,6BAA0B;AAAA;cAA1B,8FAAA,6BAA0B,WAAA,CAAA,CAAA,gCAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,QAAA,CAAA,CAAA,GAAA,kBAAA,GAAA,CAAA,mBAAA,qBAAA,WAAA,IAAA,GAAA,aAAA,CAAA,GAAA,UAAA,gCAAA,oCAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACbvC,IAAA,yBAAA,GAAA,OAAA,CAAA,EAA8B,GAAA,OAAA,CAAA;AAE1B,IAAA,iBAAA,GAAA,qDAAA;AACF,IAAA,uBAAA,EAAM;;GDU+B,uDAF3B,OAAO,GAAA,QAAA,CAAA,o7BAAA,EAAA,CAAA;AAEb,IAAO,6BAAP;;sEAAO,4BAA0B,CAAA;UAPtC;uBACW,kCAAgC,YAG9B,MAAI,SACP,CAAC,OAAO,GAAC,UAAA,sLAAA,QAAA,CAAA,k8BAAA,EAAA,CAAA;;;;6EAEP,4BAA0B,EAAA,WAAA,8BAAA,UAAA,oEAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

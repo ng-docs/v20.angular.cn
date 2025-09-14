@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/core/services/errors-handling/error-snack-bar.ts"],
+  "sourcesContent": [":host { display: flex; align-items: center; button { margin-left: 16px }}"],
+  "mappings": ";AAAA;AAAQ,WAAA;AAAe,eAAA;;AAAqB,MAAA;AAAS,eAAA;;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/home.component.ts", "src/content/examples/animations/src/app/home.component.html"],
+  "sourcesContent": ["import {Component} from '@angular/core';\n\n@Component({\n  selector: 'app-home',\n  templateUrl: './home.component.html',\n  styleUrls: ['./home.component.css'],\n})\nexport class HomeComponent {}\n", "<p>\n  Welcome to Animations in Angular!\n</p>\n"],
+  "mappings": ";;;;;;;;;;;;;AAOM,IAAO,iBAAP,MAAO,eAAa;;AAAA;cAAb;mCAAA,gBAAa;AAAA;cAAb,iFAAA,gBAAa,WAAA,CAAA,CAAA,UAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,uBAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACP1B,IAAA,4BAAA,GAAA,GAAA;AACE,IAAA,iBAAA,GAAA,sCAAA;AACF,IAAA,0BAAA;;GDK0B;AAApB,IAAO,gBAAP;;sEAAO,eAAa,CAAA;UALzB;uBACW,YAAU,UAAA,mDAAA,CAAA;;;;6EAIT,eAAa,EAAA,WAAA,iBAAA,UAAA,6DAAA,YAAA,EAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

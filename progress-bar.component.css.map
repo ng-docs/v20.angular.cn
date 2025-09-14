@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/accessibility/src/app/progress-bar.component.css"],
+  "sourcesContent": ["    :host { \n      display: block; \n      width: 300px; \n      height: 25px; \n      border: 1px solid black; \n      margin-top: 16px;\n    }\n    \n    .bar { \n      background: blue; \n      height: 100%; \n    }"],
+  "mappings": ";AAAI;AACE,WAAS;AACT,SAAO;AACP,UAAQ;AACR,UAAQ,IAAI,MAAM;AAClB,cAAY;AACd;AAEA,CAAC;AACC,cAAY;AACZ,UAAQ;AACV;",
+  "names": []
+}

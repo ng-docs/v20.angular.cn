@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/pipes/src/app/birthday.component.ts", "src/content/examples/pipes/src/app/birthday.component.html"],
+  "sourcesContent": ["import {Component} from '@angular/core';\nimport {DatePipe} from '@angular/common';\n\n@Component({\n  selector: 'app-birthday',\n  templateUrl: './birthday.component.html',\n  imports: [DatePipe],\n})\nexport class BirthdayComponent {\n  birthday = new Date(1988, 3, 15); // April 15, 1988 -- since month parameter is zero-based\n}\n", "<p>The hero's birthday is {{ birthday | date }}</p>\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;AAQM,IAAO,qBAAP,MAAO,mBAAiB;EAC5B,WAAW,IAAI,KAAK,MAAM,GAAG,EAAE;;AADH;;cAAjB;mCAAA,oBAAiB;AAAA;cAAjB,qFAAA,oBAAiB,WAAA,CAAA,CAAA,cAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,2BAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACR9B,IAAA,4BAAA,GAAA,GAAA;AAAG,IAAA,iBAAA,CAAA;;AAA4C,IAAA,0BAAA;;;AAA5C,IAAA,oBAAA;AAAA,IAAA,6BAAA,2BAAA,sBAAA,GAAA,GAAA,IAAA,QAAA,CAAA;;GDQ2B,8CAFlB,QAAQ,GAAA,eAAA,EAAA,CAAA;AAEd,IAAO,oBAAP;;sEAAO,mBAAiB,CAAA;UAL7B;uBACW,gBAAc,SAEf,CAAC,QAAQ,GAAC,UAAA,wDAAA,CAAA;;;;6EAER,mBAAiB,EAAA,WAAA,qBAAA,UAAA,4DAAA,YAAA,EAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

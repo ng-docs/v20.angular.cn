@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/status-slider-page.component.ts"],
+  "sourcesContent": ["import {Component} from '@angular/core';\nimport {StatusSliderComponent} from './status-slider.component';\n\n@Component({\n  selector: 'app-status-slider-page',\n  template: `\n    <section>\n      <h2>Status Slider</h2>\n      <app-status-slider></app-status-slider>\n    </section>\n  `,\n  imports: [StatusSliderComponent],\n})\nexport class StatusSliderPageComponent {}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;AAaM,IAAO,6BAAP,MAAO,2BAAyB;;AAAA;cAAzB;mCAAA,4BAAyB;AAAA;cAAzB,6FAAA,4BAAyB,WAAA,CAAA,CAAA,wBAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,mCAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;AAPlC,IAAA,yBAAA,GAAA,SAAA,EAAS,GAAA,IAAA;AACH,IAAA,iBAAA,GAAA,eAAA;AAAa,IAAA,uBAAA;AACjB,IAAA,oBAAA,GAAA,mBAAA;AACF,IAAA,uBAAA;;GAIkC,sDAF1B,qBAAqB,GAAA,eAAA,EAAA,CAAA;AAE3B,IAAO,4BAAP;;sEAAO,2BAAyB,CAAA;UAVrC;WAAU;MACT,UAAU;MACV,UAAU;;;;;;MAMV,SAAS,CAAC,qBAAqB;KAChC;;;;6EACY,2BAAyB,EAAA,WAAA,6BAAA,UAAA,2EAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

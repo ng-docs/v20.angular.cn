@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/routing-with-urlmatcher/src/app/profile/profile.component.ts", "src/content/examples/routing-with-urlmatcher/src/app/profile/profile.component.html"],
+  "sourcesContent": ["import {Component, input} from '@angular/core';\n\n@Component({\n  selector: 'app-profile',\n  templateUrl: './profile.component.html',\n  styleUrls: ['./profile.component.css'],\n})\nexport class ProfileComponent {\n  readonly username = input.required<string>();\n}\n", "<p>\n    Hello {{ username() }}!\n</p>"],
+  "mappings": ";;;;;;;;;;;;;;;;AAOM,IAAO,oBAAP,MAAO,kBAAgB;EAClB,WAAW,MAAM,SAAQ,GAAA,YAAA,CAAA,EAAA,WAAA,WAAA,CAAA,IAAA,CAAA,CAAA;;AADP;cAAhB;mCAAA,mBAAgB;AAAA;cAAhB,oFAAA,mBAAgB,WAAA,CAAA,CAAA,aAAA,CAAA,GAAA,QAAA,EAAA,UAAA,CAAA,GAAA,UAAA,EAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,0BAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACP7B,IAAA,4BAAA,GAAA,GAAA;AACI,IAAA,iBAAA,CAAA;AACJ,IAAA,0BAAA;;;AADI,IAAA,oBAAA;AAAA,IAAA,6BAAA,WAAA,IAAA,SAAA,GAAA,KAAA;;GDMyB;AAAvB,IAAO,mBAAP;;sEAAO,kBAAgB,CAAA;UAL5B;uBACW,eAAa,UAAA,yCAAA,CAAA;;;;6EAIZ,kBAAgB,EAAA,WAAA,oBAAA,UAAA,qFAAA,YAAA,EAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

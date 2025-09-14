@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/animations-package/stagger.component.css"],
+  "sourcesContent": [".items {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,cAAY;AACZ,WAAS;AACT,UAAQ;AACV;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/core/constants/pages.ts"],
+  "sourcesContent": ["/*!\n * @license\n * Copyright Google LLC All Rights Reserved.\n *\n * Use of this source code is governed by an MIT-style license that can be\n * found in the LICENSE file at https://angular.dev/license\n */\n\n// File contains the enums used across whole application.\n\nexport const DEFAULT_PAGES = {\n  DOCS: 'overview',\n  REFERENCE: 'api',\n  TUTORIALS: 'tutorials',\n  PLAYGROUND: 'playground',\n  UPDATE: 'update-guide',\n} as const;\n\nexport const PAGE_PREFIX = {\n  API: 'api',\n  CLI: 'cli',\n  DOCS: 'docs',\n  HOME: '',\n  PLAYGROUND: 'playground',\n  REFERENCE: 'reference',\n  TUTORIALS: 'tutorials',\n  UPDATE: 'update-guide',\n} as const;\n"],
+  "mappings": ";AAUO,IAAM,gBAAgB;EAC3B,MAAM;EACN,WAAW;EACX,WAAW;EACX,YAAY;EACZ,QAAQ;;AAGH,IAAM,cAAc;EACzB,KAAK;EACL,KAAK;EACL,MAAM;EACN,MAAM;EACN,YAAY;EACZ,WAAW;EACX,WAAW;EACX,QAAQ;;",
+  "names": []
+}

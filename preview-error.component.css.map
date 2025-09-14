@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/editor/preview/preview-error.component.scss"],
+  "sourcesContent": [":host {\n  margin: 5% auto;\n}\n\n.adev-preview-error {\n  border: 1px solid var(--senary-contrast);\n  border-radius: 0.25rem;\n  padding: 1rem;\n\n  p {\n    display: flex;\n    gap: 0.5rem;\n    font-weight: 600;\n    margin-top: 0;\n\n    &::before {\n      content: 'error';\n      font-family: var(--icons);\n      color: var(--orange-red);\n      font-size: 1.5rem;\n      font-weight: 500;\n    }\n  }\n\n  code {\n    &:not(pre *) {\n      white-space: pre-wrap;\n      background: linear-gradient(90deg, var(--hot-red) 0%, var(--orange-red) 100%);\n      background-clip: text;\n      -webkit-background-clip: text;\n      color: transparent;\n\n      &::before {\n        background: transparent;\n      }\n    }\n  }\n}\n"],
+  "mappings": ";AAAA;AACE,UAAA,GAAA;;AAGF,CAAA;AACE,UAAA,IAAA,MAAA,IAAA;AACA,iBAAA;AACA,WAAA;;AAEA,CALF,mBAKE;AACE,WAAA;AACA,OAAA;AACA,eAAA;AACA,cAAA;;AAEA,CAXJ,mBAWI,CAAA;AACE,WAAA;AACA,eAAA,IAAA;AACA,SAAA,IAAA;AACA,aAAA;AACA,eAAA;;AAKF,CArBJ,mBAqBI,IAAA,KAAA,IAAA;AACE,eAAA;AACA;IAAA;MAAA,KAAA;MAAA,IAAA,WAAA,EAAA;MAAA,IAAA,cAAA;AACA,mBAAA;AACA,2BAAA;AACA,SAAA;;AAEA,CA5BN,mBA4BM,IAAA,KAAA,IAAA,EAAA;AACE,cAAA;;",
+  "names": []
+}

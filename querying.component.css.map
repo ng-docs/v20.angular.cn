@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/querying.component.css"],
+  "sourcesContent": ["section {\n  border: 1px solid black;\n  overflow: hidden;\n}\n\nsection > * {\n  margin: 1rem;\n}\n\n.hero {\n  display: flex;\n  align-items: center;\n  border-radius: 4px;\n  color: black;\n  background-color: #DDD;\n}\n\n.hero .badge {\n  display: inline-block;\n  font-size: small;\n  color: white;\n  padding: 0.5rem;\n  background-color: #3d5157;\n  margin-right: .8em;\n  border-radius: 4px 0 0 4px;\n  align-self: stretch;\n}\n\n.hero .name {\n  height: min-content;\n}\n"],
+  "mappings": ";AAAA;AACE,UAAQ,IAAI,MAAM;AAClB,YAAU;AACZ;AAEA,QAAQ,EAAE;AACR,UAAQ;AACV;AAEA,CAAC;AACC,WAAS;AACT,eAAa;AACb,iBAAe;AACf,SAAO;AACP,oBAAkB;AACpB;AAEA,CARC,KAQK,CAAC;AACL,WAAS;AACT,aAAW;AACX,SAAO;AACP,WAAS;AACT,oBAAkB;AAClB,gBAAc;AACd,iBAAe,IAAI,EAAE,EAAE;AACvB,cAAY;AACd;AAEA,CAnBC,KAmBK,CAAC;AACL,UAAQ;AACV;",
+  "names": []
+}

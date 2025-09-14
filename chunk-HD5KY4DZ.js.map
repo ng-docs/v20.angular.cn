@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/router-tutorial/src/app/crisis-list/crisis-list.component.ts", "src/content/examples/router-tutorial/src/app/crisis-list/crisis-list.component.html"],
+  "sourcesContent": ["import {Component} from '@angular/core';\n\n@Component({\n  selector: 'app-crisis-list',\n  templateUrl: './crisis-list.component.html',\n  styleUrls: ['./crisis-list.component.css'],\n})\nexport class CrisisListComponent {}\n", "<h3>CRISIS CENTER</h3>\n<p>Get your crisis here</p>\n"],
+  "mappings": ";;;;;;;;;;;;;AAOM,IAAO,uBAAP,MAAO,qBAAmB;;AAAA;cAAnB;mCAAA,sBAAmB;AAAA;cAAnB,uFAAA,sBAAmB,WAAA,CAAA,CAAA,iBAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,6BAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACPhC,IAAA,4BAAA,GAAA,IAAA;AAAI,IAAA,iBAAA,GAAA,eAAA;AAAa,IAAA,0BAAA;AACjB,IAAA,4BAAA,GAAA,GAAA;AAAG,IAAA,iBAAA,GAAA,sBAAA;AAAoB,IAAA,0BAAA;;GDMS;AAA1B,IAAO,sBAAP;;sEAAO,qBAAmB,CAAA;UAL/B;uBACW,mBAAiB,UAAA,wDAAA,CAAA;;;;6EAIhB,qBAAmB,EAAA,WAAA,uBAAA,UAAA,qFAAA,YAAA,EAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/pipes/src/app/json-pipe.component.ts"],
+  "sourcesContent": ["import {Component} from '@angular/core';\nimport {JsonPipe} from '@angular/common';\n\n@Component({\n  selector: 'app-json-pipe',\n  template: `{{ data | json }}`,\n  imports: [JsonPipe],\n})\nexport class JsonPipeComponent {\n  data = {\n    name: 'John Doe',\n    age: 30,\n    address: {\n      street: '123 Main St',\n      city: 'Anytown',\n    },\n  };\n}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;AAQM,IAAO,qBAAP,MAAO,mBAAiB;EAC5B,OAAO;IACL,MAAM;IACN,KAAK;IACL,SAAS;MACP,QAAQ;MACR,MAAM;;;;AANkB;cAAjB;mCAAA,oBAAiB;AAAA;cAAjB,qFAAA,oBAAiB,WAAA,CAAA,CAAA,eAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,2BAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;AAHjB,IAAA,iBAAA,CAAA;;;;AAAA,IAAA,4BAAA,sBAAA,GAAA,GAAA,IAAA,IAAA,CAAA;;GAGiB,8CAFlB,QAAQ,GAAA,eAAA,EAAA,CAAA;AAEd,IAAO,oBAAP;;sEAAO,mBAAiB,CAAA;UAL7B;WAAU;MACT,UAAU;MACV,UAAU;MACV,SAAS,CAAC,QAAQ;KACnB;;;;6EACY,mBAAiB,EAAA,WAAA,qBAAA,UAAA,6DAAA,YAAA,EAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

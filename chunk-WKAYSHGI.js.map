@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/angular-compiler-options/src/app/app.component.ts", "src/content/examples/angular-compiler-options/src/app/app.component.html"],
+  "sourcesContent": ["import {Component} from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.css'],\n})\nexport class AppComponent {\n  title = 'example';\n}\n", "<h1>Replace the src folder in this {{ title }} with yours.</h1>\n"],
+  "mappings": ";;;;;;;;;;;;;;;AAOM,IAAO,gBAAP,MAAO,cAAY;EACvB,QAAQ;;AADe;cAAZ;mCAAA,eAAY;AAAA;cAAZ,gFAAA,eAAY,WAAA,CAAA,CAAA,UAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,sBAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACPzB,IAAA,4BAAA,GAAA,IAAA;AAAI,IAAA,iBAAA,CAAA;AAAsD,IAAA,0BAAA;;;AAAtD,IAAA,oBAAA;AAAA,IAAA,6BAAA,mCAAA,IAAA,OAAA,cAAA;;GDOqB;AAAnB,IAAO,eAAP;;sEAAO,cAAY,CAAA;UALxB;uBACW,YAAU,UAAA,oEAAA,CAAA;;;;6EAIT,cAAY,EAAA,WAAA,gBAAA,UAAA,0EAAA,YAAA,EAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

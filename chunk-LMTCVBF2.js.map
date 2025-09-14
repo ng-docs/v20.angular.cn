@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/mock-heroes.ts"],
+  "sourcesContent": ["// #docregion\nimport {Hero} from './hero';\n\nexport const HEROES: Hero[] = [\n  {id: 12, name: 'Dr. Nice'},\n  {id: 13, name: 'Bombasto'},\n  {id: 14, name: 'Celeritas'},\n  {id: 15, name: 'Magneta'},\n  {id: 16, name: 'RubberMan'},\n  {id: 17, name: 'Dynama'},\n  {id: 18, name: 'Dr. IQ'},\n  {id: 19, name: 'Magma'},\n  {id: 20, name: 'Tornado'},\n];\n"],
+  "mappings": ";AAGO,IAAM,SAAiB;EAC5B,EAAC,IAAI,IAAI,MAAM,WAAU;EACzB,EAAC,IAAI,IAAI,MAAM,WAAU;EACzB,EAAC,IAAI,IAAI,MAAM,YAAW;EAC1B,EAAC,IAAI,IAAI,MAAM,UAAS;EACxB,EAAC,IAAI,IAAI,MAAM,YAAW;EAC1B,EAAC,IAAI,IAAI,MAAM,SAAQ;EACvB,EAAC,IAAI,IAAI,MAAM,SAAQ;EACvB,EAAC,IAAI,IAAI,MAAM,QAAO;EACtB,EAAC,IAAI,IAAI,MAAM,UAAS;;",
+  "names": []
+}

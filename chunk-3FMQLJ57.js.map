@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/built-in-directives/src/app/item-detail/item-detail.component.ts", "src/content/examples/built-in-directives/src/app/item-detail/item-detail.component.html"],
+  "sourcesContent": ["import {Component, input} from '@angular/core';\n\nimport {Item} from '../item';\n\n@Component({\n  selector: 'app-item-detail',\n  templateUrl: './item-detail.component.html',\n  styleUrls: ['./item-detail.component.css'],\n})\nexport class ItemDetailComponent {\n  readonly item = input<Item | undefined>();\n}\n", "<div>\n  <span>{{ item()?.name }}</span>\n</div>\n"],
+  "mappings": ";;;;;;;;;;;;;;;;AASM,IAAO,uBAAP,MAAO,qBAAmB;EACrB,OAAO,MAAK,GAAA,YAAA,CAAA,QAAA,EAAA,WAAA,OAAA,CAAA,IAAA,CAAA,CAAA;;AADS;cAAnB;mCAAA,sBAAmB;AAAA;cAAnB,uFAAA,sBAAmB,WAAA,CAAA,CAAA,iBAAA,CAAA,GAAA,QAAA,EAAA,MAAA,CAAA,GAAA,MAAA,EAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,6BAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACThC,IAAA,4BAAA,GAAA,KAAA,EAAK,GAAA,MAAA;AACG,IAAA,iBAAA,CAAA;AAAkB,IAAA,0BAAA,EAAO;;;;AAAzB,IAAA,oBAAA,CAAA;AAAA,IAAA,6BAAA,UAAA,IAAA,KAAA,MAAA,OAAA,OAAA,QAAA,IAAA;;GDQwB;AAA1B,IAAO,sBAAP;;sEAAO,qBAAmB,CAAA;UAL/B;uBACW,mBAAiB,UAAA,qDAAA,CAAA;;;;6EAIhB,qBAAmB,EAAA,WAAA,uBAAA,UAAA,yFAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

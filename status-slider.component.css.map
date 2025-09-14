@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/status-slider.component.css"],
+  "sourcesContent": [":host {\n  display: block;\n}\n\n.box {\n  width: 300px;\n  border: 5px solid black;\n  display: block;\n  line-height: 300px;\n  text-align: center;\n  font-size: 50px;\n  color: white;\n}\n"],
+  "mappings": ";AAAA;AACE,WAAS;AACX;AAEA,CAAC;AACC,SAAO;AACP,UAAQ,IAAI,MAAM;AAClB,WAAS;AACT,eAAa;AACb,cAAY;AACZ,aAAW;AACX,SAAO;AACT;",
+  "names": []
+}

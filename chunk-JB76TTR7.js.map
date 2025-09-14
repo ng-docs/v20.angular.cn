@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/router-tutorial/src/app/page-not-found/page-not-found.component.ts", "src/content/examples/router-tutorial/src/app/page-not-found/page-not-found.component.html"],
+  "sourcesContent": ["import {Component} from '@angular/core';\n\n@Component({\n  selector: 'app-page-not-found',\n  templateUrl: './page-not-found.component.html',\n  styleUrls: ['./page-not-found.component.css'],\n})\nexport class PageNotFoundComponent {}\n", "<h2>Page Not Found</h2>\n<p>We couldn't find that page! Not even with x-ray vision.</p>\n"],
+  "mappings": ";;;;;;;;;;;;;AAOM,IAAO,yBAAP,MAAO,uBAAqB;;AAAA;cAArB;mCAAA,wBAAqB;AAAA;cAArB,yFAAA,wBAAqB,WAAA,CAAA,CAAA,oBAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,+BAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACPlC,IAAA,4BAAA,GAAA,IAAA;AAAI,IAAA,iBAAA,GAAA,gBAAA;AAAc,IAAA,0BAAA;AAClB,IAAA,4BAAA,GAAA,GAAA;AAAG,IAAA,iBAAA,GAAA,yDAAA;AAAuD,IAAA,0BAAA;;GDMxB;AAA5B,IAAO,wBAAP;;sEAAO,uBAAqB,CAAA;UALjC;uBACW,sBAAoB,UAAA,4FAAA,CAAA;;;;6EAInB,uBAAqB,EAAA,WAAA,yBAAA,UAAA,2FAAA,YAAA,EAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

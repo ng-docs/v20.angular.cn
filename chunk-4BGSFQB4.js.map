@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/forms/src/app/app.component.ts", "src/content/examples/forms/src/app/app.component.html"],
+  "sourcesContent": ["// #docregion\nimport {Component} from '@angular/core';\nimport {ActorFormComponent} from './actor-form/actor-form.component';\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  imports: [ActorFormComponent],\n})\nexport class AppComponent {}\n", "<app-actor-form />\n"],
+  "mappings": ";;;;;;;;;;;;;;;;AAQM,IAAO,gBAAP,MAAO,cAAY;;AAAA;cAAZ;mCAAA,eAAY;AAAA;cAAZ,gFAAA,eAAY,WAAA,CAAA,CAAA,UAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,sBAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACRzB,IAAA,oBAAA,GAAA,gBAAA;;GDQyB,yCAFb,kBAAkB,GAAA,eAAA,EAAA,CAAA;AAExB,IAAO,eAAP;;sEAAO,cAAY,CAAA;UALxB;uBACW,YAAU,SAEX,CAAC,kBAAkB,GAAC,UAAA,uBAAA,CAAA;;;;6EAElB,cAAY,EAAA,WAAA,gBAAA,UAAA,uDAAA,YAAA,EAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

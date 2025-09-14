@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/enter-and-leave/enter-binding.css"],
+  "sourcesContent": [":host {\n  display: block;\n  height: 200px;\n}\n\n.enter-container {\n  border: 1px solid #dddddd;\n  margin-top: 1em;\n  padding: 20px 20px 0px 20px;\n  font-weight: bold;\n  font-size: 20px;\n}\n\n.enter-animation {\n  animation: slide-fade 1s;\n}\n\n@keyframes slide-fade {\n  from {\n    opacity: 0;\n    transform: translateY(20px);\n  }\n\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n"],
+  "mappings": ";AAAA;AACE,WAAS;AACT,UAAQ;AACV;AAEA,CAAC;AACC,UAAQ,IAAI,MAAM;AAClB,cAAY;AACZ,WAAS,KAAK,KAAK,IAAI;AACvB,eAAa;AACb,aAAW;AACb;AAEA,CAAC;AACC,aAAW,WAAW;AACxB;AAEA,WAHa;AAIX;AACE,aAAS;AACT,eAAW,WAAW;AACxB;AAEA;AACE,aAAS;AACT,eAAW,WAAW;AACxB;AACF;",
+  "names": []
+}

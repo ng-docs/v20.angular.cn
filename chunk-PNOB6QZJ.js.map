@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/drag-drop/src/delay-drag/app/app.component.ts", "src/content/examples/drag-drop/src/delay-drag/app/app.component.html"],
+  "sourcesContent": ["import {CdkDrag} from '@angular/cdk/drag-drop';\nimport {Component} from '@angular/core';\n\n/**\n * @title Delay dragging\n */\n@Component({\n  selector: 'cdk-drag-drop-delay-example',\n  templateUrl: 'app.component.html',\n  styleUrl: 'app.component.css',\n  standalone: true,\n  imports: [CdkDrag],\n})\nexport class CdkDragDropDelayExample {}\n", "<div class=\"example-box\" cdkDrag [cdkDragStartDelay]=\"1000\">\n  Dragging starts after one second\n</div>\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;AAaM,IAAO,2BAAP,MAAO,yBAAuB;;AAAA;cAAvB;mCAAA,0BAAuB;AAAA;cAAvB,2FAAA,0BAAuB,WAAA,CAAA,CAAA,6BAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,QAAA,CAAA,CAAA,WAAA,IAAA,GAAA,eAAA,GAAA,mBAAA,CAAA,GAAA,UAAA,gCAAA,iCAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;ACbpC,IAAA,yBAAA,GAAA,OAAA,CAAA;AACE,IAAA,iBAAA,GAAA,qCAAA;AACF,IAAA,uBAAA;;;AAFiC,IAAA,qBAAA,qBAAA,GAAA;;GDaG,oDAFxB,OAAO,GAAA,QAAA,CAAA,2uBAAA,EAAA,CAAA;AAEb,IAAO,0BAAP;;sEAAO,yBAAuB,CAAA;UAPnC;uBACW,+BAA6B,YAG3B,MAAI,SACP,CAAC,OAAO,GAAC,UAAA,8GAAA,QAAA,CAAA,8wBAAA,EAAA,CAAA;;;;6EAEP,yBAAuB,EAAA,WAAA,2BAAA,UAAA,sEAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

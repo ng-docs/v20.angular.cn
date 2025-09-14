@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/editor/preview/preview.component.scss"],
+  "sourcesContent": [":host {\n  display: block;\n\n  .docs-dark-mode & {\n    .adev-embedded-editor-preview-container {\n      background: var(--gray-100);\n    }\n  }\n\n  // account for tabs height\n  height: calc(100% - 50px);\n  // If preview has error, make it scrollable\n  &:has(.adev-preview-error) {\n    .adev-embedded-editor-preview-container {\n      overflow-y: auto;\n    }\n  }\n}\n\n.adev-embedded-editor-preview-container {\n  display: flex;\n  width: 100%;\n  height: 100%;\n  position: relative;\n  color: black;\n  background: white;\n  transition: background 0.3s ease;\n  box-sizing: border-box;\n\n  iframe {\n    width: 100%;\n    height: 100%;\n    border: 0;\n  }\n\n  .adev-embedded-editor-preview-loading {\n    display: flex;\n    flex-direction: column;\n    justify-content: center;\n    align-items: center;\n    gap: 0.5rem;\n    position: absolute;\n    inset: 0;\n    margin: auto;\n\n    width: 100%;\n    height: 100%;\n    background: white;\n  }\n}\n"],
+  "mappings": ";AAAA;AACE,WAAA;AASA,UAAA,KAAA,KAAA,EAAA;;AANE,CAAA,eAAA,MAAA,CAAA;AACE,cAAA,IAAA;;AAQF,KAAA,KAAA,CAAA,oBAAA,CATA;AAUE,cAAA;;AAKN,CAfI;AAgBF,WAAA;AACA,SAAA;AACA,UAAA;AACA,YAAA;AACA,SAAA;AACA,cAAA;AACA,cAAA,WAAA,KAAA;AACA,cAAA;;AAEA,CAzBE,uCAyBF;AACE,SAAA;AACA,UAAA;AACA,UAAA;;AAGF,CA/BE,uCA+BF,CAAA;AACE,WAAA;AACA,kBAAA;AACA,mBAAA;AACA,eAAA;AACA,OAAA;AACA,YAAA;AACA,SAAA;AACA,UAAA;AAEA,SAAA;AACA,UAAA;AACA,cAAA;;",
+  "names": []
+}

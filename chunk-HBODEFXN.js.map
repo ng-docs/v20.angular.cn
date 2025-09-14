@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/security/src/app/app.component.ts"],
+  "sourcesContent": ["// #docregion\nimport {Component} from '@angular/core';\nimport {BypassSecurityComponent} from './bypass-security.component';\nimport {InnerHtmlBindingComponent} from './inner-html-binding.component';\n\n@Component({\n  selector: 'app-root',\n  template: `\n    <h1>Security</h1>\n    <app-inner-html-binding></app-inner-html-binding>\n    <app-bypass-security></app-bypass-security>\n  `,\n  imports: [BypassSecurityComponent, InnerHtmlBindingComponent],\n})\nexport class AppComponent {}\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;;AAcM,IAAO,gBAAP,MAAO,cAAY;;AAAA;cAAZ;mCAAA,eAAY;AAAA;cAAZ,gFAAA,eAAY,WAAA,CAAA,CAAA,UAAA,CAAA,GAAA,OAAA,GAAA,MAAA,GAAA,UAAA,gCAAA,sBAAA,IAAA,KAAA;AAAA,MAAA,KAAA,GAAA;AANrB,IAAA,yBAAA,GAAA,IAAA;AAAI,IAAA,iBAAA,GAAA,UAAA;AAAQ,IAAA,uBAAA;AACZ,IAAA,oBAAA,GAAA,wBAAA,EAAiD,GAAA,qBAAA;;GAK5B,yCAFb,yBAAyB,yBAAyB,GAAA,eAAA,EAAA,CAAA;AAExD,IAAO,eAAP;;sEAAO,cAAY,CAAA;UATxB;WAAU;MACT,UAAU;MACV,UAAU;;;;;MAKV,SAAS,CAAC,yBAAyB,yBAAyB;KAC7D;;;;6EACY,cAAY,EAAA,WAAA,gBAAA,UAAA,0DAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

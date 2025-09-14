@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/content/examples/animations/src/app/native-css/auto-height.component.css"],
+  "sourcesContent": [".container {\n  display: grid;\n  grid-template-rows: 0fr;\n  overflow: hidden;\n  transition: grid-template-rows 1s;\n}\n\n.container.open {\n  grid-template-rows: 1fr;\n}\n\n.container .content {\n  min-height: 0;\n  transition: visibility 1s;\n  padding: 0 20px;\n  visibility: hidden;\n  margin-top: 1em;\n  font-weight: bold;\n  font-size: 20px;\n  background-color: blue;\n  color: #ebebeb;\n  overflow: hidden;\n}\n\n.container.open .content {\n  visibility: visible;\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,WAAS;AACT,sBAAoB;AACpB,YAAU;AACV,cAAY,mBAAmB;AACjC;AAEA,CAPC,SAOS,CAAC;AACT,sBAAoB;AACtB;AAEA,CAXC,UAWU,CAAC;AACV,cAAY;AACZ,cAAY,WAAW;AACvB,WAAS,EAAE;AACX,cAAY;AACZ,cAAY;AACZ,eAAa;AACb,aAAW;AACX,oBAAkB;AAClB,SAAO;AACP,YAAU;AACZ;AAEA,CAxBC,SAwBS,CAjBC,KAiBK,CAbJ;AAcV,cAAY;AACd;",
+  "names": []
+}
