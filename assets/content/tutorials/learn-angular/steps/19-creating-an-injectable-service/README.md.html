@@ -1,29 +1,28 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Creating an injectable service</h1>
+    <h1 tabindex="-1">创建可注入的服务</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/tutorials/learn-angular/steps/19-creating-an-injectable-service/README.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>Dependency injection (DI) in Angular is one of the framework's most powerful features. Consider dependency injection to be the ability for Angular to <em>provide</em> resources you need for your application at runtime. A dependency could be a service or some other resources.</p>
-<p>Note: Learn more about <a href="/essentials/dependency-injection">dependency injection in the essentials guide</a>.</p>
-<p>In this activity, you'll learn how to create an <code>injectable</code> service.</p>
+    <p>Angular 中的依赖注入 (DI) 是该框架最强大的特性之一。可以将依赖注入视为 Angular 在运行时<em>提供</em>你的应用所需的资源的能力。依赖项可以是服务或其他一些资源。</p>
+<p>注意：在核心指南中了解更多关于<a href="/essentials/dependency-injection">依赖注入</a>的信息。</p>
+<p>在此活动中，您将学习如何创建<code>可注入</code>服务。</p>
 <hr>
 
-<p>One way to use a service is to act as a way to interact with data and APIs. To make a service reusable you should keep the logic in the service and share it throughout the application when it is needed.</p>
-<p>To make a service eligible to be injected by the DI system use the <a href="/api/core/Injectable"><code>@Injectable</code></a> decorator. For example:</p>
+<p>使用服务的一种方式是充当与数据和 API 交互的方式。为了使服务可复用，你应该将逻辑保留在服务中，并在需要时在整个应用中共享它。</p>
+<p>要使服务有资格被 DI 系统注入，请使用 <a href="/api/core/Injectable"><code>@Injectable</code></a> 装饰器。例如：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Injectable">Injectable</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  providedIn: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'root'</span></span><span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> UserService</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">  // methods to retrieve and return data</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
-  </div><p>The <a href="/api/core/Injectable"><code>@Injectable</code></a> decorator notifies the DI system that the <code>UserService</code> is available to be requested in a class. <code>providedIn</code> sets the scope in which this resource is available. For now, it is good enough to understand that <code>providedIn: &#39;root&#39;</code> means that the <code>UserService</code> is available to the entire application.</p>
-<p>Alright, you try:</p>
+  </div><p> <a href="/api/core/Injectable"><code>@Injectable</code></a> 装饰器通知 DI 系统 <code>UserService</code> 可在类中请求。<code>providedIn</code> 设置此资源可用的范围。目前，足以理解 <code>providedIn: 'root'</code> 意味着 <code>UserService</code> 可供整个应用程序使用。</p>
+<p>好的，你来试试：</p>
 
     <ol class="docs-steps">
       
@@ -31,10 +30,10 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="add-the-injectable-decorator">
-    <a href="#add-the-injectable-decorator" class="docs-anchor" tabindex="-1" aria-label="Link to Add the <code>@Injectable</code> decorator">Add the <code>@Injectable</code> decorator</a>
+    <a href="#add-the-injectable-decorator" class="docs-anchor" tabindex="-1" aria-label="Link to Add the <code>@Injectable</code> decorator">添加 <code>@Injectable</code> 装饰器</a>
   </h3>
   
-      <p>Update the code in <code>car.service.ts</code> by adding the <a href="/api/core/Injectable"><code>@Injectable</code></a> decorator.</p>
+      <p>通过添加 <a href="/api/core/Injectable"><code>@Injectable</code></a> 装饰器来更新 <code>car.service.ts</code> 中的代码。</p>
 
     </li>
     
@@ -42,15 +41,15 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="configure-the-decorator">
-    <a href="#configure-the-decorator" class="docs-anchor" tabindex="-1" aria-label="Link to Configure the decorator">Configure the decorator</a>
+    <a href="#configure-the-decorator" class="docs-anchor" tabindex="-1" aria-label="Link to Configure the decorator">配置装饰器</a>
   </h3>
   
-      <p>The values in the object passed to the decorator are considered to be the configuration for the decorator.
+      <p>传递给装饰器的对象中的值被认为是装饰器的配置。
 <br>
-Update the <a href="/api/core/Injectable"><code>@Injectable</code></a> decorator in <code>car.service.ts</code> to include the configuration for <code>providedIn: &#39;root&#39;</code>.</p>
-<p>TIP: Use the above example to find the correct syntax.</p>
+更新 <code>car.service.ts</code> 中的 <a href="/api/core/Injectable"><code>@Injectable</code></a> 装饰器以包含 <code>providedIn: 'root'</code> 的配置。</p>
+<p>提示：使用上面的范例来查找正确的语法。</p>
 
     </li>
     
     </ol>
-    <p><span class="docs-emoji">Well, done 👍 that service is now </span><code>injectable</code> and can participate in the fun. Now that the service is <code>injectable</code><span class="docs-emoji">, let's try injecting it into a component 👉</span></p>
+    <p><span class="docs-emoji">做得好 👍 现在这个服务是 </span><code>injectable</code> 的，可以参与其中了。既然这个服务是 <code>injectable</code> 的了<span class="docs-emoji">，让我们尝试将其注入到一个组件中 👉</span></p>

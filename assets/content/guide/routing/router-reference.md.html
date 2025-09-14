@@ -1,167 +1,166 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Router reference</h1>
+    <h1 tabindex="-1">路由器参考</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/guide/routing/router-reference.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>The following sections highlight some core router concepts and terminology.</p>
+    <p>以下各节重点介绍了一些核心路由器概念和术语。</p>
 
   <h2 id="router-events">
-    <a href="#router-events" class="docs-anchor" tabindex="-1" aria-label="Link to Router events">Router events</a>
+    <a href="#router-events" class="docs-anchor" tabindex="-1" aria-label="Link to Router events">路由器事件</a>
   </h2>
-  <p>During each navigation, the <a href="/api/router/Router"><code>Router</code></a> emits navigation events through the <a href="/api/router/Router#events"><code>Router.events</code></a> property.
-These events are shown in the following table.</p>
+  <p>在每次导航期间，<a href="/api/router/Router"><code>Router</code></a> 会通过 <a href="/api/router/Router#events"><code>Router.events</code></a> 属性发出导航事件。
+这些事件显示在下表中。</p>
 
   <div class="docs-table docs-scroll-track-transparent">
     <table>
       <thead>
         <tr>
-<th align="left">Router event</th>
-<th align="left">Details</th>
+<th align="left">路由器事件</th>
+<th align="left">详情</th>
 </tr>
 
       </thead>
       <tbody>
         <tr>
-<td align="left"><a href="api/router/NavigationStart"><a href="/api/router/NavigationStart"><code>NavigationStart</code></a></a></td>
-<td align="left">Triggered when navigation starts.</td>
+<td align="left"><a href="api/router/NavigationStart"></a><a href="/api/router/NavigationStart"><code>NavigationStart</code></a></td>
+<td align="left">当导航开始时触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/RouteConfigLoadStart"><a href="/api/router/RouteConfigLoadStart"><code>RouteConfigLoadStart</code></a></a></td>
-<td align="left">Triggered before the <a href="/api/router/Router"><code>Router</code></a> lazy loads a route configuration.</td>
+<td align="left"><a href="api/router/RouteConfigLoadStart"></a><a href="/api/router/RouteConfigLoadStart"><code>RouteConfigLoadStart</code></a></td>
+<td align="left">在 <a href="/api/router/Router"><code>Router</code></a> 惰性加载路由配置之前触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/RouteConfigLoadEnd"><a href="/api/router/RouteConfigLoadEnd"><code>RouteConfigLoadEnd</code></a></a></td>
-<td align="left">Triggered after a route has been lazy loaded.</td>
+<td align="left"><a href="api/router/RouteConfigLoadEnd"></a><a href="/api/router/RouteConfigLoadEnd"><code>RouteConfigLoadEnd</code></a></td>
+<td align="left">在路由被惰性加载之后触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/RoutesRecognized"><a href="/api/router/RoutesRecognized"><code>RoutesRecognized</code></a></a></td>
-<td align="left">Triggered when the Router parses the URL and the routes are recognized.</td>
+<td align="left"><a href="api/router/RoutesRecognized"></a><a href="/api/router/RoutesRecognized"><code>RoutesRecognized</code></a></td>
+<td align="left">当路由器解析 URL 并且路由被识别时触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/GuardsCheckStart"><a href="/api/router/GuardsCheckStart"><code>GuardsCheckStart</code></a></a></td>
-<td align="left">Triggered when the Router begins the Guards phase of routing.</td>
+<td align="left"><a href="api/router/GuardsCheckStart"></a><a href="/api/router/GuardsCheckStart"><code>GuardsCheckStart</code></a></td>
+<td align="left">当路由器开始路由的守卫阶段时触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/ChildActivationStart"><a href="/api/router/ChildActivationStart"><code>ChildActivationStart</code></a></a></td>
-<td align="left">Triggered when the Router begins activating a route's children.</td>
+<td align="left"><a href="api/router/ChildActivationStart"></a><a href="/api/router/ChildActivationStart"><code>ChildActivationStart</code></a></td>
+<td align="left">当路由器开始激活路由的子路由时触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/ActivationStart"><a href="/api/router/ActivationStart"><code>ActivationStart</code></a></a></td>
-<td align="left">Triggered when the Router begins activating a route.</td>
+<td align="left"><a href="api/router/ActivationStart"></a><a href="/api/router/ActivationStart"><code>ActivationStart</code></a></td>
+<td align="left">当路由器开始激活路由时触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/GuardsCheckEnd"><a href="/api/router/GuardsCheckEnd"><code>GuardsCheckEnd</code></a></a></td>
-<td align="left">Triggered when the Router finishes the Guards phase of routing successfully.</td>
+<td align="left"><a href="api/router/GuardsCheckEnd"></a><a href="/api/router/GuardsCheckEnd"><code>GuardsCheckEnd</code></a></td>
+<td align="left">当路由器成功完成路由的守卫阶段时触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/ResolveStart"><a href="/api/router/ResolveStart"><code>ResolveStart</code></a></a></td>
-<td align="left">Triggered when the Router begins the Resolve phase of routing.</td>
+<td align="left"><a href="api/router/ResolveStart"></a><a href="/api/router/ResolveStart"><code>ResolveStart</code></a></td>
+<td align="left">当路由器开始路由的求解阶段时触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/ResolveEnd"><a href="/api/router/ResolveEnd"><code>ResolveEnd</code></a></a></td>
-<td align="left">Triggered when the Router finishes the Resolve phase of routing successfully.</td>
+<td align="left"><a href="api/router/ResolveEnd"></a><a href="/api/router/ResolveEnd"><code>ResolveEnd</code></a></td>
+<td align="left">当路由器成功完成路由的求解阶段时触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/ChildActivationEnd"><a href="/api/router/ChildActivationEnd"><code>ChildActivationEnd</code></a></a></td>
-<td align="left">Triggered when the Router finishes activating a route's children.</td>
+<td align="left"><a href="api/router/ChildActivationEnd"></a><a href="/api/router/ChildActivationEnd"><code>ChildActivationEnd</code></a></td>
+<td align="left">当路由器完成激活路由的子路由时触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/ActivationEnd"><a href="/api/router/ActivationEnd"><code>ActivationEnd</code></a></a></td>
-<td align="left">Triggered when the Router finishes activating a route.</td>
+<td align="left"><a href="api/router/ActivationEnd"></a><a href="/api/router/ActivationEnd"><code>ActivationEnd</code></a></td>
+<td align="left">当路由器完成激活路由时触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/NavigationEnd"><a href="/api/router/NavigationEnd"><code>NavigationEnd</code></a></a></td>
-<td align="left">Triggered when navigation ends successfully.</td>
+<td align="left"><a href="api/router/NavigationEnd"></a><a href="/api/router/NavigationEnd"><code>NavigationEnd</code></a></td>
+<td align="left">当导航成功结束时触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/NavigationCancel"><a href="/api/router/NavigationCancel"><code>NavigationCancel</code></a></a></td>
-<td align="left">Triggered when navigation is canceled. This can happen when a Route Guard returns false during navigation, or redirects by returning a <a href="/api/router/UrlTree"><code>UrlTree</code></a> or <a href="/api/router/RedirectCommand"><code>RedirectCommand</code></a>.</td>
+<td align="left"><a href="api/router/NavigationCancel"></a><a href="/api/router/NavigationCancel"><code>NavigationCancel</code></a></td>
+<td align="left">导航被取消时触发。当路由守卫在导航期间返回 false，或者通过返回 <code>UrlTree</code> 或 <code>RedirectCommand</code> 进行重定向时，可能会发生这种情况。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/NavigationError"><a href="/api/router/NavigationError"><code>NavigationError</code></a></a></td>
-<td align="left">Triggered when navigation fails due to an unexpected error.</td>
+<td align="left"><a href="api/router/NavigationError"></a><a href="/api/router/NavigationError"><code>NavigationError</code></a></td>
+<td align="left">当导航由于意外错误而失败时触发。</td>
 </tr>
 <tr>
-<td align="left"><a href="api/router/Scroll"><a href="/api/router/Scroll"><code>Scroll</code></a></a></td>
-<td align="left">Represents a scrolling event.</td>
+<td align="left"><a href="api/router/Scroll"></a><a href="/api/router/Scroll"><code>Scroll</code></a></td>
+<td align="left">表示一个滚动事件。</td>
 </tr>
 
       </tbody>
     </table>
   </div>
-  <p>When you enable the <a href="/api/router/withDebugTracing"><code>withDebugTracing</code></a> feature, Angular logs these events to the console.</p>
+  <p>当你启用 <code>withDebugTracing</code> 特性时，Angular 会将这些事件记录到控制台。</p>
 
   <h2 id="router-terminology">
-    <a href="#router-terminology" class="docs-anchor" tabindex="-1" aria-label="Link to Router terminology">Router terminology</a>
+    <a href="#router-terminology" class="docs-anchor" tabindex="-1" aria-label="Link to Router terminology">路由器术语</a>
   </h2>
-  <p>Here are the key <a href="/api/router/Router"><code>Router</code></a> terms and their meanings:</p>
+  <p>以下是关键的 <code>Router</code> 术语及其含义：</p>
 
   <div class="docs-table docs-scroll-track-transparent">
     <table>
       <thead>
         <tr>
-<th align="left">Router part</th>
-<th align="left">Details</th>
+<th align="left">路由器部件</th>
+<th align="left">详情</th>
 </tr>
 
       </thead>
       <tbody>
         <tr>
 <td align="left"><a href="/api/router/Router"><code>Router</code></a></td>
-<td align="left">Displays the application component for the active URL. Manages navigation from one component to the next.</td>
+<td align="left">显示活动 URL 的应用组件。管理从一个组件到下一个组件的导航。</td>
 </tr>
 <tr>
 <td align="left"><a href="/api/router/provideRouter"><code>provideRouter</code></a></td>
-<td align="left">provides the necessary service providers for navigating through application views.</td>
+<td align="left">为浏览应用视图提供必要的提供者。</td>
 </tr>
 <tr>
 <td align="left"><a href="/api/router/RouterModule"><code>RouterModule</code></a></td>
-<td align="left">A separate NgModule that provides the necessary service providers and directives for navigating through application views.</td>
+<td align="left">一个单独的 NgModule，它为浏览应用视图提供必要的提供者和指令。</td>
 </tr>
 <tr>
 <td align="left"><a href="/api/router/Routes"><code>Routes</code></a></td>
-<td align="left">Defines an array of Routes, each mapping a URL path to a component.</td>
+<td align="left">定义一个 Routes 数组，每个条目都将 URL 路径映射到一个组件。</td>
 </tr>
 <tr>
 <td align="left"><a href="/api/router/Route"><code>Route</code></a></td>
-<td align="left">Defines how the router should navigate to a component based on a URL pattern. Most routes consist of a path and a component type.</td>
+<td align="left">定义路由器应如何基于 URL 模式导航到组件。大多数路由由路径和组件类型组成。</td>
 </tr>
 <tr>
 <td align="left"><a href="/api/router/RouterOutlet"><code>RouterOutlet</code></a></td>
-<td align="left">The directive (<code>&lt;router-outlet&gt;</code>) that marks where the router displays a view.</td>
+<td align="left">该指令 (<code>&lt;router-outlet&gt;</code>) 标记了路由器显示视图的位置。</td>
 </tr>
 <tr>
 <td align="left"><a href="/api/router/RouterLink"><code>RouterLink</code></a></td>
-<td align="left">The directive for binding a clickable HTML element to a route. Clicking an element with a <code>routerLink</code> directive that's bound to a <em>string</em> or a <em>link parameters array</em> triggers a navigation.</td>
+<td align="left">用于将可点击的 HTML 元素绑定到路由的指令。单击带有 <code>routerLink</code> 指令的元素（该指令绑定到<em>字符串</em>或<em>链接参数数组</em>）会触发导航。</td>
 </tr>
 <tr>
 <td align="left"><a href="/api/router/RouterLinkActive"><code>RouterLinkActive</code></a></td>
-<td align="left">The directive for adding/removing classes from an HTML element when an associated <code>routerLink</code> contained on or inside the element becomes active/inactive. It can also set the <code>aria-current</code> of an active link for better accessibility.</td>
+<td align="left">当元素上或内部包含的关联 <code>routerLink</code> 变为活动/非活动状态时，用于从 HTML 元素添加/删除类的指令。它还可以为活动链接设置 <code>aria-current</code> 以获得更好的无障碍功能。</td>
 </tr>
 <tr>
 <td align="left"><a href="/api/router/ActivatedRoute"><code>ActivatedRoute</code></a></td>
-<td align="left">A service that's provided to each route component that contains route specific information such as route parameters, static data, resolve data, global query parameters, and the global fragment.</td>
+<td align="left">提供给每个路由组件的服务，其中包含特定于路由的信息，例如路由参数、静态数据、求解数据、全局查询参数和全局片段。</td>
 </tr>
 <tr>
 <td align="left"><a href="/api/router/RouterState"><code>RouterState</code></a></td>
-<td align="left">The current state of the router including a tree of the currently activated routes together with convenience methods for traversing the route tree.</td>
+<td align="left">路由器的当前状态，包括当前激活路由的树，以及用于遍历路由树的便捷方法。</td>
 </tr>
 <tr>
-<td align="left">Link parameters array</td>
-<td align="left">An array that the router interprets as a routing instruction. You can bind that array to a <a href="/api/router/RouterLink"><code>RouterLink</code></a> or pass the array as an argument to the <a href="/api/router/Router#navigate"><code>Router.navigate</code></a> method.</td>
+<td align="left">链接参数数组</td>
+<td align="left">路由解释为路由指令的数组。您可以将该数组绑定到 <code>RouterLink</code> 或将该数组作为参数传递给 <code>Router.navigate</code> 方法。</td>
 </tr>
 <tr>
-<td align="left">Routing component</td>
-<td align="left">An Angular component with a <a href="/api/router/RouterOutlet"><code>RouterOutlet</code></a> that displays views based on router navigations.</td>
+<td align="left">路由组件</td>
+<td align="left">一个带有 <code>RouterOutlet</code> 的 Angular 组件，它根据路由导航显示视图。</td>
 </tr>
 
       </tbody>
@@ -169,71 +168,71 @@ These events are shown in the following table.</p>
   </div>
   
   <h2 id="base-href">
-    <a href="#base-href" class="docs-anchor" tabindex="-1" aria-label="Link to <code>&lt;base href&gt;</code>"><code>&lt;base href&gt;</code></a>
+    <a href="#base-href" class="docs-anchor" tabindex="-1" aria-label="Link to <code><base href></code>"><code>&lt;base href&gt;</code></a>
   </h2>
-  <p>The router uses the browser's <a href="https://developer.mozilla.org/docs/Web/API/History_API/Working_with_the_History_API#adding_and_modifying_history_entries" title="HTML5 browser history push-state" target="_blank">history.pushState</a> for navigation.
-<code>pushState</code> lets you customize in-application URL paths; for example, <code>localhost:4200/crisis-center</code>.
-The in-application URLs can be indistinguishable from server URLs.</p>
-<p>Modern HTML5 browsers were the first to support <code>pushState</code> which is why many people refer to these URLs as "HTML5 style" URLs.</p>
+  <p>路由使用浏览器的 <code>history.pushState</code> 进行导航。
+<code>pushState</code> 允许你自定义应用内 URL 路径；例如，<code>localhost:4200/crisis-center</code>。
+应用内 URL 可能与服务器 URL 无法区分。</p>
+<p>现代 HTML5 浏览器率先支持 <code>pushState</code>，这就是为什么许多人将这些 URL 称为“HTML5 风格”URL 的原因。</p>
 
     <div class="docs-alert docs-alert-helpful">
-    <p><strong>HELPFUL:</strong> HTML5 style navigation is the router default.
-In the <a href="#locationstrategy-and-browser-url-styles">LocationStrategy and browser URL styles</a> section, learn why HTML5 style is preferable, how to adjust its behavior, and how to switch to the older hash (<code>#</code>) style, if necessary.</p>
+    <p><strong>有帮助：</strong> HTML5 风格导航是路由器的默认设置。
+在“位置策略和浏览器 URL 样式”部分，了解为什么 HTML5 风格是首选，如何调整其行为，以及如何在必要时切换到旧的哈希（<code>#</code>）风格。</p>
 
     </div>
-    <p>You must add a <a href="https://developer.mozilla.org/docs/Web/HTML/Element/base" title="base href" target="_blank"><code>&lt;base href&gt;</code> element</a> to the application's <code>index.html</code> for <code>pushState</code> routing to work.
-The browser uses the <code>&lt;base href&gt;</code> value to prefix relative URLs when referencing CSS files, scripts, and images.</p>
-<p>Add the <code>&lt;base&gt;</code> element just after the <code>&lt;head&gt;</code> tag.
-If the <code>app</code> folder is the application root, as it is for this application, set the <code>href</code> value in <code>index.html</code> as shown here.</p>
+    <p>必须将一个 <code>&lt;base href&gt;</code> 元素添加到应用程序的 <code>index.html</code> 中，<code>pushState</code> 路由才能正常工作。
+浏览器在引用 CSS 文件、脚本和图像时，使用 <code>&lt;base href&gt;</code> 值来为相对 URL 添加前缀。</p>
+<p>在 <code>&lt;head&gt;</code> 标签之后立即添加 <code>&lt;base&gt;</code> 元素。
+如果 <code>app</code> 文件夹是应用程序的根目录（如本应用程序所示），请在 <code>index.html</code> 中设置 <code>href</code> 值，如下所示。</p>
 <div class="docs-code" path="adev/src/content/examples/router/src/index.html" visiblelines="4" header="src/index.html (base-href)">
     <div class="docs-code-header"><h3>src/index.html (base-href)</h3></div>
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;!</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">DOCTYPE</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> html</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">html</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> lang</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"en"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">head</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">    &lt;!-- Set the base href --&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">base</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> href</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"/"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">title</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Angular Router&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">title</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">meta</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> charset</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"UTF-8"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">meta</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"viewport"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> content</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"width=device-width, initial-scale=1"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">head</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">body</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">app-root</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">app-root</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">body</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">html</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"></span></code></pre>
   </div>
   <h3 id="html5-urls-and-the-base-href">
-    <a href="#html5-urls-and-the-base-href" class="docs-anchor" tabindex="-1" aria-label="Link to HTML5 URLs and the <code>&lt;base href&gt;</code>">HTML5 URLs and the <code>&lt;base href&gt;</code></a>
+    <a href="#html5-urls-and-the-base-href" class="docs-anchor" tabindex="-1" aria-label="Link to HTML5 URLs and the <code><base href></code>">HTML5 URL 和 <code>&lt;base href&gt;</code></a>
   </h3>
-  <p>The guidelines that follow will refer to different parts of a URL.
-This diagram outlines what those parts refer to:</p>
+  <p>接下来的指南将引用 URL 的不同部分。
+此图概述了这些部分指的是什么：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span>foo://example.com:8042/over/there?name=ferret#nose</span></span><span class="line"><span>\_/   \______________/\_________/ \_________/ \__/</span></span><span class="line"><span> |           |            |            |        |</span></span><span class="line"><span>scheme    authority      path        query   fragment</span></span></code></pre>
-  </div><p>While the router uses the <a href="https://developer.mozilla.org/docs/Web/API/History_API#Adding_and_modifying_history_entries" title="Browser history push-state" target="_blank">HTML5 pushState</a> style by default, you must configure that strategy with a <code>&lt;base href&gt;</code>.</p>
-<p>The preferred way to configure the strategy is to add a <a href="https://developer.mozilla.org/docs/Web/HTML/Element/base" title="base href" target="_blank"><code>&lt;base href&gt;</code> element</a> tag in the <code>&lt;head&gt;</code> of the <code>index.html</code>.</p>
+  </div><p>虽然路由器默认使用 HTML5 pushState 风格，但你必须使用 <code>&lt;base href&gt;</code> 来配置该策略。</p>
+<p>配置该策略的首选方法是在 <code>index.html</code> 的 <code>&lt;head&gt;</code> 中添加一个 <code>&lt;base href&gt;</code> 元素标签。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">base</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> href</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"/"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span></code></pre>
-  </div><p>Without that tag, the browser might not be able to load resources (images, CSS, scripts) when "deep linking" into the application.</p>
-<p>Some developers might not be able to add the <code>&lt;base&gt;</code> element, perhaps because they don't have access to <code>&lt;head&gt;</code> or the <code>index.html</code>.</p>
-<p>Those developers can still use HTML5 URLs by taking the following two steps:</p>
+  </div><p>没有该标记，浏览器在“深度链接”到应用时可能无法加载资源（图片、CSS、脚本）。</p>
+<p>有些开发者可能无法添加 <code>&lt;base&gt;</code> 元素，可能是因为他们无法访问 <code>&lt;head&gt;</code> 或 <code>index.html</code>。</p>
+<p>这些开发者仍然可以通过执行以下两个步骤来使用 HTML5 URL：</p>
 
     <ol class="docs-ordered-list">
-      <li><p>Provide the router with an appropriate <a href="/api/common/APP_BASE_HREF"><code>APP_BASE_HREF</code></a> value.</p>
+      <li><p>为路由器提供一个合适的 <a href="/api/common/APP_BASE_HREF"><code>APP_BASE_HREF</code></a> 值。</p>
 </li>
-<li><p>Use root URLs (URLs with an <code>authority</code>) for all web resources: CSS, images, scripts, and template HTML files.</p>
+<li><p>对所有 Web 资源：CSS、图片、脚本和模板 HTML 文件使用根 URL（带有 <code>authority</code> 的 URL）。</p>
 
   <ul class="docs-list">
-    <li><p>The <code>&lt;base href&gt;</code> <code>path</code> should end with a "/", as browsers ignore characters in the <code>path</code> that follow the right-most "<code>/</code>"</p>
+    <li><p><code>&lt;base href&gt;</code> 的 <code>path</code> 应该以“/”结尾，因为浏览器会忽略路径中紧跟最右边“<code>/</code>”的字符。</p>
 </li>
-<li><p>If the <code>&lt;base href&gt;</code> includes a <a href="/api/animations/query"><code>query</code></a> part, the <a href="/api/animations/query"><code>query</code></a> is only used if the <code>path</code> of a link in the page is empty and has no <a href="/api/animations/query"><code>query</code></a>.
-This means that a <a href="/api/animations/query"><code>query</code></a> in the <code>&lt;base href&gt;</code> is only included when using <a href="/api/common/HashLocationStrategy"><code>HashLocationStrategy</code></a>.</p>
+<li><p>如果 <code>&lt;base href&gt;</code> 包含一个 <a href="/api/animations/query"><code>query</code></a> 部分，那么只有当页面中链接的 <code>path</code> 为空且没有 <a href="/api/animations/query"><code>query</code></a> 时，才会使用该 <a href="/api/animations/query"><code>query</code></a>。
+这意味着 <code>&lt;base href&gt;</code> 中的 <a href="/api/animations/query"><code>query</code></a> 仅在使用 <a href="/api/common/HashLocationStrategy"><code>HashLocationStrategy</code></a> 时包含在内。</p>
 </li>
-<li><p>If a link in the page is a root URL (has an <code>authority</code>), the <code>&lt;base href&gt;</code> is not used.
-In this way, an <a href="/api/common/APP_BASE_HREF"><code>APP_BASE_HREF</code></a> with an authority will cause all links created by Angular to ignore the <code>&lt;base href&gt;</code> value.</p>
+<li><p>如果页面中的链接是根 URL（具有 <code>authority</code>），则不使用 <code>&lt;base href&gt;</code>。
+这样，具有 authority 的 <a href="/api/common/APP_BASE_HREF"><code>APP_BASE_HREF</code></a> 会导致 Angular 创建的所有链接忽略 <code>&lt;base href&gt;</code> 值。</p>
 </li>
-<li><p>A fragment in the <code>&lt;base href&gt;</code> is <em>never</em> persisted</p>
+<li><p><code>&lt;base href&gt;</code> 中的片段<em>永远</em>不会被持久化</p>
 </li>
 
   </ul>
   </li>
 
     </ol>
-    <p>For more complete information on how <code>&lt;base href&gt;</code> is used to construct target URIs, see the <a href="https://tools.ietf.org/html/rfc3986#section-5.2.2" target="_blank">RFC</a> section on transforming references.</p>
+    <p>有关 <code>&lt;base href&gt;</code> 如何用于构造目标 URI 的更完整信息，请参阅 <a href="https://tools.ietf.org/html/rfc3986#section-5.2.2" target="_blank">RFC</a> 中关于转换引用的部分。</p>
 
   <h3 id="hashlocationstrategy">
     <a href="#hashlocationstrategy" class="docs-anchor" tabindex="-1" aria-label="Link to <code>HashLocationStrategy</code>"><code>HashLocationStrategy</code></a>
   </h3>
-  <p>Use <a href="/api/common/HashLocationStrategy"><code>HashLocationStrategy</code></a> by providing the <code>useHash: true</code> in an object as the second argument of the <a href="/api/router/RouterModule#forRoot"><code>RouterModule.forRoot()</code></a> in the <code>AppModule</code>.</p>
+  <p>通过在 <code>AppModule</code> 的 <a href="/api/router/RouterModule#forRoot"><code>RouterModule.forRoot()</code></a> 的第二个参数中提供一个对象，其中包含 <code>useHash: true</code> 来使用 <a href="/api/common/HashLocationStrategy"><code>HashLocationStrategy</code></a>。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">providers</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  <a href="/api/router/provideRouter">provideRouter</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(appRoutes, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/router/withHashLocation">withHashLocation</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">())</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span></code></pre>
-  </div><p>When using <a href="/api/router/RouterModule#forRoot"><code>RouterModule.forRoot</code></a>, this is configured with the <code>useHash: true</code> in the second argument: <a href="/api/router/RouterModule#forRoot(routes, {useHash: true})"><code>RouterModule.forRoot(routes, {useHash: true})</code></a>.</p>
+  </div><p>使用 <a href="/api/router/RouterModule#forRoot"><code>RouterModule.forRoot</code></a> 时，这将在第二个参数中配置为 <code>useHash: true</code>：<a href="/api/router/RouterModule#forRoot(routes, {useHash: true})"><code>RouterModule.forRoot(routes, {useHash: true})</code></a>。</p>

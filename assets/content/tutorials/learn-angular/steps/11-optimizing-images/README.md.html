@@ -1,21 +1,20 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Optimizing images</h1>
+    <h1 tabindex="-1">优化图像</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/tutorials/learn-angular/steps/11-optimizing-images/README.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>Images are a big part of many applications, and can be a major contributor to application performance problems, including low <a href="https://web.dev/explore/learn-core-web-vitals" target="_blank">Core Web Vitals</a> scores.</p>
-<p>Image optimization can be a complex topic, but Angular handles most of it for you, with the <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> directive.</p>
-<p>Note: Learn more about <a href="/guide/image-optimization">image optimization with NgOptimizedImage in the in-depth guide</a>.</p>
-<p>In this activity, you'll learn how to use <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> to ensure your images are loaded efficiently.</p>
+    <p>图像是许多应用的重要组成部分，并且可能是导致应用性能问题（包括 <a href="https://web.dev/explore/learn-core-web-vitals" target="_blank">Core Web Vitals</a> 分数偏低）的主要原因。</p>
+<p>图片优化可能是一个复杂的话题，但 Angular 通过 <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> 指令为您处理了大部分工作。</p>
+<p>注意：在深入指南中了解更多关于 <a href="/guide/image-optimization">使用 NgOptimizedImage 进行图片优化</a> 的信息。</p>
+<p>在此活动中，您将学习如何使用 <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> 来确保您的图片高效加载。</p>
 <hr>
 
 
@@ -25,10 +24,10 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="import-the-ngoptimizedimage-directive">
-    <a href="#import-the-ngoptimizedimage-directive" class="docs-anchor" tabindex="-1" aria-label="Link to Import the NgOptimizedImage directive">Import the NgOptimizedImage directive</a>
+    <a href="#import-the-ngoptimizedimage-directive" class="docs-anchor" tabindex="-1" aria-label="Link to Import the NgOptimizedImage directive">导入 NgOptimizedImage 指令</a>
   </h3>
   
-      <p>In order to leverage the <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> directive, first import it from the <code>@angular/common</code> library and add it to the component <code>imports</code> array.</p>
+      <p>为了利用 <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> 指令，首先需要从 <code>@angular/common</code> 库导入它，并将其添加到组件的 <code>imports</code> 数组中。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/common/NgOptimizedImage">NgOptimizedImage</a> } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/common'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Component">Component</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  imports: [NgOptimizedImage],</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  ...</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span></code></pre>
@@ -39,10 +38,10 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="update-the-src-attribute-to-be-ngsrc">
-    <a href="#update-the-src-attribute-to-be-ngsrc" class="docs-anchor" tabindex="-1" aria-label="Link to Update the src attribute to be ngSrc">Update the src attribute to be ngSrc</a>
+    <a href="#update-the-src-attribute-to-be-ngsrc" class="docs-anchor" tabindex="-1" aria-label="Link to Update the src attribute to be ngSrc">将 src 属性更新为 ngSrc</a>
   </h3>
   
-      <p>To enable the <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> directive, swap out the <code>src</code> attribute for <code>ngSrc</code>. This applies for both static image sources (i.e., <code>src</code>) and dynamic image sources (i.e., <code>[src]</code>).</p>
+      <p>要启用 <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> 指令，请将 <code>src</code> 属性替换为 <code>ngSrc</code>。这适用于静态图片源（即 <code>src</code>）和动态图片源（即 <code>[src]</code>）。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/common/NgOptimizedImage">NgOptimizedImage</a> } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/common'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Component">Component</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  template: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">`</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    ...</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">li</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      Static Image:</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">img</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ngSrc</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"/assets/logo.svg"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> alt</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"Angular logo"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> width</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"32"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> height</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"32"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> /&gt;</span></span><span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">li</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">li</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      Dynamic Image:</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">img</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> [ngSrc]</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"logoUrl"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> [alt]</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"logoAlt"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> width</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"32"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> height</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"32"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> /&gt;</span></span><span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">li</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    ...</span></span><span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">  `</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  imports: [NgOptimizedImage],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span></code></pre>
@@ -53,15 +52,15 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="add-width-and-height-attributes">
-    <a href="#add-width-and-height-attributes" class="docs-anchor" tabindex="-1" aria-label="Link to Add width and height attributes">Add width and height attributes</a>
+    <a href="#add-width-and-height-attributes" class="docs-anchor" tabindex="-1" aria-label="Link to Add width and height attributes">添加 width 和 height 属性</a>
   </h3>
   
-      <p>Note that in the above code example, each image has both <code>width</code> and <code>height</code> attributes. In order to prevent <a href="https://web.dev/articles/cls" target="_blank">layout shift</a>, the <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> directive requires both size attributes on each image.</p>
-<p>In situations where you can't or don't want to specify a static <code>height</code> and <code>width</code> for images, you can use <a href="https://web.dev/articles/cls" target="_blank">the <code>fill</code> attribute</a> to tell the image to act like a "background image", filling its containing element:</p>
+      <p>请注意，在上面的代码示例中，每个图片都有 <code>width</code> 和 <code>height</code> 属性。为了防止 <a href="https://web.dev/articles/cls" target="_blank">布局偏移</a>，<a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> 指令要求每个图片都具有这两个尺寸属性。</p>
+<p>在无法或不想为图像指定静态 <code>height</code> 和 <code>width</code> 的情况下，你可以使用 <a href="https://web.dev/articles/cls" target="_blank"><code>fill</code> 属性</a>来告诉图像充当“背景图像”，填充其包含元素：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">div</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"image-container"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt; //Container div has 'position: "relative"'</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">img</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ngSrc</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"www.example.com/image.png"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> fill</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> /&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">div</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span></code></pre>
-  </div><p>NOTE: For the <code>fill</code> image to render properly, its parent element must be styled with <code>position: &quot;relative&quot;</code>, <code>position: &quot;fixed&quot;</code>, or <code>position: &quot;absolute&quot;</code>.</p>
+  </div><p>注意：为了使 <code>fill</code> 图像正确渲染，其父元素必须使用 <code>position: "relative"</code>、<code>position: "fixed"</code> 或 <code>position: "absolute"</code> 进行样式设置。</p>
 
     </li>
     
@@ -69,10 +68,10 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="prioritize-important-images">
-    <a href="#prioritize-important-images" class="docs-anchor" tabindex="-1" aria-label="Link to Prioritize important images">Prioritize important images</a>
+    <a href="#prioritize-important-images" class="docs-anchor" tabindex="-1" aria-label="Link to Prioritize important images">优先处理重要图像</a>
   </h3>
   
-      <p>One of the most important optimizations for loading performance is to prioritize any image which might be the <a href="https://web.dev/articles/optimize-lcp" target="_blank">"LCP element"</a>, which is the largest on-screen graphical element when the page loads. To optimize your loading times, make sure to add the <code>priority</code> attribute to your "hero image" or any other images that you think could be an LCP element.</p>
+      <p>对于加载性能而言，最重要的优化之一是优先处理任何可能是 <a href="https://web.dev/articles/optimize-lcp" target="_blank">“LCP 元素”</a> 的图像，LCP 元素是页面加载时屏幕上最大的图形元素。为了优化加载时间，请务必将 <code>priority</code> 属性添加到你的“英雄图像”或你认为可能是 LCP 元素的任何其他图像。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&lt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">img ngSrc</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"www.example.com/image.png"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> height</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"600"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> width</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"800"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> priority </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">/&gt;</span></span></code></pre>
@@ -83,21 +82,21 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="optional-use-an-image-loader">
-    <a href="#optional-use-an-image-loader" class="docs-anchor" tabindex="-1" aria-label="Link to Optional: Use an image loader">Optional: Use an image loader</a>
+    <a href="#optional-use-an-image-loader" class="docs-anchor" tabindex="-1" aria-label="Link to Optional: Use an image loader">可选：使用图像加载器</a>
   </h3>
   
-      <p><a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> allows you to specify an <a href="guide/image-optimization#configuring-an-image-loader-for-ngoptimizedimage">image loader</a>, which tells the directive how to format URLs for your images. Using a loader allows you to define your images with short, relative URLs:</p>
+      <p><a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> 允许您指定一个 <a href="guide/image-optimization#configuring-an-image-loader-for-ngoptimizedimage">图片加载器</a>，它告诉指令如何格式化图片的 URL。使用加载器可以让您使用简短的相对 URL 来定义图片：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">providers</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  <a href="/api/common/provideImgixLoader">provideImgixLoader</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'https://my.base.url/'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span></code></pre>
-  </div><p>Final URL will be '<a href="https://my.base.url/image.png" target="_blank">https://my.base.url/image.png</a>'</p>
+  </div><p>最终 URL 将是“<a href="https://my.base.url/image.png" target="_blank">https://my.base.url/image.png</a>”</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">img</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ngSrc</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"image.png"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> height</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"600"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> width</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"800"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> /&gt;</span></span></code></pre>
-  </div><p>Image loaders are for more than just convenience--they allow you to use the full capabilities of <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a>. Learn more about these optimizations and the built-in loaders for popular CDNs <a href="guide/image-optimization#configuring-an-image-loader-for-ngoptimizedimage">here</a>.</p>
+  </div><p>图片加载器不仅仅是为了方便——它们允许您充分利用 <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a> 的功能。在此处 <a href="guide/image-optimization#configuring-an-image-loader-for-ngoptimizedimage">了解更多关于这些优化以及流行的 CDN 的内置加载器</a>。</p>
 
     </li>
     
     </ol>
-    <p><span class="docs-emoji">By adding this directive to your workflow, your images are now loading using best practices with the help of Angular 🎉</span></p>
-<p>If you would like to learn more, check out the <a href="guide/image-optimization">documentation for <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a></a>. Keep up the great work and let's learn about routing next.</p>
+    <p><span class="docs-emoji">通过将此指令添加到你的工作流程中，借助 Angular 🎉，你的图像现在可以使用最佳实践进行加载</span></p>
+<p>如果您想了解更多，请查看 <a href="guide/image-optimization">文档</a> <a href="/api/common/NgOptimizedImage"><code>NgOptimizedImage</code></a>。继续保持出色的工作，接下来让我们学习路由。</p>

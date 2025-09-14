@@ -1,20 +1,19 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Managing async data with signals using the Resources API</h1>
+    <h1 tabindex="-1">使用 Resources API 和信号管理异步数据</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/tutorials/signals/steps/4-managing-async-data-with-signals/README.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>Now that you've learned <a href="/tutorials/signals/3-deriving-state-with-linked-signals">how to derive state with linked signals</a>, let's explore how to handle asynchronous data with the Resource API. The Resource API provides a powerful way to manage async operations using signals, with built-in loading states, error handling, and request management.</p>
-<p>In this activity, you'll learn how to use the <code>resource()</code> function to load data asynchronously and how to handle different states of async operations by building a user profile loader that demonstrates the Resource API in action.</p>
-<hr />
+    <p>既然您已经学会了<a href="/tutorials/signals/3-deriving-state-with-linked-signals">如何使用链接信号派生状态</a>，那么让我们来探索如何使用 Resource API 处理异步数据。Resource API 提供了一种使用信号管理异步操作的强大方法，内置了加载状态、错误处理和请求管理。</p>
+<p>在此活动中，您将学习如何使用 <code>resource()</code> 函数异步加载数据，以及如何通过构建一个演示 Resource API 实际应用的用户配置文件加载器来处理异步操作的不同状态。</p>
+<hr>
 
 
     <ol class="docs-steps">
@@ -23,10 +22,10 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="import-resource-function-and-api">
-    <a href="#import-resource-function-and-api" class="docs-anchor" tabindex="-1" aria-label="Link to Import resource function and API">Import resource function and API</a>
+    <a href="#import-resource-function-and-api" class="docs-anchor" tabindex="-1" aria-label="Link to Import resource function and API">导入 resource 函数和 API</a>
   </h3>
   
-      <p>Add <code>resource</code> to your existing imports and import the fake API function.</p>
+      <p>将 <code>resource</code> 添加到现有导入中，并导入假的 API 函数。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Add resource to existing imports</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {Component, signal, computed, resource, ChangeDetectionStrategy} </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/core'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Import mock API function</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {loadUser} </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> './user-api'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span></code></pre>
@@ -37,10 +36,10 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="create-a-resource-for-user-data">
-    <a href="#create-a-resource-for-user-data" class="docs-anchor" tabindex="-1" aria-label="Link to Create a resource for user data">Create a resource for user data</a>
+    <a href="#create-a-resource-for-user-data" class="docs-anchor" tabindex="-1" aria-label="Link to Create a resource for user data">为用户数据创建资源</a>
   </h3>
   
-      <p>Add a property in the component class that creates a resource to load user data based on a user ID signal.</p>
+      <p>在组件类中添加一个属性，该属性创建一个资源，用于根据用户 ID 信号加载用户数据。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">userId </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> signal</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">userResource </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> resource</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  params</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: () </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> ({ id: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">userId</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() }),</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  loader</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: (</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">params</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> loadUser</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(params.params.id)</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">});</span></span></code></pre>
@@ -51,14 +50,14 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="add-methods-to-interact-with-the-resource">
-    <a href="#add-methods-to-interact-with-the-resource" class="docs-anchor" tabindex="-1" aria-label="Link to Add methods to interact with the resource">Add methods to interact with the resource</a>
+    <a href="#add-methods-to-interact-with-the-resource" class="docs-anchor" tabindex="-1" aria-label="Link to Add methods to interact with the resource">添加方法与资源进行交互</a>
   </h3>
   
-      <p>Add methods to change the user ID and reload the resource.</p>
+      <p>添加方法来更改用户 ID 和重新加载资源。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">loadUser</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(id: number) {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.userId.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">set</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(id);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">reloadUser</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.userResource.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">reload</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">();</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
-  </div><p>Changing the params signal automatically triggers a reload, or you can manually reload with <code>reload()</code>.</p>
+  </div><p>更改 params 信号会自动触发重新加载，或者您可以使用 <code>reload()</code> 手动重新加载。</p>
 
     </li>
     
@@ -66,14 +65,14 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="create-computed-signals-for-resource-states">
-    <a href="#create-computed-signals-for-resource-states" class="docs-anchor" tabindex="-1" aria-label="Link to Create computed signals for resource states">Create computed signals for resource states</a>
+    <a href="#create-computed-signals-for-resource-states" class="docs-anchor" tabindex="-1" aria-label="Link to Create computed signals for resource states">为资源状态创建计算信号</a>
   </h3>
   
-      <p>Add computed signals to access different states of the resource.</p>
+      <p>添加计算信号以访问资源的各种状态。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">isLoading </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> computed</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=&gt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.userResource.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">status</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">===</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> 'loading'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">hasError </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> computed</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=&gt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.userResource.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">status</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">===</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> 'error'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span></code></pre>
-  </div><p>Resources provide a <code>status()</code> signal that can be 'loading', 'success', or 'error', a <code>value()</code> signal for the loaded data, and a <code>hasValue()</code> method that safely checks if data is available.</p>
+  </div><p>资源提供一个可以为 'loading'、'success' 或 'error' 的 <code>status()</code> 信号，一个用于加载数据的 <code>value()</code> 信号，以及一个安全检查数据是否可用的 <code>hasValue()</code> 方法。</p>
 
     </li>
     
@@ -81,39 +80,39 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="wire-up-the-buttons-and-display-resource-states">
-    <a href="#wire-up-the-buttons-and-display-resource-states" class="docs-anchor" tabindex="-1" aria-label="Link to Wire up the buttons and display resource states">Wire up the buttons and display resource states</a>
+    <a href="#wire-up-the-buttons-and-display-resource-states" class="docs-anchor" tabindex="-1" aria-label="Link to Wire up the buttons and display resource states">连接按钮并显示资源状态</a>
   </h3>
   
-      <p>The template structure is already provided. Now connect everything:</p>
-<p>Part 1. <strong>Add click handlers to the buttons:</strong></p>
+      <p>模板结构已提供。现在连接所有内容：</p>
+<p>第一部分。<strong>为按钮添加点击处理程序：</strong></p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> (click)</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"loadUser(1)"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Load User 1&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> (click)</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"loadUser(2)"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Load User 2&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> (click)</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"loadUser(999)"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Load Invalid User&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> (click)</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"reloadUser()"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Reload&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span></code></pre>
-  </div><p>Part 2. <strong>Replace the placeholder with resource state handling:</strong></p>
+  </div><p>第二部分。<strong>用资源状态处理替换占位符：</strong></p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@if (isLoading()) {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">p</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Loading user...&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">p</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">} @else if (hasError()) {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">p</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"error"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Error: {{ userResource.error()?.message }}&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">p</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">} @else if (userResource.hasValue()) {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">div</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"user-info"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">h3</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;{{ userResource.value().name }}&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">h3</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">p</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;{{ userResource.value().email }}&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">p</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">div</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
-  </div><p>The resource provides different methods to check its state:</p>
+  </div><p>资源提供了不同的方法来检查其状态：</p>
 
   <ul class="docs-list">
-    <li><code>isLoading()</code> - true when fetching data</li>
-<li><code>hasError()</code> - true when an error occurred</li>
-<li><code>userResource.hasValue()</code> - true when data is available</li>
-<li><code>userResource.value()</code> - access the loaded data</li>
-<li><code>userResource.error()</code> - access error information</li>
+    <li><code>isLoading()</code> - 获取数据时为 true</li>
+<li><code>hasError()</code> - 发生错误时为 true</li>
+<li><code>userResource.hasValue()</code> - 数据可用时为 true</li>
+<li><code>userResource.value()</code> - 访问加载的数据</li>
+<li><code>userResource.error()</code> - 访问错误信息</li>
 
   </ul>
   
     </li>
     
     </ol>
-    <p>Excellent! You've now learned how to use the Resource API with signals. Key concepts to remember:</p>
+    <p>太棒了！您现在已经学会了如何将 Resource API 与信号一起使用。需要记住的关键概念：</p>
 
   <ul class="docs-list">
-    <li><strong>Resources are reactive</strong>: They automatically reload when params change</li>
-<li><strong>Built-in state management</strong>: Resources provide <code>status()</code>, <code>value()</code>, and <code>error()</code> signals</li>
-<li><strong>Automatic cleanup</strong>: Resources handle request cancellation and cleanup automatically</li>
-<li><strong>Manual control</strong>: You can manually reload or abort requests when needed</li>
+    <li><strong>资源是响应式的</strong>：当参数更改时，它们会自动重新加载</li>
+<li><strong>内置状态管理</strong>：资源提供 <code>status()</code>、<code>value()</code> 和 <code>error()</code> 信号</li>
+<li><strong>自动清理</strong>：资源会自动处理请求取消和清理</li>
+<li><strong>手动控制</strong>：您可以根据需要手动重新加载或中止请求</li>
 
   </ul>
-  <p>In the next lesson, you'll learn <a href="/tutorials/signals/5-component-communication-with-signals">how to pass data to components with input signals</a>!</p>
+  <p>在下一课中，您将学习<a href="/tutorials/signals/5-component-communication-with-signals">如何使用输入信号将数据传递给组件</a>！</p>

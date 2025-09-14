@@ -1,30 +1,29 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Angular CLI MCP Server setup</h1>
+    <h1 tabindex="-1">Angular CLI MCP 服务器设置</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/ai/mcp-server-setup.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>The Angular CLI includes an experimental <a href="https://modelcontextprotocol.io/" target="_blank">Model Context Protocol (MCP) server</a> enabling AI assistants in your development environment to interact with the Angular CLI. We've included support for CLI powered code generation, adding packages, and more.</p>
+    <p>Angular CLI 包含一个实验性的 <a href="https://modelcontextprotocol.io/" target="_blank">模型上下文协议 (MCP) 服务器</a>，使开发环境中的 AI 助手能够与 Angular CLI 进行交互。我们已支持由 CLI 驱动的代码生成、添加包等功能。</p>
 
   <h2 id="available-tools">
-    <a href="#available-tools" class="docs-anchor" tabindex="-1" aria-label="Link to Available Tools">Available Tools</a>
+    <a href="#available-tools" class="docs-anchor" tabindex="-1" aria-label="Link to Available Tools">可用工具</a>
   </h2>
-  <p>The Angular CLI MCP server provides several tools to assist you in your development workflow. By default, the following tools are enabled:</p>
+  <p>Angular CLI MCP 服务器提供多种工具来协助你的开发工作流。默认情况下，以下工具已启用：</p>
 
   <div class="docs-table docs-scroll-track-transparent">
     <table>
       <thead>
         <tr>
-<th align="left">Name</th>
-<th align="left">Description</th>
+<th align="left">名称</th>
+<th align="left">描述</th>
 <th align="center"><code>local-only</code></th>
 <th align="center"><code>read-only</code></th>
 </tr>
@@ -33,19 +32,19 @@
       <tbody>
         <tr>
 <td align="left"><code>get_best_practices</code></td>
-<td align="left">Retrieves the Angular Best Practices Guide. This guide is essential for ensuring that all code adheres to modern standards, including standalone components, typed forms, and modern control flow.</td>
+<td align="left">检索 Angular 最佳实践指南。本指南对于确保所有代码都遵循现代标准至关重要，包括独立组件、类型化表单和现代控制流。</td>
 <td align="center"><span class="docs-emoji">✅</span></td>
 <td align="center">✅</td>
 </tr>
 <tr>
 <td align="left"><code>list_projects</code></td>
-<td align="left">Lists the names of all applications and libraries defined within an Angular workspace. It reads the <code>angular.json</code> configuration file to identify the projects.</td>
+<td align="left">列出 Angular 工作区中定义的所有应用程序和库的名称。它会读取 <code>angular.json</code> 配置文件来识别项目。</td>
 <td align="center"><span class="docs-emoji">✅</span></td>
 <td align="center">✅</td>
 </tr>
 <tr>
 <td align="left"><code>search_documentation</code></td>
-<td align="left">Searches the official Angular documentation at <a href="https://angular.dev" target="_blank">https://angular.dev</a>. This tool should be used to answer any questions about Angular, such as for APIs, tutorials, and best practices.</td>
+<td align="left">搜索官方 Angular 文档，网址为 <a href="https://angular.dev" target="_blank">https://angular.dev</a>。此工具应用于回答有关 Angular 的任何问题，例如 API、教程和最佳实践。</td>
 <td align="center"><span class="docs-emoji">❌</span></td>
 <td align="center">✅</td>
 </tr>
@@ -55,18 +54,18 @@
   </div>
   
   <h2 id="get-started">
-    <a href="#get-started" class="docs-anchor" tabindex="-1" aria-label="Link to Get Started">Get Started</a>
+    <a href="#get-started" class="docs-anchor" tabindex="-1" aria-label="Link to Get Started">开始使用</a>
   </h2>
-  <p>To get started, run the following command in your terminal:</p>
+  <p>要开始使用，请在终端中运行以下命令：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ng</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> mcp</span></span></code></pre>
-  </div><p>When run from an interactive terminal, this command displays instructions on how to configure a host environment to use the MCP server. The following sections provide example configurations for several popular editors and tools.</p>
+  </div><p>当从交互式终端运行时，此命令会显示有关如何配置主机环境以使用 MCP 服务器的说明。以下各节提供了几种常用编辑器和工具的示例配置。</p>
 
   <h3 id="cursor">
     <a href="#cursor" class="docs-anchor" tabindex="-1" aria-label="Link to Cursor">Cursor</a>
   </h3>
-  <p>Create a file named <code>.cursor/mcp.json</code> in your project's root and add the following configuration. You can also configure it globally in <code>~/.cursor/mcp.json</code>.</p>
+  <p>在项目根目录中创建一个名为 <code>.cursor/mcp.json</code> 的文件，并添加以下配置。你也可以在全局的 <code>~/.cursor/mcp.json</code> 中进行配置。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  "mcpServers"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    "angular-cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      "command"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"npx"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      "args"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"-y"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"@angular/cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"mcp"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
@@ -74,7 +73,7 @@
   <h3 id="firebase-studio">
     <a href="#firebase-studio" class="docs-anchor" tabindex="-1" aria-label="Link to Firebase Studio">Firebase Studio</a>
   </h3>
-  <p>Create a file named <code>.idx/mcp.json</code> in your project's root and add the following configuration:</p>
+  <p>在项目根目录中创建一个名为 <code>.idx/mcp.json</code> 的文件，并添加以下配置：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  "mcpServers"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    "angular-cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      "command"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"npx"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      "args"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"-y"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"@angular/cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"mcp"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
@@ -82,15 +81,15 @@
   <h3 id="gemini-cli">
     <a href="#gemini-cli" class="docs-anchor" tabindex="-1" aria-label="Link to Gemini CLI">Gemini CLI</a>
   </h3>
-  <p>Create a file named <code>.gemini/settings.json</code> in your project's root and add the following configuration:</p>
+  <p>在项目根目录中创建一个名为 <code>.gemini/settings.json</code> 的文件，并添加以下配置：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  "mcpServers"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    "angular-cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      "command"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"npx"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      "args"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"-y"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"@angular/cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"mcp"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
   </div>
   <h3 id="jetbrains-ides">
-    <a href="#jetbrains-ides" class="docs-anchor" tabindex="-1" aria-label="Link to JetBrains IDEs">JetBrains IDEs</a>
+    <a href="#jetbrains-ides" class="docs-anchor" tabindex="-1" aria-label="Link to JetBrains IDEs">JetBrains IDE</a>
   </h3>
-  <p>In JetBrains IDEs (like IntelliJ IDEA or WebStorm), after installing the JetBrains AI Assistant plugin, go to <code>Settings | Tools | AI Assistant | Model Context Protocol (MCP)</code>. Add a new server and select <code>As JSON</code>. Paste the following configuration, which does not use a top-level property for the server list.</p>
+  <p>在 JetBrains IDE（如 IntelliJ IDEA 或 WebStorm）中，安装 JetBrains AI Assistant 插件后，转到 <code>Settings | Tools | AI Assistant | Model Context Protocol (MCP)</code>。添加一个新服务器并选择 <code>As JSON</code>。粘贴以下配置，该配置不使用顶级属性来表示服务器列表。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  "name"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"Angular CLI"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  "command"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"npx"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  "args"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span></span><span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">    "-y"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">    "@angular/cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">    "mcp"</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  ]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
@@ -98,32 +97,32 @@
   <h3 id="vs-code">
     <a href="#vs-code" class="docs-anchor" tabindex="-1" aria-label="Link to VS Code">VS Code</a>
   </h3>
-  <p>In your project's root, create a file named <code>.vscode/mcp.json</code> and add the following configuration. Note the use of the <code>servers</code> property.</p>
+  <p>在项目根目录中，创建一个名为 <code>.vscode/mcp.json</code> 的文件并添加以下配置。请注意 <code>servers</code> 属性的使用。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  "servers"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    "angular-cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      "command"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"npx"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      "args"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"-y"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"@angular/cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"mcp"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
   </div>
   <h3 id="other-ides">
-    <a href="#other-ides" class="docs-anchor" tabindex="-1" aria-label="Link to Other IDEs">Other IDEs</a>
+    <a href="#other-ides" class="docs-anchor" tabindex="-1" aria-label="Link to Other IDEs">其他 IDE</a>
   </h3>
-  <p>For other IDEs, check your IDE's documentation for the proper location of the MCP configuration file (often <code>mcp.json</code>). The configuration should contain the following snippet.</p>
+  <p>对于其他 IDE，请查阅你的 IDE 文档以了解 MCP 配置文件（通常是 <code>mcp.json</code>）的正确位置。配置应包含以下代码片段。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  "mcpServers"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    "angular-cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      "command"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"npx"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      "args"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"-y"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"@angular/cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"mcp"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
   </div>
   <h2 id="command-options">
-    <a href="#command-options" class="docs-anchor" tabindex="-1" aria-label="Link to Command Options">Command Options</a>
+    <a href="#command-options" class="docs-anchor" tabindex="-1" aria-label="Link to Command Options">命令选项</a>
   </h2>
-  <p>The <code>mcp</code> command can be configured with the following options passed as arguments in your IDE's MCP configuration:</p>
+  <p><code>mcp</code> 命令可以通过以下选项进行配置，这些选项作为参数传递在你的 IDE 的 MCP 配置中：</p>
 
   <div class="docs-table docs-scroll-track-transparent">
     <table>
       <thead>
         <tr>
-<th align="left">Option</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-<th align="left">Default</th>
+<th align="left">选项</th>
+<th align="left">类型</th>
+<th align="left">描述</th>
+<th align="left">默认值</th>
 </tr>
 
       </thead>
@@ -131,25 +130,25 @@
         <tr>
 <td align="left"><code>--read-only</code></td>
 <td align="left"><code>boolean</code></td>
-<td align="left">Only register tools that do not make changes to the project. Your editor or coding agent may still perform edits.</td>
+<td align="left">仅注册不更改项目的工具。你的编辑器或代码代理仍可能执行编辑。</td>
 <td align="left"><code>false</code></td>
 </tr>
 <tr>
 <td align="left"><code>--local-only</code></td>
 <td align="left"><code>boolean</code></td>
-<td align="left">Only register tools that do not require an internet connection. Your editor or coding agent may still send data over the network.</td>
+<td align="left">仅注册不需要互联网连接的工具。你的编辑器或代码代理仍可能通过网络发送数据。</td>
 <td align="left"><code>false</code></td>
 </tr>
 
       </tbody>
     </table>
   </div>
-  <p>For example, to run the server in read-only mode in VS Code, you would update your <code>mcp.json</code> like this:</p>
+  <p>例如，要在 VS Code 中以只读模式运行服务器，你需要像这样更新你的 <code>mcp.json</code>：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  "servers"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    "angular-cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      "command"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"npx"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">      "args"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: [</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"-y"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"@angular/cli"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"mcp"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"--read-only"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
   </div>
   <h2 id="feedback-and-new-ideas">
-    <a href="#feedback-and-new-ideas" class="docs-anchor" tabindex="-1" aria-label="Link to Feedback and New Ideas">Feedback and New Ideas</a>
+    <a href="#feedback-and-new-ideas" class="docs-anchor" tabindex="-1" aria-label="Link to Feedback and New Ideas">反馈和新想法</a>
   </h2>
-  <p>The Angular team welcomes your feedback on the existing MCP capabilities and any ideas you have for new tools or features. Please share your thoughts by opening an issue on the <a href="https://github.com/angular/angular/issues" target="_blank">angular/angular GitHub repository</a>.</p>
+  <p>Angular 团队欢迎你对现有的 MCP 功能以及你对新工具或功能提出的任何想法提供反馈。请通过在 <a href="https://github.com/angular/angular/issues" target="_blank">angular/angular GitHub 仓库</a> 上打开一个 issue 来分享你的想法。</p>

@@ -1,69 +1,60 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Migrate an existing Angular project to standalone</h1>
+    <h1 tabindex="-1">将现有的 Angular 项目迁移到独立</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/reference/migrations/standalone.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p><strong>Standalone components</strong> provide a simplified way to build Angular applications. Standalone components, directives, and pipes aim to streamline the authoring experience by reducing the need for <a href="/api/core/NgModule"><code>NgModule</code></a>s. Existing applications can optionally and incrementally adopt the new standalone style without any breaking changes.</p>
+    <p><strong>独立组件</strong>提供了一种构建 Angular 应用的简化方式。独立组件、指令和管道旨在通过减少对 <a href="/api/core/NgModule"><code>NgModule</code></a> 的需求来简化创作体验。现有应用可以选择性地、渐进地采用新的独立风格，而不会有任何破坏性更改。</p>
 
     <div class="docs-video-container">
-      <iframe
-      class="docs-video"
-      src="https://www.youtube.com/embed/x5PZwb4XurU"
-      title="Getting started with standalone components"
-      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-      credentialless
-      title="Video player"
-      ></iframe>
+      <iframe class="docs-video" src="https://www.youtube.com/embed/x5PZwb4XurU" title="Getting started with standalone components" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen credentialless></iframe>
     </div>
-    <p>This schematic helps to transform components, directive and pipes in existing projects to become standalone. The schematic aims to transform as much code as possible automatically, but it may require some manual fixes by the project author.</p>
-<p>Run the schematic using the following command:</p>
+    <p>这个原理图有助于转换现有项目中的组件、指令和管道，使之成为独立的。该原理图旨在尽可能多地自动转换代码，但可能需要项目作者进行一些手动修复。</p>
+<p>使用以下命令运行原理图：</p>
 <div class="docs-code shell">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ng</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> generate</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> @angular/core:standalone</span></span></code></pre>
   </div>
   <h2 id="before-updating">
-    <a href="#before-updating" class="docs-anchor" tabindex="-1" aria-label="Link to Before updating">Before updating</a>
+    <a href="#before-updating" class="docs-anchor" tabindex="-1" aria-label="Link to Before updating">更新之前</a>
   </h2>
-  <p>Before using the schematic, please ensure that the project:</p>
+  <p>在使用原理图之前，请确保项目：</p>
 
     <ol class="docs-ordered-list">
-      <li>Is using Angular 15.2.0 or later.</li>
-<li>Builds without any compilation errors.</li>
-<li>Is on a clean Git branch and all work is saved.</li>
+      <li>正在使用 Angular 15.2.0 或更高版本。</li>
+<li>构建时没有任何编译错误。</li>
+<li>位于干净的 Git 分支上，并且所有工作都已保存。</li>
 
     </ol>
     
   <h2 id="schematic-options">
-    <a href="#schematic-options" class="docs-anchor" tabindex="-1" aria-label="Link to Schematic options">Schematic options</a>
+    <a href="#schematic-options" class="docs-anchor" tabindex="-1" aria-label="Link to Schematic options">原理图选项</a>
   </h2>
   
   <div class="docs-table docs-scroll-track-transparent">
     <table>
       <thead>
         <tr>
-<th align="left">Option</th>
-<th align="left">Details</th>
+<th align="left">选项</th>
+<th align="left">详情</th>
 </tr>
 
       </thead>
       <tbody>
         <tr>
 <td align="left"><code>mode</code></td>
-<td align="left">The transformation to perform. See <a href="#migration-modes">Migration modes</a> below for details on the available options.</td>
+<td align="left">要执行的转换。有关可用选项的详细信息，请参阅下面的<a href="#migration-modes">迁移模式</a>。</td>
 </tr>
 <tr>
 <td align="left"><code>path</code></td>
-<td align="left">The path to migrate, relative to the project root. You can use this option to migrate sections of your project incrementally.</td>
+<td align="left">要迁移的路径，相对于项目根目录。你可以使用此选项来渐进地迁移项目的各个部分。</td>
 </tr>
 
       </tbody>
@@ -71,68 +62,67 @@
   </div>
   
   <h2 id="migrations-steps">
-    <a href="#migrations-steps" class="docs-anchor" tabindex="-1" aria-label="Link to Migrations steps">Migrations steps</a>
+    <a href="#migrations-steps" class="docs-anchor" tabindex="-1" aria-label="Link to Migrations steps">迁移步骤</a>
   </h2>
-  <p>The migration process is composed of three steps. You'll have to run it multiple times and check manually that the project builds and behaves as expected.</p>
+  <p>迁移过程由三个步骤组成。你必须多次运行它，并手动检查项目是否按预期构建和运行。</p>
 
     <div class="docs-alert docs-alert-note">
-    <p><strong>NOTE:</strong> While the schematic can automatically update most code, some edge cases require developer intervention.
-You should plan to apply manual fixes after each step of the migration. Additionally, the new code generated by the schematic may not match your code's formatting rules.</p>
+    <p><strong>注意：</strong> 虽然原理图可以自动更新大多数代码，但某些边缘情况需要开发人员干预。你应该计划在迁移的每个步骤之后应用手动修复。此外，原理图生成的新代码可能与你的代码格式规则不匹配。</p>
 
     </div>
-    <p>Run the migration in the order listed below, verifying that your code builds and runs between each step:</p>
+    <p>按照下面列出的顺序运行迁移，并在每个步骤之间验证你的代码是否构建和运行：</p>
 
     <ol class="docs-ordered-list">
-      <li>Run <code>ng g @angular/core:standalone</code> and select "Convert all components, directives and pipes to standalone"</li>
-<li>Run <code>ng g @angular/core:standalone</code> and select "Remove unnecessary NgModule classes"</li>
-<li>Run <code>ng g @angular/core:standalone</code> and select "Bootstrap the project using standalone APIs"</li>
-<li>Run any linting and formatting checks, fix any failures, and commit the result</li>
+      <li>运行 <code>ng g @angular/core:standalone</code> 并选择 “Convert all components, directives and pipes to standalone”（将所有组件、指令和管道转换为独立）</li>
+<li>运行 <code>ng g @angular/core:standalone</code> 并选择 “Remove unnecessary NgModule classes”（移除不必要的 NgModule 类）</li>
+<li>运行 <code>ng g @angular/core:standalone</code> 并选择 “Bootstrap the project using standalone APIs”（使用独立 API 引导项目）</li>
+<li>运行任何代码检查和格式化检查，修复所有失败，并提交结果</li>
 
     </ol>
     
   <h2 id="after-the-migration">
-    <a href="#after-the-migration" class="docs-anchor" tabindex="-1" aria-label="Link to After the migration">After the migration</a>
+    <a href="#after-the-migration" class="docs-anchor" tabindex="-1" aria-label="Link to After the migration">迁移之后</a>
   </h2>
-  <p><span class="docs-emoji">Congratulations, your application has been converted to standalone 🎉. These are some optional follow-up steps you may want to take now:</span></p>
+  <p><span class="docs-emoji">恭喜，你的应用已转换为独立 🎉。以下是你现在可能想要采取的一些可选后续步骤：</span></p>
 
   <ul class="docs-list">
-    <li>Find and remove any remaining <a href="/api/core/NgModule"><code>NgModule</code></a> declarations: since the <a href="#remove-unnecessary-ngmodules">"Remove unnecessary NgModules" step</a> cannot remove all modules automatically, you may have to remove the remaining declarations manually.</li>
-<li>Run the project's unit tests and fix any failures.</li>
-<li>Run any code formatters, if the project uses automatic formatting.</li>
-<li>Run any linters in your project and fix new warnings. Some linters support a <code>--fix</code> flag that may resolve some of your warnings automatically.</li>
+    <li>查找并删除任何剩余的 <a href="/api/core/NgModule"><code>NgModule</code></a> 声明：由于 <a href="#remove-unnecessary-ngmodules">“删除不必要的 NgModules”</a> 步骤无法自动删除所有模块，您可能需要手动删除剩余的声明。</li>
+<li>运行项目的单元测试并修复所有失败。</li>
+<li>如果项目使用自动格式化，则运行任何代码格式化工具。</li>
+<li>在你的项目中运行任何代码检查工具，并修复新的警告。某些代码检查工具支持 <code>--fix</code> 标志，可以自动解决你的一些警告。</li>
 
   </ul>
   
   <h2 id="migration-modes">
-    <a href="#migration-modes" class="docs-anchor" tabindex="-1" aria-label="Link to Migration modes">Migration modes</a>
+    <a href="#migration-modes" class="docs-anchor" tabindex="-1" aria-label="Link to Migration modes">迁移模式</a>
   </h2>
-  <p>The migration has the following modes:</p>
+  <p>迁移具有以下模式：</p>
 
     <ol class="docs-ordered-list">
-      <li>Convert declarations to standalone.</li>
-<li>Remove unnecessary NgModules.</li>
-<li>Switch to standalone bootstrapping API.
-You should run these migrations in the order given.</li>
+      <li>将对象声明转换为独立。</li>
+<li>移除不必要的 NgModule。</li>
+<li>切换到独立引导 API。
+你应该按给定的顺序运行这些迁移。</li>
 
     </ol>
     
   <h3 id="convert-declarations-to-standalone">
-    <a href="#convert-declarations-to-standalone" class="docs-anchor" tabindex="-1" aria-label="Link to Convert declarations to standalone">Convert declarations to standalone</a>
+    <a href="#convert-declarations-to-standalone" class="docs-anchor" tabindex="-1" aria-label="Link to Convert declarations to standalone">将对象声明转换为独立</a>
   </h3>
-  <p>In this mode, the migration converts all components, directives and pipes to standalone by removing <code>standalone: false</code> and adding dependencies to their <code>imports</code> array.</p>
+  <p>在此模式下，迁移通过移除 <code>standalone: false</code> 并将依赖项添加到其 <code>imports</code> 数组中，将所有组件、指令和管道转换为独立。</p>
 
     <div class="docs-alert docs-alert-helpful">
-    <p><strong>HELPFUL:</strong> The schematic ignores NgModules which bootstrap a component during this step because they are likely root modules used by <code>bootstrapModule</code> rather than the standalone-compatible <a href="/api/platform-browser/bootstrapApplication"><code>bootstrapApplication</code></a>. The schematic converts these declarations automatically as a part of the <a href="#switch-to-standalone-bootstrapping-api">"Switch to standalone bootstrapping API"</a> step.</p>
+    <p><strong>有帮助：</strong>在此步骤中，原理图会忽略引导组件的 NgModules，因为它们可能是由 <code>bootstrapModule</code> 使用的根模块，而不是独立兼容的 <a href="/api/platform-browser/bootstrapApplication"><code>bootstrapApplication</code></a>。原理图会在 <a href="#switch-to-standalone-bootstrapping-api">“切换到独立引导 API”</a> 步骤中自动转换这些声明。</p>
 
     </div>
-    <p><strong>Before:</strong></p>
+    <p><strong>之前：</strong></p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// shared.module.ts</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/NgModule">NgModule</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  imports: [CommonModule],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  declarations: [GreeterComponent],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  exports: [GreeterComponent]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> SharedModule</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {}</span></span></code></pre>
   </div><div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// greeter.component.ts</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Component">Component</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  selector: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'greeter'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  template: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'&lt;div *ngIf="showGreeting"&gt;Hello&lt;/div&gt;'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  standalone: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">false</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> GreeterComponent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">  showGreeting</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> true</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
-  </div><p><strong>After:</strong></p>
+  </div><p><strong>之后：</strong></p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// shared.module.ts</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/NgModule">NgModule</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  imports: [CommonModule, GreeterComponent],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  exports: [GreeterComponent]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> SharedModule</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {}</span></span></code></pre>
@@ -141,36 +131,36 @@ You should run these migrations in the order given.</li>
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// greeter.component.ts</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Component">Component</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  selector: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'greeter'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  template: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'&lt;div *ngIf="showGreeting"&gt;Hello&lt;/div&gt;'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  imports: [NgIf]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> GreeterComponent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">  showGreeting</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> true</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
   </div>
   <h3 id="remove-unnecessary-ngmodules">
-    <a href="#remove-unnecessary-ngmodules" class="docs-anchor" tabindex="-1" aria-label="Link to Remove unnecessary NgModules">Remove unnecessary NgModules</a>
+    <a href="#remove-unnecessary-ngmodules" class="docs-anchor" tabindex="-1" aria-label="Link to Remove unnecessary NgModules">移除不必要的 NgModule</a>
   </h3>
-  <p>After converting all declarations to standalone, many NgModules can be safely removed. This step deletes such module declarations and as many corresponding references as possible. If the migration cannot delete a reference automatically, it leaves the following TODO comment so that you can delete the NgModule manually:</p>
+  <p>在将所有对象声明转换为独立后，可以安全地移除许多 NgModule。此步骤会删除此类模块对象声明以及尽可能多的相应引用。如果迁移无法自动删除引用，它会留下以下 TODO 注释，以便你可以手动删除 NgModule：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">/* TODO(standalone-migration): clean up removed NgModule reference manually */</span></span></code></pre>
-  </div><p>The migration considers a module safe to remove if that module:</p>
+  </div><p>如果模块满足以下条件，则迁移认为该模块可以安全移除：</p>
 
   <ul class="docs-list">
-    <li>Has no <code>declarations</code>.</li>
-<li>Has no <code>providers</code>.</li>
-<li>Has no <code>bootstrap</code> components.</li>
-<li>Has no <code>imports</code> that reference a <a href="/api/core/ModuleWithProviders"><code>ModuleWithProviders</code></a> symbol or a module that can't be removed.</li>
-<li>Has no class members. Empty constructors are ignored.</li>
+    <li>没有 <code>declarations</code>。</li>
+<li>没有 <code>providers</code>。</li>
+<li>没有 <code>bootstrap</code> 组件。</li>
+<li>没有引用 <a href="/api/core/ModuleWithProviders"><code>ModuleWithProviders</code></a> 符号或无法删除的模块的 <code>imports</code>。</li>
+<li>没有类成员。空构造函数将被忽略。</li>
 
   </ul>
-  <p><strong>Before:</strong></p>
+  <p><strong>之前：</strong></p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// importer.module.ts</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/NgModule">NgModule</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  imports: [FooComponent, BarPipe],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  exports: [FooComponent, BarPipe]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ImporterModule</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {}</span></span></code></pre>
-  </div><p><strong>After:</strong></p>
+  </div><p><strong>之后：</strong></p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// importer.module.ts</span></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Does not exist!</span></span></code></pre>
   </div>
   <h3 id="switch-to-standalone-bootstrapping-api">
-    <a href="#switch-to-standalone-bootstrapping-api" class="docs-anchor" tabindex="-1" aria-label="Link to Switch to standalone bootstrapping API">Switch to standalone bootstrapping API</a>
+    <a href="#switch-to-standalone-bootstrapping-api" class="docs-anchor" tabindex="-1" aria-label="Link to Switch to standalone bootstrapping API">切换到独立引导 API</a>
   </h3>
-  <p>This step converts any usages of  <code>bootstrapModule</code> to the new, standalone-based <a href="/api/platform-browser/bootstrapApplication"><code>bootstrapApplication</code></a>. It also removes <code>standalone: false</code> from the root component and deletes the root NgModule. If the root module has any <code>providers</code> or <code>imports</code>, the migration attempts to copy as much of this configuration as possible into the new bootstrap call.</p>
-<p><strong>Before:</strong></p>
+  <p>此步骤会将所有对 <code>bootstrapModule</code> 的使用转换为新的、基于独立组件的 <a href="/api/platform-browser/bootstrapApplication"><code>bootstrapApplication</code></a>。它还会移除根组件上的 <code>standalone: false</code> 并删除根 NgModule。如果根模块有任何 <code>providers</code> 或 <code>imports</code>，迁移将尝试将尽可能多的配置复制到新的引导调用中。</p>
+<p><strong>之前：</strong></p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// ./app/app.module.ts</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/core/NgModule">NgModule</a> } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/core'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { AppComponent } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> './app.component'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/NgModule">NgModule</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  declarations: [AppComponent],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  bootstrap: [AppComponent]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> AppModule</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {}</span></span></code></pre>
@@ -180,7 +170,7 @@ You should run these migrations in the order given.</li>
   </div><div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// ./main.ts</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/platform-browser/platformBrowser">platformBrowser</a> } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/platform-browser'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { AppModule } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> './app/app.module'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/platform-browser/platformBrowser">platformBrowser</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">().</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">bootstrapModule</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(AppModule).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">catch</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">e</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">error</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(e));</span></span></code></pre>
-  </div><p><strong>After:</strong></p>
+  </div><p><strong>之后：</strong></p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// ./app/app.module.ts</span></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Does not exist!</span></span></code></pre>
@@ -192,25 +182,25 @@ You should run these migrations in the order given.</li>
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// ./main.ts</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/platform-browser/bootstrapApplication">bootstrapApplication</a> } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/platform-browser'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { AppComponent } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> './app/app.component'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/platform-browser/bootstrapApplication">bootstrapApplication</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(AppComponent).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">catch</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">e</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">error</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(e));</span></span></code></pre>
   </div>
   <h2 id="common-problems">
-    <a href="#common-problems" class="docs-anchor" tabindex="-1" aria-label="Link to Common problems">Common problems</a>
+    <a href="#common-problems" class="docs-anchor" tabindex="-1" aria-label="Link to Common problems">常见问题</a>
   </h2>
-  <p>Some common problems that may prevent the schematic from working correctly include:</p>
+  <p>一些可能阻止原理图正常工作的常见问题包括：</p>
 
   <ul class="docs-list">
-    <li>Compilation errors - if the project has compilation errors, Angular cannot analyze and migrate it correctly.</li>
-<li>Files not included in a tsconfig - the schematic determines which files to migrate by analyzing your project's <code>tsconfig.json</code> files. The schematic excludes any files not captured by a tsconfig.</li>
-<li>Code that cannot be statically analyzed - the schematic uses static analysis to understand your code and determine where to make changes. The migration may skip any classes with metadata that cannot be statically analyzed at build time.</li>
+    <li>编译错误 - 如果项目存在编译错误，Angular 就无法正确地分析和迁移它。</li>
+<li>未包含在 tsconfig 中的文件 - 原理图通过分析你项目的 <code>tsconfig.json</code> 文件来确定要迁移哪些文件。原理图会排除任何未被 tsconfig 捕获的文件。</li>
+<li>无法进行静态分析的代码 - 原理图使用静态分析来理解你的代码，并确定在哪里进行更改。迁移可能会跳过任何在构建时无法进行静态分析的元数据的类。</li>
 
   </ul>
   
   <h2 id="limitations">
-    <a href="#limitations" class="docs-anchor" tabindex="-1" aria-label="Link to Limitations">Limitations</a>
+    <a href="#limitations" class="docs-anchor" tabindex="-1" aria-label="Link to Limitations">局限性</a>
   </h2>
-  <p>Due to the size and complexity of the migration, there are some cases that the schematic cannot handle:</p>
+  <p>由于迁移的规模和复杂性，在某些情况下，原理图无法处理：</p>
 
   <ul class="docs-list">
-    <li>Because unit tests are not ahead-of-time (AoT) compiled, <code>imports</code> added to components in unit tests might not be entirely correct.</li>
-<li>The schematic relies on direct calls to Angular APIs. The schematic cannot recognize custom wrappers around Angular APIs. For example, if there you define a custom <code>customConfigureTestModule</code> function that wraps <a href="/api/core/testing/TestBed#configureTestingModule"><code>TestBed.configureTestingModule</code></a>, components it declares may not be recognized.</li>
+    <li>因为单元测试不是预先编译 (AoT) 的，所以添加到单元测试中组件的 <code>imports</code> 可能不完全正确。</li>
+<li>原理图依赖于对 Angular API 的直接调用。原理图无法识别 Angular API 的自定义包装器。例如，如果您定义了一个包装了 <a href="/api/core/testing/TestBed#configureTestingModule"><code>TestBed.configureTestingModule</code></a> 的自定义 <code>customConfigureTestModule</code> 函数，那么它声明的组件可能无法被识别。</li>
 
   </ul>
   

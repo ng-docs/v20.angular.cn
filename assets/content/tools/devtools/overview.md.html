@@ -1,63 +1,54 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">DevTools Overview</h1>
+    <h1 tabindex="-1">DevTools 概览</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/tools/devtools/overview.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>Angular DevTools is a browser extension that provides debugging and profiling capabilities for Angular applications.</p>
+    <p>Angular DevTools 是一个浏览器扩展程序，可为 Angular 应用提供调试和分析功能。</p>
 
     <div class="docs-video-container">
-      <iframe
-      class="docs-video"
-      src="https://www.youtube.com/embed/bavWOHZM6zE"
-      
-      allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
-      credentialless
-      title="Video player"
-      ></iframe>
+      <iframe class="docs-video" src="https://www.youtube.com/embed/bavWOHZM6zE" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen credentialless title="Video player"></iframe>
     </div>
-    <p>Install Angular DevTools from the <a href="https://chrome.google.com/webstore/detail/angular-developer-tools/ienfalfjdbdpebioblfackkekamfmbnh" target="_blank">Chrome Web Store</a> or from <a href="https://addons.mozilla.org/firefox/addon/angular-devtools/" target="_blank">Firefox Addons</a>.</p>
-<p>You can open Chrome or Firefox DevTools on any web page by pressing <kbd>F12</kbd> or <kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></kbd> (Windows or Linux) and <kbd><kbd>Fn</kbd>+<kbd>F12</kbd></kbd> or <kbd><kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd></kbd> (Mac).
-Once browser DevTools is open and Angular DevTools is installed, you can find it under the "Angular" tab.</p>
+    <p>从 <a href="https://chrome.google.com/webstore/detail/angular-developer-tools/ienfalfjdbdpebioblfackkekamfmbnh" target="_blank">Chrome Web Store</a> 或 <a href="https://addons.mozilla.org/firefox/addon/angular-devtools/" target="_blank">Firefox Addons</a> 安装 Angular DevTools。</p>
+<p>你可以通过按 <kbd>F12</kbd> 或 <kbd><kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></kbd> (Windows 或 Linux) 和 <kbd><kbd>Fn</kbd>+<kbd>F12</kbd></kbd> 或 <kbd><kbd>Cmd</kbd>+<kbd>Option</kbd>+<kbd>I</kbd></kbd> (Mac) 在任何网页上打开 Chrome 或 Firefox DevTools。
+打开浏览器 DevTools 并安装 Angular DevTools 后，你可以在“Angular”选项卡下找到它。</p>
 
     <div class="docs-alert docs-alert-helpful">
-    <p><strong>HELPFUL:</strong> Chrome's new tab page does not run installed extensions, so the Angular tab will not appear in DevTools. Visit any other page to see it.</p>
+    <p><strong>有帮助：</strong> Chrome 的新标签页不运行已安装的扩展程序，因此 Angular 选项卡不会出现在 DevTools 中。请访问任何其他页面来查看它。</p>
 
     </div>
     <img src="assets/images/guide/devtools/devtools.png" alt="An overview of Angular DevTools showing a tree of components for an application.">
 
 
   <h2 id="open-your-application">
-    <a href="#open-your-application" class="docs-anchor" tabindex="-1" aria-label="Link to Open your application">Open your application</a>
+    <a href="#open-your-application" class="docs-anchor" tabindex="-1" aria-label="Link to Open your application">打开你的应用</a>
   </h2>
-  <p>When you open the extension, you'll see two additional tabs:</p>
+  <p>打开扩展程序时，你会看到两个额外的选项卡：</p>
 
   <div class="docs-table docs-scroll-track-transparent">
     <table>
       <thead>
         <tr>
-<th align="left">Tabs</th>
-<th align="left">Details</th>
+<th align="left">选项卡</th>
+<th align="left">详细信息</th>
 </tr>
 
       </thead>
       <tbody>
         <tr>
-<td align="left"><a href="tools/devtools/component">Components</a></td>
-<td align="left">Lets you explore the components and directives in your application and preview or edit their state.</td>
+<td align="left"><a href="tools/devtools/component">组件</a></td>
+<td align="left">允许你探索应用中的组件和指令，并预览或编辑它们的状态。</td>
 </tr>
 <tr>
-<td align="left"><a href="tools/devtools/profiler">Profiler</a></td>
-<td align="left">Lets you profile your application and understand what the performance bottleneck is during change detection execution.</td>
+<td align="left"><a href="tools/devtools/profiler">分析器</a></td>
+<td align="left">允许你分析应用性能，并了解变更检测执行期间的性能瓶颈。</td>
 </tr>
 
       </tbody>
@@ -68,19 +59,19 @@ Once browser DevTools is open and Angular DevTools is installed, you can find it
 
 <img src="assets/images/guide/devtools/devtools-tabs.png" alt="A screenshot of the top of Angular DevTools illustrating two tabs in the upper-left corner, one labeled 'Components' and another labeled 'Profiler'.">
 
-<p>In the top-right corner of Angular DevTools you'll find which version of Angular is running on the page as well as the latest commit hash for the extension.</p>
+<p>在 Angular DevTools 的右上角，你可以找到页面上运行的 Angular 版本以及扩展程序的最新提交哈希值。</p>
 
   <h3 id="angular-application-not-detected">
-    <a href="#angular-application-not-detected" class="docs-anchor" tabindex="-1" aria-label="Link to Angular application not detected">Angular application not detected</a>
+    <a href="#angular-application-not-detected" class="docs-anchor" tabindex="-1" aria-label="Link to Angular application not detected">未检测到 Angular 应用</a>
   </h3>
-  <p>If you see an error message "Angular application not detected" when opening Angular DevTools, this means it is not able to communicate with an Angular app on the page.
-The most common reason for this is because the web page you are inspecting does not contain an Angular application.
-Double check that you are inspecting the right web page and that the Angular app is running.</p>
+  <p>如果在打开 Angular DevTools 时看到错误消息“未检测到 Angular 应用”，则表示它无法与页面上的 Angular 应用进行通信。
+最常见的原因是你正在检查的网页不包含 Angular 应用。
+请仔细检查你是否正在检查正确的网页以及 Angular 应用是否正在运行。</p>
 
   <h3 id="we-detected-an-application-built-with-production-configuration">
-    <a href="#we-detected-an-application-built-with-production-configuration" class="docs-anchor" tabindex="-1" aria-label="Link to We detected an application built with production configuration">We detected an application built with production configuration</a>
+    <a href="#we-detected-an-application-built-with-production-configuration" class="docs-anchor" tabindex="-1" aria-label="Link to We detected an application built with production configuration">我们检测到一个使用生产配置构建的应用</a>
   </h3>
-  <p>If you see an error message "We detected an application built with production configuration. Angular DevTools only supports development builds.", this means that an Angular application was found on the page, but it was compiled with production optimizations.
-When compiling for production, Angular CLI removes various debug features to minimize the amount of the JavaScript on the page to improve performance. This includes features needed to communicate with DevTools.</p>
-<p>To run DevTools, you need to compile your application with optimizations disabled. <code>ng serve</code> does this by default.
-If you need to debug a deployed application, disable optimizations in your build with the <a href="reference/configs/workspace-config#optimization-configuration"><code>optimization</code> configuration option</a> (<code>{&quot;optimization&quot;: false}</code>).</p>
+  <p>如果你看到错误消息“我们检测到一个使用生产配置构建的应用。Angular DevTools 仅支持开发构建。”，则表示在页面上找到了一个 Angular 应用，但它是使用生产优化编译的。
+在为生产编译时，Angular CLI 会移除各种调试功能，以最大限度地减少页面上的 JavaScript 量以提高性能。这包括与 DevTools 通信所需的功能。</p>
+<p>要运行 DevTools，你需要禁用优化来编译你的应用。<code>ng serve</code> 默认会这样做。
+如果你需要调试已部署的应用，请使用 <a href="reference/configs/workspace-config#optimization-configuration"><code>optimization</code> 配置选项</a> (<code>{"optimization": false}</code>) 在你的构建中禁用优化。</p>

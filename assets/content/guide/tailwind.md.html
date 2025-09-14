@@ -1,80 +1,79 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Using Tailwind CSS with Angular</h1>
+    <h1 tabindex="-1">在 Angular 中使用 Tailwind CSS</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/guide/tailwind.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p><a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a> is a utility-first CSS framework that can be used to build modern websites without ever leaving your HTML. This guide will walk you through setting up Tailwind CSS in your Angular project.</p>
+    <p><a href="https://tailwindcss.com/" target="_blank">Tailwind CSS</a> 是一个工具优先的 CSS 框架，您可以在不离开 HTML 的情况下构建现代网站。本指南将引导您在 Angular 项目中设置 Tailwind CSS。</p>
 
   <h2 id="setting-up-tailwind-css">
-    <a href="#setting-up-tailwind-css" class="docs-anchor" tabindex="-1" aria-label="Link to Setting up Tailwind CSS">Setting up Tailwind CSS</a>
+    <a href="#setting-up-tailwind-css" class="docs-anchor" tabindex="-1" aria-label="Link to Setting up Tailwind CSS">设置 Tailwind CSS</a>
   </h2>
   
   <h3 id="1-create-an-angular-project">
-    <a href="#1-create-an-angular-project" class="docs-anchor" tabindex="-1" aria-label="Link to 1. Create an Angular project">1. Create an Angular project</a>
+    <a href="#1-create-an-angular-project" class="docs-anchor" tabindex="-1" aria-label="Link to 1. Create an Angular project">1. 创建一个 Angular 项目</a>
   </h3>
-  <p>First, create a new Angular project if you don't have one set up already.</p>
+  <p>首先，如果您还没有设置项目，请创建一个新的 Angular 项目。</p>
 <div class="docs-code shell">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ng</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> new</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> my-project</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">cd</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> my-project</span></span></code></pre>
   </div>
   <h3 id="2-install-tailwind-css">
-    <a href="#2-install-tailwind-css" class="docs-anchor" tabindex="-1" aria-label="Link to 2. Install Tailwind CSS">2. Install Tailwind CSS</a>
+    <a href="#2-install-tailwind-css" class="docs-anchor" tabindex="-1" aria-label="Link to 2. Install Tailwind CSS">2. 安装 Tailwind CSS</a>
   </h3>
-  <p>Next, open a terminal in your Angular project's root directory and run the following command to install Tailwind CSS and its peer dependencies:</p>
+  <p>接下来，在您的 Angular 项目的根目录中打开终端，并运行以下命令来安装 Tailwind CSS 及其对等依赖项：</p>
 <div class="docs-code shell">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">npm</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> install</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> tailwindcss</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> @tailwindcss/postcss</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> postcss</span></span></code></pre>
   </div>
   <h3 id="3-configure-postcss-plugins">
-    <a href="#3-configure-postcss-plugins" class="docs-anchor" tabindex="-1" aria-label="Link to 3. Configure PostCSS Plugins">3. Configure PostCSS Plugins</a>
+    <a href="#3-configure-postcss-plugins" class="docs-anchor" tabindex="-1" aria-label="Link to 3. Configure PostCSS Plugins">3. 配置 PostCSS 插件</a>
   </h3>
-  <p>Next, add a <code>.postcssrc.json</code> file in the file root of the project.
-Add the <code>@tailwindcss/postcss</code> plugin into your PostCSS configuration.</p>
+  <p>接下来，在项目的根目录下添加一个 <code>.postcssrc.json</code> 文件。
+将 <code>@tailwindcss/postcss</code> 插件添加到您的 PostCSS 配置中。</p>
 <div class="docs-code" header=".postcssrc.json">
     <div class="docs-code-header"><h3>.postcssrc.json</h3></div>
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">{</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  "plugins"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    "@tailwindcss/postcss"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: {}</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
   </div>
   <h3 id="4-import-tailwind-css">
-    <a href="#4-import-tailwind-css" class="docs-anchor" tabindex="-1" aria-label="Link to 4. Import Tailwind CSS">4. Import Tailwind CSS</a>
+    <a href="#4-import-tailwind-css" class="docs-anchor" tabindex="-1" aria-label="Link to 4. Import Tailwind CSS">4. 导入 Tailwind CSS</a>
   </h3>
-  <p>Add an <code>@import</code> to <code>./src/styles.css</code> that imports Tailwind CSS.</p>
+  <p>在 <code>./src/styles.css</code> 中添加一个导入 Tailwind CSS 的 <code>@import</code>。</p>
 <div class="docs-code" header="src/styles.css">
     <div class="docs-code-header"><h3>src/styles.css</h3></div>
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@import</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> "tailwindcss"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span></code></pre>
-  </div><p>If you're using SCSS, add <code>@use</code> to <code>./src/styles.scss</code>.</p>
+  </div><p>如果您正在使用 SCSS，请在 <code>./src/styles.scss</code> 中添加 <code>@use</code>。</p>
 <div class="docs-code" header="src/styles.scss">
     <div class="docs-code-header"><h3>src/styles.scss</h3></div>
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">@use</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> "tailwindcss"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span></code></pre>
   </div>
   <h3 id="5-start-using-tailwind-in-your-project">
-    <a href="#5-start-using-tailwind-in-your-project" class="docs-anchor" tabindex="-1" aria-label="Link to 5. Start using Tailwind in your project">5. Start using Tailwind in your project</a>
+    <a href="#5-start-using-tailwind-in-your-project" class="docs-anchor" tabindex="-1" aria-label="Link to 5. Start using Tailwind in your project">5. 开始在您的项目中使用 Tailwind</a>
   </h3>
-  <p>You can now start using Tailwind's utility classes in your component templates to style your application.</p>
-<p>For example, you can add the following to your <code>app.html</code> file:</p>
+  <p>您现在可以在组件模板中使用 Tailwind 的工具类来设置应用程序的样式了。</p>
+<p>例如，您可以将以下内容添加到您的 <code>app.html</code> 文件中：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">h1</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"text-3xl font-bold underline"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  Hello world!</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">h1</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span></code></pre>
   </div>
   <h3 id="6-start-using-tailwind-in-your-project">
-    <a href="#6-start-using-tailwind-in-your-project" class="docs-anchor" tabindex="-1" aria-label="Link to 6. Start using Tailwind in your project">6. Start using Tailwind in your project</a>
+    <a href="#6-start-using-tailwind-in-your-project" class="docs-anchor" tabindex="-1" aria-label="Link to 6. Start using Tailwind in your project">6. 开始在您的项目中使用 Tailwind</a>
   </h3>
-  <p>Run your build process with <code>ng serve</code> and you should see the styled heading.</p>
+  <p>使用 <code>ng serve</code> 运行您的构建过程，您应该会看到已设置样式的标题。</p>
 
   <h2 id="additional-resources">
-    <a href="#additional-resources" class="docs-anchor" tabindex="-1" aria-label="Link to Additional Resources">Additional Resources</a>
+    <a href="#additional-resources" class="docs-anchor" tabindex="-1" aria-label="Link to Additional Resources">其他资源</a>
   </h2>
   
   <ul class="docs-list">
-    <li><a href="https://tailwindcss.com/docs" target="_blank">Tailwind CSS Documentation</a></li>
+    <li><a href="https://tailwindcss.com/docs" target="_blank">Tailwind CSS 文档</a></li>
 
   </ul>
   

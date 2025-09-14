@@ -1,32 +1,31 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Component input properties</h1>
+    <h1 tabindex="-1">组件输入属性</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/tutorials/learn-angular/steps/8-input/README.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>Sometimes app development requires you to send data into a component. This data can be used to customize a component or perhaps send information from a parent component to a child component.</p>
-<p>Angular uses a concept called <a href="/api/core/input"><code>input</code></a>. This is similar to <code>props</code> in other frameworks. To create an <a href="/api/core/input"><code>input</code></a> property, use the <a href="/api/core/input"><code>input()</code></a> function.</p>
-<p>Note: Learn more about <a href="/guide/components/inputs">accepting data with input properties in the inputs guide</a>.</p>
-<p>In this activity, you'll learn how to use the <a href="/api/core/input"><code>input()</code></a> function to send information to components.</p>
+    <p>有时应用开发需要你将数据发送到组件中。这些数据可以用来定制组件，或者从父组件向子组件发送信息。</p>
+<p>Angular 使用一个称为 <a href="/api/core/input"><code>input</code></a> 的概念。这类似于其他框架中的 <code>props</code>。要创建 <a href="/api/core/input"><code>input</code></a> 属性，请使用 <a href="/api/core/input"><code>input()</code></a> 函数。</p>
+<p>注意：在输入属性指南中了解更多关于<a href="/guide/components/inputs">使用输入属性接受数据</a>的信息。</p>
+<p>在此活动中，您将学习如何使用 <a href="/api/core/input"><code>input()</code></a> 函数将信息发送到组件。</p>
 <hr>
 
-<p>To create an <a href="/api/core/input"><code>input</code></a> property, add the <a href="/api/core/input"><code>input()</code></a> function to initialize a property of a component class:</p>
+<p>要创建 <a href="/api/core/input"><code>input</code></a> 属性，请添加 <a href="/api/core/input"><code>input()</code></a> 函数来初始化组件类的属性：</p>
 <div class="docs-code" header="user.ts">
     <div class="docs-code-header"><h3>user.ts</h3></div>
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> User</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">  occupation</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/core/input">input</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">string</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;();</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
-  </div><p>When you are ready to pass in a value through an <a href="/api/core/input"><code>input</code></a>, values can be set in templates using the attribute syntax. Here's an example:</p>
+  </div><p>当您准备好通过 <a href="/api/core/input"><code>input</code></a> 传入值时，可以使用属性语法在模板中设置值。这是一个示例：</p>
 <div class="docs-code" header="app.ts">
     <div class="docs-code-header"><h3>app.ts</h3></div>
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Component">Component</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  ...</span></span><span class="line highlighted"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  template: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">app-user</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> occupation</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"Angular Developer"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">app-user</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">`</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> App</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {}</span></span></code></pre>
-  </div><p>The <a href="/api/core/input"><code>input</code></a> function returns an <a href="/api/core/InputSignal"><code>InputSignal</code></a>. You can read the value by calling the signal. </p>
+  </div><p><code>input</code> 函数返回一个 <a href="/api/core/InputSignal"><code>InputSignal</code></a>。您可以通过调用该信号来读取其值。</p>
 <div class="docs-code" header="user.ts">
     <div class="docs-code-header"><h3>user.ts</h3></div>
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Component">Component</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  ...</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  template: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">p</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;The user's occupation is {{</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">occupation</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">()}}&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">p</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">`</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span></code></pre>
@@ -37,10 +36,10 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="define-an-input-property">
-    <a href="#define-an-input-property" class="docs-anchor" tabindex="-1" aria-label="Link to Define an <code>input()</code> property">Define an <code>input()</code> property</a>
+    <a href="#define-an-input-property" class="docs-anchor" tabindex="-1" aria-label="Link to Define an <code>input()</code> property">定义一个 <code>input()</code> 属性</a>
   </h3>
   
-      <p>Update the code in <code>user.ts</code> to define an <a href="/api/core/input"><code>input</code></a> property on the <code>User</code> called <code>name</code> and specify the <code>string</code> type. For now, don't set an initial value and invoke <a href="/api/core/input"><code>input()</code></a> without arguments. Be sure to update the template to invoke and interpolate the <code>name</code> property at the end of the sentence.</p>
+      <p>更新 <code>user.ts</code> 中的代码，为 <code>User</code> 定义一个名为 <code>name</code> 的 <a href="/api/core/input"><code>input</code></a> 属性，并指定 <code>string</code> 类型。目前，不要设置初始值，并调用不带参数的 <a href="/api/core/input"><code>input()</code></a>。请务必更新模板，调用并插值显示 <code>name</code> 属性在句子末尾。</p>
 
     </li>
     
@@ -48,15 +47,15 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="pass-a-value-to-the-input-property">
-    <a href="#pass-a-value-to-the-input-property" class="docs-anchor" tabindex="-1" aria-label="Link to Pass a value to the <code>input</code> property">Pass a value to the <code>input</code> property</a>
+    <a href="#pass-a-value-to-the-input-property" class="docs-anchor" tabindex="-1" aria-label="Link to Pass a value to the <code>input</code> property">向 <code>input</code> 属性传递值</a>
   </h3>
   
-      <p>Update the code in <code>app.ts</code> to send in the <code>name</code> property with a value of <code>&quot;Simran&quot;</code>.
+      <p>更新 <code>app.ts</code> 中的代码，将 <code>name</code> 属性的值设置为 <code>"Simran"</code>。
 <br></p>
-<p>When the code has been successfully updated, the app will display <code>The user&#39;s name is Simran</code>.</p>
+<p>当代码成功更新后，应用将显示 <code>The user's name is Simran</code>。</p>
 
     </li>
     
     </ol>
-    <p>While this is great, it is only one direction of the component communication. What if you want to send information and data to a parent component from a child component? Check out the next lesson to find out.</p>
-<p><span class="docs-emoji">P.S. you are doing great - keep going 🎉</span></p>
+    <p>虽然这很棒，但这只是组件通信的一个方向。如果你想从子组件向父组件发送信息和数据呢？查看下一课以了解更多信息。</p>
+<p><span class="docs-emoji">附注：你做得太棒了 - 继续加油 🎉</span></p>

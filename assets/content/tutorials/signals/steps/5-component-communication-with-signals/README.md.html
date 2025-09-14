@@ -1,20 +1,19 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Passing data to components with input signals</h1>
+    <h1 tabindex="-1">使用输入信号将数据传递给组件</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/tutorials/signals/steps/5-component-communication-with-signals/README.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>Now that you've learned <a href="/tutorials/signals/4-managing-async-data-with-signals">managing async data with signals</a>, let's explore Angular's signal-based <code>input()</code> API for passing data from parent to child components, making component data flow more reactive and efficient. If you're familiar with component props from other frameworks, inputs are the same idea.</p>
-<p>In this activity, you'll add signal inputs to a product card component and see how parent data flows down reactively.</p>
-<hr />
+    <p>既然您已经学习了<a href="/tutorials/signals/4-managing-async-data-with-signals">使用信号管理异步数据</a>，那么让我们来探索 Angular 基于信号的 <code>input()</code> API，用于将数据从父组件传递到子组件，使组件数据流更具响应性和效率。如果您熟悉其他框架中的组件 props，那么 inputs 的概念是相同的。</p>
+<p>在此活动中，您将向产品卡片组件添加信号输入，并了解父组件数据如何响应式地向下流动。</p>
+<hr>
 
 
     <ol class="docs-steps">
@@ -23,14 +22,14 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="add-signal-inputs-to-productcard">
-    <a href="#add-signal-inputs-to-productcard" class="docs-anchor" tabindex="-1" aria-label="Link to Add signal inputs to ProductCard">Add signal inputs to ProductCard</a>
+    <a href="#add-signal-inputs-to-productcard" class="docs-anchor" tabindex="-1" aria-label="Link to Add signal inputs to ProductCard">向 ProductCard 添加信号输入</a>
   </h3>
   
-      <p>Add signal <code>input()</code> functions to receive data in the <code>product-card</code> component.</p>
+      <p>添加信号 <code>input()</code> 函数以在 <code>product-card</code> 组件中接收数据。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Add imports for signal inputs</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {Component, input} </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/core'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Add these signal inputs</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">name </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> input.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">required</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">string</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;();</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">price </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> input.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">required</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">number</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;();</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">available </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> input</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">boolean</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">true</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span></code></pre>
-  </div><p>Notice how <code>input.required()</code> creates an input that must be provided, while <code>input()</code> with a default value is optional.</p>
+  </div><p>请注意 <code>input.required()</code> 如何创建一个必须提供的输入，而带有默认值的 <code>input()</code> 是可选的。</p>
 
     </li>
     
@@ -38,14 +37,14 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="connect-inputs-to-the-template">
-    <a href="#connect-inputs-to-the-template" class="docs-anchor" tabindex="-1" aria-label="Link to Connect inputs to the template">Connect inputs to the template</a>
+    <a href="#connect-inputs-to-the-template" class="docs-anchor" tabindex="-1" aria-label="Link to Connect inputs to the template">将输入连接到模板</a>
   </h3>
   
-      <p>Update the template in <code>product-card</code> to display the signal input values.</p>
+      <p>更新 <code>product-card</code> 中的模板以显示信号输入值。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">div</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"product-card"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">h3</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;{{ name() }}&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">h3</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">p</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"price"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;\${{ price() }}&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">p</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">p</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"status"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Status:</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    @if (available()) {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      Available</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    } @else {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      Out of Stock</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">p</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">div</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span></code></pre>
-  </div><p>Input signals work just like regular signals in templates - call them as functions to access their values.</p>
+  </div><p>输入信号在模板中的工作方式与常规信号一样——像调用函数一样调用它们来访问其值。</p>
 
     </li>
     
@@ -53,14 +52,14 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="connect-parent-signals-to-child-inputs">
-    <a href="#connect-parent-signals-to-child-inputs" class="docs-anchor" tabindex="-1" aria-label="Link to Connect parent signals to child inputs">Connect parent signals to child inputs</a>
+    <a href="#connect-parent-signals-to-child-inputs" class="docs-anchor" tabindex="-1" aria-label="Link to Connect parent signals to child inputs">将父信号连接到子输入</a>
   </h3>
   
-      <p>Update the <code>product-card</code> usage in <code>app.ts</code> to pass dynamic signal values instead of static ones.</p>
+      <p>更新 <code>app.ts</code> 中 <code>product-card</code> 的用法，以传递动态信号值而不是静态值。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">&lt;!-- Change from static values: --&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">product-card</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"Static Product"</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  price</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"99"</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  available</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"true"</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">/&gt;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">&lt;!-- To dynamic signals: --&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">product-card</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  [name]</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"productName()"</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  [price]</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"productPrice()"</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  [available]</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"productAvailable()"</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">/&gt;</span></span></code></pre>
-  </div><p>The square brackets <code>[]</code> create property bindings that pass the current signal values to the child.</p>
+  </div><p>方括号 <code>[]</code> 创建属性绑定，将当前信号值传递给子组件。</p>
 
     </li>
     
@@ -68,29 +67,29 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="test-reactive-updates">
-    <a href="#test-reactive-updates" class="docs-anchor" tabindex="-1" aria-label="Link to Test reactive updates">Test reactive updates</a>
+    <a href="#test-reactive-updates" class="docs-anchor" tabindex="-1" aria-label="Link to Test reactive updates">测试响应式更新</a>
   </h3>
   
-      <p>Add methods in <code>app.ts</code> to update the parent signals and see how the child component reacts automatically.</p>
+      <p>在 <code>app.ts</code> 中添加方法来更新父信号，看看子组件如何自动响应。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">updateProduct</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.productName.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">set</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'Updated Product'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.productPrice.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">set</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">149</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">toggleAvailability</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.productAvailable.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">set</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">!</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">productAvailable</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">());</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
   </div><div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">&lt;!-- Add controls to test reactivity --&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">div</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"controls"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> (click)</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"updateProduct()"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Update Product Info&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> (click)</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"toggleAvailability()"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Toggle Availability&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">div</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span></code></pre>
-  </div><p>When parent signals change, the child component automatically receives and displays the new values!</p>
+  </div><p>当父信号发生变化时，子组件会自动接收并显示新值！</p>
 
     </li>
     
     </ol>
-    <p>Excellent! You've learned how signal inputs work:</p>
+    <p>太棒了！您已经了解了信号输入的工作原理：</p>
 
   <ul class="docs-list">
-    <li><strong>Signal inputs</strong> - Use <code>input()</code> and <code>input.required()</code> to receive data from parent components</li>
-<li><strong>Reactive updates</strong> - Child components automatically update when parent signal values change</li>
-<li><strong>Type safety</strong> - Signal inputs provide full TypeScript type checking</li>
-<li><strong>Default values</strong> - Optional inputs can have default values while required inputs must be provided</li>
+    <li><strong>信号输入</strong> - 使用 <code>input()</code> 和 <code>input.required()</code> 从父组件接收数据</li>
+<li><strong>响应式更新</strong> - 当父信号值更改时，子组件会自动更新</li>
+<li><strong>类型安全</strong> - 信号输入提供完整的 TypeScript 类型检查</li>
+<li><strong>默认值</strong> - 可选输入可以具有默认值，而必需输入必须提供</li>
 
   </ul>
-  <p>Signal inputs make component communication more reactive and eliminate the need for <code>OnChanges</code> lifecycle hooks in many cases.</p>
-<p>In the next lesson, you'll learn about <a href="/tutorials/signals/6-two-way-binding-with-model-signals">two-way binding with model signals</a>!</p>
+  <p>信号输入使组件通信更具响应性，并在许多情况下消除了对 <code>OnChanges</code> 生命周期钩子的需求。</p>
+<p>在下一课中，您将学习<a href="/tutorials/signals/6-two-way-binding-with-model-signals">使用模型信号进行双向绑定</a>！</p>

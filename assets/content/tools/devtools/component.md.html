@@ -1,11 +1,10 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Inspect the component tree</h1>
+    <h1 tabindex="-1">检查组件树</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/tools/devtools/component.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
@@ -14,86 +13,86 @@
     </header>
     
   <h2 id="debug-your-application">
-    <a href="#debug-your-application" class="docs-anchor" tabindex="-1" aria-label="Link to Debug your application">Debug your application</a>
+    <a href="#debug-your-application" class="docs-anchor" tabindex="-1" aria-label="Link to Debug your application">调试你的应用</a>
   </h2>
-  <p>The <strong>Components</strong> tab lets you explore the structure of your application.
-You can visualize the component and directive instances in the DOM and inspect or modify their state.</p>
+  <p><strong>组件</strong>选项卡可让你探索应用的结构。
+你可以可视化 DOM 中的组件和指令实例，并检查或修改它们的状态。</p>
 
   <h3 id="explore-the-application-structure">
-    <a href="#explore-the-application-structure" class="docs-anchor" tabindex="-1" aria-label="Link to Explore the application structure">Explore the application structure</a>
+    <a href="#explore-the-application-structure" class="docs-anchor" tabindex="-1" aria-label="Link to Explore the application structure">探索应用结构</a>
   </h3>
-  <p>The component tree displays a hierarchical relationship of the <em>components and directives</em> within your application.</p>
+  <p>组件树显示了应用中<em>组件和指令</em>的层级关系。</p>
 <img src="assets/images/guide/devtools/component-explorer.png" alt="A screenshot of the 'Components' tab showing a tree of Angular components and directives starting the root of the application.">
 
-<p>Click the individual components or directives in the component explorer to select them and preview their properties.
-Angular DevTools displays properties and metadata on the right side of the component tree.</p>
-<p>To look up a component or directive by name use the search box above the component tree.</p>
+<p>单击组件浏览器中的各个组件或指令以选择它们并预览其属性。
+Angular DevTools 在组件树的右侧显示属性和元数据。</p>
+<p>要按名称查找组件或指令，请使用组件树上方的搜索框。</p>
 <img src="assets/images/guide/devtools/search.png" alt="A screenshot of the 'Components' tab. The filter bar immediately underneath the tab is searching for 'todo' and all components with 'todo' in the name are highlighted in the tree. `app-todos` is currently selected and a sidebar to the right displays information about the component's properties. This includes a section of `@Output` fields and another section for other properties.">
 
 
   <h3 id="navigate-to-the-host-node">
-    <a href="#navigate-to-the-host-node" class="docs-anchor" tabindex="-1" aria-label="Link to Navigate to the host node">Navigate to the host node</a>
+    <a href="#navigate-to-the-host-node" class="docs-anchor" tabindex="-1" aria-label="Link to Navigate to the host node">导航到宿主节点</a>
   </h3>
-  <p>To go to the host element of a particular component or directive, double-click it in the component explorer.
-Angular DevTools will open the Elements tab in Chrome or the Inspector tab in Firefox, and select the associated DOM node.</p>
+  <p>要转到特定组件或指令的宿主元素，请在组件浏览器中双击它。
+Angular DevTools 将在 Chrome 中打开 Elements 选项卡，或在 Firefox 中打开 Inspector 选项卡，并选择关联的 DOM 节点。</p>
 
   <h3 id="navigate-to-source">
-    <a href="#navigate-to-source" class="docs-anchor" tabindex="-1" aria-label="Link to Navigate to source">Navigate to source</a>
+    <a href="#navigate-to-source" class="docs-anchor" tabindex="-1" aria-label="Link to Navigate to source">导航到源码</a>
   </h3>
-  <p>For components, Angular DevTools lets you navigate to the component definition in the Sources tab (Chrome) and Debugger tab (Firefox).
-After you select a particular component, click the icon at the top-right of the properties view:</p>
+  <p>对于组件，Angular DevTools 可让你在 Sources 选项卡（Chrome）和 Debugger 选项卡（Firefox）中导航到组件定义。
+选择特定组件后，单击属性视图右上角的图标：</p>
 <img src="assets/images/guide/devtools/navigate-source.png" alt="A screenshot of the 'Components' tab. The properties view on the right is visible for a component and the mouse rests in the upper right corner of that view on top of a `<>` icon. An adjacent tooltip reads 'Open component source'.">
 
 
   <h3 id="update-property-value">
-    <a href="#update-property-value" class="docs-anchor" tabindex="-1" aria-label="Link to Update property value">Update property value</a>
+    <a href="#update-property-value" class="docs-anchor" tabindex="-1" aria-label="Link to Update property value">更新属性值</a>
   </h3>
-  <p>Like browsers' DevTools, the properties view lets you edit the value of an input, output, or other properties.
-Right-click on the property value and if edit functionality is available for this value type, a text input will appear.
-Type the new value and press <code>Enter</code> to apply this value to the property.</p>
+  <p>与浏览器的开发者工具类似，属性视图允许你编辑输入、输出或其他属性的值。
+右键单击属性值，如果此值类型可用编辑功能，则会出现一个文本输入框。
+键入新值并按 <code>Enter</code> 将此值应用于属性。</p>
 <img src="assets/images/guide/devtools/update-property.png" alt="A screenshot of the 'Components' tab with the properties view open for a component. An `@Input` named `todo` contains a `label` property which is currently selected and has been manually updated to the value 'Buy milk'.">
 
 
   <h3 id="access-selected-component-or-directive-in-console">
-    <a href="#access-selected-component-or-directive-in-console" class="docs-anchor" tabindex="-1" aria-label="Link to Access selected component or directive in console">Access selected component or directive in console</a>
+    <a href="#access-selected-component-or-directive-in-console" class="docs-anchor" tabindex="-1" aria-label="Link to Access selected component or directive in console">在控制台中访问选定的组件或指令</a>
   </h3>
-  <p>As a shortcut in the console, Angular DevTools provides access to instances of recently selected components or directives.
-Type <code>$ng0</code> to get a reference to the instance of the currently selected component or directive, and type <code>$ng1</code> for the previously selected instance, <code>$ng2</code> for the instance selected before that, and so on.</p>
+  <p>作为控制台中的快捷方式，Angular DevTools 提供对最近选定的组件或指令实例的访问。
+键入 <code>$ng0</code> 以获取当前选定组件或指令实例的引用，键入 <code>$ng1</code> 获取先前选定的实例，键入 <code>$ng2</code> 获取在此之前的选定实例，依此类推。</p>
 <img src="assets/images/guide/devtools/access-console.png" alt="A screenshot of the 'Components' tab with the browser console underneath. In the console, the user has typed three commands, `$ng0`, `$ng1`, and `$ng2` to view the three most recently selected elements. After each statement, the console prints a different component reference.">
 
 
   <h3 id="select-a-directive-or-component">
-    <a href="#select-a-directive-or-component" class="docs-anchor" tabindex="-1" aria-label="Link to Select a directive or component">Select a directive or component</a>
+    <a href="#select-a-directive-or-component" class="docs-anchor" tabindex="-1" aria-label="Link to Select a directive or component">选择指令或组件</a>
   </h3>
-  <p>Similar to browsers' DevTools, you can inspect the page to select a particular component or directive.
-Click the <em><strong>Inspect element</strong></em> icon in the top left corner within Angular DevTools and hover over a DOM element on the page.
-The extension recognizes the associated directives and/or components and lets you select the corresponding element in the Component tree.</p>
+  <p>与浏览器的开发者工具类似，你可以检查页面以选择特定的组件或指令。
+单击 Angular DevTools 内左上角的<em><strong>检查元素</strong></em>图标，并将鼠标悬停在页面上的 DOM 元素上。
+该扩展程序会识别关联的指令和/或组件，并允许你在组件树中选择相应的元素。</p>
 <img src="assets/images/guide/devtools/inspect-element.png" alt="A screenshot of the 'Components' tab with an Angular todo application visible. In the very top-left corner of Angular DevTools, an icon of a screen with a mouse icon inside it is selected. The mouse rests on a todo element in the Angular application UI. The element is highlighted with a `<TodoComponent>` label displayed in an adjacent tooltip.">
 
 
 
   <h2 id="inspect-your-injectors">
-    <a href="#inspect-your-injectors" class="docs-anchor" tabindex="-1" aria-label="Link to Inspect your injectors">Inspect your injectors</a>
+    <a href="#inspect-your-injectors" class="docs-anchor" tabindex="-1" aria-label="Link to Inspect your injectors">检查你的注入器</a>
   </h2>
-  <p> NOTE: The Injector Tree is available for Angular Applications built with version 17 or higher.</p>
+  <p>注意：Injector Tree 可用于使用 17 或更高版本构建的 Angular 应用。</p>
 
   <h3 id="view-the-injector-hierarchy-of-your-application">
-    <a href="#view-the-injector-hierarchy-of-your-application" class="docs-anchor" tabindex="-1" aria-label="Link to View the injector hierarchy of your application">View the injector hierarchy of your application</a>
+    <a href="#view-the-injector-hierarchy-of-your-application" class="docs-anchor" tabindex="-1" aria-label="Link to View the injector hierarchy of your application">查看应用的注入器层级</a>
   </h3>
-  <p> The <strong>Injector Tree</strong> tab lets you explore the structure of the Injectors configured in your application. Here you will see two trees representing the <a href="guide/di/hierarchical-dependency-injection">injector hierarchy</a> of your application. One tree is your environment hierarchy, the other is your element hierarchy.</p>
+  <p><strong>注入器树</strong>选项卡可让你探索应用中配置的注入器结构。在这里，你将看到两个树，代表你应用的<a href="guide/di/hierarchical-dependency-injection">注入器层级</a>。一个树是你的环境层级，另一个是你的元素层级。</p>
 <img src="assets/images/guide/devtools/di-injector-tree.png" alt="A screenshot of the 'Profiler' tab displaying the injector tree tab in Angular Devtools visualizing the injector graph for an example application.">
 
 
   <h3 id="visualize-resolution-paths">
-    <a href="#visualize-resolution-paths" class="docs-anchor" tabindex="-1" aria-label="Link to Visualize resolution paths">Visualize resolution paths</a>
+    <a href="#visualize-resolution-paths" class="docs-anchor" tabindex="-1" aria-label="Link to Visualize resolution paths">可视化解析路径</a>
   </h3>
-  <p> When a specific injector is selected, the path that Angular's dependency injection algorithm traverses from that injector to the root is highlighted. For element injectors, this includes highlighting the environment injectors that the dependency injection algorithm jumps to when a dependency cannot be resolved in the element hierarchy.</p>
-<p>See <a href="guide/di/hierarchical-dependency-injection#resolution-rules">resolution rules</a> for more details about how Angular resolves resolution paths.</p>
+  <p>当选中特定注入器时，Angular 的依赖注入算法从该注入器遍历到根的路径将被高亮显示。对于元素注入器，这包括高亮显示当依赖项在元素层级中无法解析时，依赖注入算法跳转到的环境注入器。</p>
+<p>有关 Angular 如何解析解析路径的更多详细信息，请参阅<a href="guide/di/hierarchical-dependency-injection#resolution-rules">解析规则</a>。</p>
 <img src="assets/images/guide/devtools/di-injector-tree-selected.png" alt="A screenshot of the 'Profiler' tab displaying how the injector tree visualize highlights resolution paths when an injector is selected.">
 
 
   <h3 id="view-injector-providers">
-    <a href="#view-injector-providers" class="docs-anchor" tabindex="-1" aria-label="Link to View injector providers">View injector providers</a>
+    <a href="#view-injector-providers" class="docs-anchor" tabindex="-1" aria-label="Link to View injector providers">查看注入器提供者</a>
   </h3>
-  <p> Clicking an injector that has configured providers will display those providers in a list on the right of the injector tree view. Here you can view the provided token and it's type.</p>
+  <p>单击已配置提供者的注入器将在注入器树视图的右侧以列表形式显示这些提供者。在这里你可以查看提供的令牌及其类型。</p>
 <img src="assets/images/guide/devtools/di-injector-tree-providers.png" alt="A screenshot of the 'Profiler' tab displaying how providers are made visible when an injector is selected.">

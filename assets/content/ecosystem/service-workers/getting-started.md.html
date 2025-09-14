@@ -1,156 +1,146 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Getting started with service workers</h1>
+    <h1 tabindex="-1">Service Worker 入门</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/ecosystem/service-workers/getting-started.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>This document explains how to enable Angular service worker support in projects that you created with the <a href="tools/cli">Angular CLI</a>. It then uses an example to show you a service worker in action, demonstrating loading and basic caching.</p>
+    <p>本文档介绍如何在用 <a href="tools/cli">Angular CLI</a> 创建的项目中启用 Angular Service Worker 支持。然后通过一个范例展示 Service Worker 的实际应用，演示加载和基本缓存。</p>
 
   <h2 id="adding-a-service-worker-to-your-project">
-    <a href="#adding-a-service-worker-to-your-project" class="docs-anchor" tabindex="-1" aria-label="Link to Adding a service worker to your project">Adding a service worker to your project</a>
+    <a href="#adding-a-service-worker-to-your-project" class="docs-anchor" tabindex="-1" aria-label="Link to Adding a service worker to your project">向你的项目添加 Service Worker</a>
   </h2>
-  <p>To set up the Angular service worker in your project, run the following CLI command:</p>
+  <p>要在你的项目中建立 Angular Service Worker，请运行以下 CLI 命令：</p>
 <div class="docs-code shell">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ng</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> @angular/pwa</span></span></code></pre>
-  </div><p>The CLI configures your application to use service workers with the following actions:</p>
+  </div><p>CLI 通过以下操作配置你的应用以使用 Service Worker：</p>
 
     <ol class="docs-ordered-list">
-      <li>Adds the <code>@angular/service-worker</code> package to your project.</li>
-<li>Enables service worker build support in the CLI.</li>
-<li>Imports and registers the service worker with the application's root providers.</li>
-<li>Updates the <code>index.html</code> file:
-  <ul class="docs-list">
-    <li>Includes a link to add the <code>manifest.webmanifest</code> file</li>
-<li>Adds a meta tag for <code>theme-color</code></li>
+      <li>将 <code>@angular/service-worker</code> 软件包添加到你的项目中。</li>
+<li>在 CLI 中启用 Service Worker 构建支持。</li>
+<li>导入 Service Worker 并使用该应用的根提供者对其进行注册。</li>
+<li>更新 <code>index.html</code> 文件：<ul class="docs-list">
+    <li>包含一个用于添加 <code>manifest.webmanifest</code> 文件的链接</li>
+<li>为 <code>theme-color</code> 添加一个 meta 标签</li>
 
   </ul>
   </li>
-<li>Installs icon files to support the installed Progressive Web App (PWA).</li>
-<li>Creates the service worker configuration file called <a href="ecosystem/service-workers/config"><code>ngsw-config.json</code></a>,
-which specifies the caching behaviors and other settings.</li>
+<li>安装图标文件以支持已安装的渐进式 Web 应用 (PWA)。</li>
+<li>创建名为 <a href="ecosystem/service-workers/config"><code>ngsw-config.json</code></a> 的 Service Worker 配置文件，其中指定了缓存行为和其他设置。</li>
 
     </ol>
-    <p>Now, build the project:</p>
+    <p>现在，构建项目：</p>
 <div class="docs-code shell">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ng</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> build</span></span></code></pre>
-  </div><p>The CLI project is now set up to use the Angular service worker.</p>
+  </div><p>CLI 项目现在已建立以使用 Angular Service Worker。</p>
 
   <h2 id="service-worker-in-action-a-tour">
-    <a href="#service-worker-in-action-a-tour" class="docs-anchor" tabindex="-1" aria-label="Link to Service worker in action: a tour">Service worker in action: a tour</a>
+    <a href="#service-worker-in-action-a-tour" class="docs-anchor" tabindex="-1" aria-label="Link to Service worker in action: a tour">Service Worker 实践：导览</a>
   </h2>
-  <p>This section demonstrates a service worker in action,
-using an example application. To enable service worker support during local development, use the production configuration with the following command:</p>
+  <p>本节演示 Service Worker 的实际应用，使用一个范例应用。要在本地开发期间启用 Service Worker 支持，请使用以下命令使用生产配置：</p>
 <div class="docs-code shell">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ng</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> serve</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> --configuration=production</span></span></code></pre>
-  </div><p>Alternatively, you can use the <a href="https://www.npmjs.com/package/http-server" target="_blank"><code>http-server package</code></a> from
-npm, which supports service worker applications. Run it without installation using:</p>
+  </div><p>或者，你可以使用 npm 中的 <a href="https://www.npmjs.com/package/http-server" target="_blank"><code>http-server package</code></a>，它支持 Service Worker 应用。使用以下命令在不安装的情况下运行它：</p>
 <div class="docs-code shell">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">npx</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> http-server</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> -p</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 8080</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> -c-1</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> dist/</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">project-nam</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">e</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&gt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">/browser</span></span></code></pre>
-  </div><p>This will serve your application with service worker support at <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>.</p>
+  </div><p>这将为你的应用启动服务器，并提供 Service Worker 支持，地址为 <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>。</p>
 
   <h3 id="initial-load">
-    <a href="#initial-load" class="docs-anchor" tabindex="-1" aria-label="Link to Initial load">Initial load</a>
+    <a href="#initial-load" class="docs-anchor" tabindex="-1" aria-label="Link to Initial load">初始加载</a>
   </h3>
-  <p>With the server running on port <code>8080</code>, point your browser at <code>http://localhost:8080</code>.
-Your application should load normally.</p>
+  <p>当服务器在端口 <code>8080</code> 上运行时，将你的浏览器指向 <code>http://localhost:8080</code>。你的应用应该正常加载。</p>
 
     <div class="docs-alert docs-alert-tip">
-    <p><strong>TIP:</strong> When testing Angular service workers, it's a good idea to use an incognito or private window in your browser to ensure the service worker doesn't end up reading from a previous leftover state, which can cause unexpected behavior.</p>
+    <p><strong>提示：</strong> 在测试 Angular Service Worker 时，最好在浏览器的隐身或私密窗口中使用，以确保 Service Worker 不会从之前的残留状态中读取，这可能会导致意外行为。</p>
 
     </div>
     
     <div class="docs-alert docs-alert-helpful">
-    <p><strong>HELPFUL:</strong> If you are not using HTTPS, the service worker will only be registered when accessing the application on <code>localhost</code>.</p>
+    <p><strong>帮助提示：</strong> 如果你未使用 HTTPS，则仅当在 <code>localhost</code> 上访问应用时，才会注册 Service Worker。</p>
 
     </div>
     
   <h3 id="simulating-a-network-issue">
-    <a href="#simulating-a-network-issue" class="docs-anchor" tabindex="-1" aria-label="Link to Simulating a network issue">Simulating a network issue</a>
+    <a href="#simulating-a-network-issue" class="docs-anchor" tabindex="-1" aria-label="Link to Simulating a network issue">模拟网络问题</a>
   </h3>
-  <p>To simulate a network issue, disable network interaction for your application.</p>
-<p>In Chrome:</p>
+  <p>要模拟网络问题，请禁用你的应用的联网互动。</p>
+<p>在 Chrome 中：</p>
 
     <ol class="docs-ordered-list">
-      <li>Select <strong>Tools</strong> > <strong>Developer Tools</strong> (from the Chrome menu located in the top right corner).</li>
-<li>Go to the <strong>Network tab</strong>.</li>
-<li>Select <strong>Offline</strong> in the <strong>Throttling</strong> dropdown menu.</li>
+      <li>选择<strong>工具</strong> &gt; <strong>开发者工具</strong>（从位于右上角的 Chrome 菜单中）。</li>
+<li>转到 <strong>Network 选项卡</strong>。</li>
+<li>在 <strong>Throttling</strong> 下拉菜单中选择 <strong>Offline</strong>。</li>
 
     </ol>
     <img alt="The offline option in the Network tab is selected" src="assets/images/guide/service-worker/offline-option.png">
 
-<p>Now the application has no access to network interaction.</p>
-<p>For applications that do not use the Angular service worker, refreshing now would display Chrome's Internet disconnected page that says "There is no Internet connection".</p>
-<p>With the addition of an Angular service worker, the application behavior changes.
-On a refresh, the page loads normally.</p>
-<p>Look at the Network tab to verify that the service worker is active.</p>
+<p>现在，应用无法进行联网互动。</p>
+<p>对于不使用 Angular Service Worker 的应用，现在刷新将显示 Chrome 的 Internet 断开连接页面，其中显示“没有 Internet 连接”。</p>
+<p>随着 Angular Service Worker 的添加，应用行为发生了变化。刷新后，页面正常加载。</p>
+<p>查看 Network 选项卡以验证 Service Worker 是否处于活动状态。</p>
 <img alt="Requests are marked as from ServiceWorker" src="assets/images/guide/service-worker/sw-active.png">
 
 
     <div class="docs-alert docs-alert-helpful">
-    <p><strong>HELPFUL:</strong> Under the "Size" column, the requests state is <code>(ServiceWorker)</code>.
-This means that the resources are not being loaded from the network.
-Instead, they are being loaded from the service worker's cache.</p>
+    <p><strong>帮助提示：</strong> 在“Size”列下，请求状态为 <code>(ServiceWorker)</code>。这意味着资源不是从网络加载的。而是从 Service Worker 的缓存加载的。</p>
 
     </div>
     
   <h3 id="whats-being-cached">
-    <a href="#whats-being-cached" class="docs-anchor" tabindex="-1" aria-label="Link to What's being cached?">What's being cached?</a>
+    <a href="#whats-being-cached" class="docs-anchor" tabindex="-1" aria-label="Link to What's being cached?">正在缓存什么？</a>
   </h3>
-  <p>Notice that all of the files the browser needs to render this application are cached.
-The <code>ngsw-config.json</code> boilerplate configuration is set up to cache the specific resources used by the CLI:</p>
+  <p>请注意，浏览器渲染此应用所需的所有文件都已缓存。<code>ngsw-config.json</code> 样板配置设置为缓存 CLI 使用的特定资源：</p>
 
   <ul class="docs-list">
     <li><code>index.html</code></li>
 <li><code>favicon.ico</code></li>
-<li>Build artifacts (JS and CSS bundles)</li>
-<li>Anything under <code>assets</code></li>
-<li>Images and fonts directly under the configured <code>outputPath</code> (by default <code>./dist/&lt;project-name&gt;/</code>) or <code>resourcesOutputPath</code>.
-  See the documentation for <code>ng build</code> for more information about these options.</li>
+<li>构建产物（JS 和 CSS 捆绑包）</li>
+<li><code>assets</code> 下的任何内容</li>
+<li>直接位于配置的 <code>outputPath</code> (默认为 <code>./dist/&lt;project-name&gt;/</code>) 或 <code>resourcesOutputPath</code> 下的图像和字体。
+  有关这些选项的更多信息，请参阅 <code>ng build</code> 的文档。</li>
 
   </ul>
   
     <div class="docs-alert docs-alert-important">
-    <p><strong>IMPORTANT:</strong> The generated <code>ngsw-config.json</code> includes a limited list of cacheable fonts and images extensions. In some cases, you might want to modify the glob pattern to suit your needs.</p>
+    <p><strong>重要提示：</strong> 生成的 <code>ngsw-config.json</code> 包含可缓存字体和图像扩展名的有限列表。在某些情况下，你可能需要修改 glob 模式以满足你的需求。</p>
 
     </div>
     
     <div class="docs-alert docs-alert-important">
-    <p><strong>IMPORTANT:</strong> If <code>resourcesOutputPath</code> or <code>assets</code> paths are modified after the generation of configuration file, you need to change the paths manually in <code>ngsw-config.json</code>.</p>
+    <p><strong>重要提示：</strong> 如果在生成配置文件后修改了 <code>resourcesOutputPath</code> 或 <code>assets</code> 路径，则需要在 <code>ngsw-config.json</code> 中手动更改路径。</p>
 
     </div>
     
   <h3 id="making-changes-to-your-application">
-    <a href="#making-changes-to-your-application" class="docs-anchor" tabindex="-1" aria-label="Link to Making changes to your application">Making changes to your application</a>
+    <a href="#making-changes-to-your-application" class="docs-anchor" tabindex="-1" aria-label="Link to Making changes to your application">更改你的应用</a>
   </h3>
-  <p>Now that you've seen how service workers cache your application, the next step is understanding how updates work.
-Make a change to the application, and watch the service worker install the update:</p>
+  <p>既然你已经了解了 Service Worker 如何缓存你的应用，那么下一步就是了解更新是如何工作的。
+对应用进行更改，并观察 Service Worker 如何安装更新：</p>
 
     <ol class="docs-ordered-list">
-      <li><p>If you're testing in an incognito window, open a second blank tab.
- This keeps the incognito and the cache state alive during your test.</p>
+      <li><p>如果你在隐身窗口中进行测试，请打开第二个空白标签页。
+ 这将在测试期间保持隐身状态和缓存状态处于活动状态。</p>
 </li>
-<li><p>Close the application tab, but not the window.
- This should also close the Developer Tools.</p>
+<li><p>关闭应用标签页，但不要关闭窗口。
+ 这也应该关闭开发者工具（Developer Tools）。</p>
 </li>
-<li><p>Shut down <code>http-server</code> (Ctrl-c).</p>
+<li><p>关闭 <code>http-server</code> (Ctrl-c)。</p>
 </li>
-<li><p>Open <code>src/app/app.component.html</code> for editing.</p>
+<li><p>打开 <code>src/app/app.component.html</code> 进行编辑。</p>
 </li>
-<li><p>Change the text <code>Welcome to {{title}}!</code> to <code>Bienvenue à {{title}}!</code>.</p>
+<li><p>将文本 <code>Welcome to {{title}}!</code> 更改为 <code>Bienvenue à {{title}}!</code>。</p>
 </li>
-<li><p>Build and run the server again:</p>
+<li><p>再次构建并运行服务器：</p>
 <div class="docs-code shell">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ng</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> build</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> npx</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> http-server</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> -p</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> 8080</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> -c-1</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> dist/</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&lt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">project-nam</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">e</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">&gt;</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">/browser</span></span></code></pre>
@@ -159,140 +149,140 @@ Make a change to the application, and watch the service worker install the updat
     </ol>
     
   <h3 id="updating-your-application-in-the-browser">
-    <a href="#updating-your-application-in-the-browser" class="docs-anchor" tabindex="-1" aria-label="Link to Updating your application in the browser">Updating your application in the browser</a>
+    <a href="#updating-your-application-in-the-browser" class="docs-anchor" tabindex="-1" aria-label="Link to Updating your application in the browser">在浏览器中更新你的应用</a>
   </h3>
-  <p>Now look at how the browser and service worker handle the updated application.</p>
+  <p>现在看看浏览器和 Service Worker 如何处理更新后的应用。</p>
 
     <ol class="docs-ordered-list">
-      <li><p>Open <a href="http://localhost:8080" target="_blank">http://localhost:8080</a> again in the same window.
- What happens?</p>
+      <li><p>在同一窗口中再次打开 <a href="http://localhost:8080" target="_blank">http://localhost:8080</a>。
+ 发生了什么？</p>
  <img alt="It still says Welcome to Service Workers!" src="assets/images/guide/service-worker/welcome-msg-en.png">
 
-<p> What went wrong?
- <em>Nothing, actually!</em>
- The Angular service worker is doing its job and serving the version of the application that it has <strong>installed</strong>, even though there is an update available.
- In the interest of speed, the service worker doesn't wait to check for updates before it serves the application that it has cached.</p>
-<p> Look at the <code>http-server</code> logs to see the service worker requesting <code>/ngsw.json</code>.</p>
+<p>哪里出错了？
+ <em>实际上什么都没错！</em>
+ Angular Service Worker 正在执行其工作，并提供它已<strong>安装</strong>的应用版本，即使有可用的更新。
+ 为了速度，Service Worker 在提供其缓存的应用之前，不会等待检查更新。</p>
+<p>查看 <code>http-server</code> 日志，以查看 Service Worker 请求 <code>/ngsw.json</code>。</p>
 <div class="docs-code shell">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">[2023-09-07T00:37:24.372Z]  </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"GET /ngsw.json?ngsw-cache-bust=0.9365263935102124"</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36"</span></span></code></pre>
-  </div><p> This is how the service worker checks for updates.</p>
+  </div><p>这是 Service Worker 检查更新的方式。</p>
 </li>
-<li><p>Refresh the page.</p>
+<li><p>刷新页面。</p>
  <img alt="The text has changed to say Bienvenue à app!" src="assets/images/guide/service-worker/welcome-msg-fr.png">
 
-<p> The service worker installed the updated version of your application <em>in the background</em>, and the next time the page is loaded or reloaded, the service worker switches to the latest version.</p>
+<p>Service Worker <em>在后台</em>安装了你应用的更新版本，并且下次页面加载或重新加载时，Service Worker 会切换到最新版本。</p>
 </li>
 
     </ol>
     
   <h2 id="service-worker-configuration">
-    <a href="#service-worker-configuration" class="docs-anchor" tabindex="-1" aria-label="Link to Service worker configuration">Service worker configuration</a>
+    <a href="#service-worker-configuration" class="docs-anchor" tabindex="-1" aria-label="Link to Service worker configuration">服务 Worker 配置</a>
   </h2>
-  <p>Angular service workers support comprehensive configuration options through the <a href="/api/service-worker/SwRegistrationOptions"><code>SwRegistrationOptions</code></a> interface, providing fine-grained control over registration behavior, caching, and script execution.</p>
+  <p>Angular 服务 Worker 通过 <a href="/api/service-worker/SwRegistrationOptions"><code>SwRegistrationOptions</code></a> 接口支持全面的配置选项，可对注册行为、缓存和脚本执行进行精细控制。</p>
 
   <h3 id="enabling-and-disabling-service-workers">
-    <a href="#enabling-and-disabling-service-workers" class="docs-anchor" tabindex="-1" aria-label="Link to Enabling and disabling service workers">Enabling and disabling service workers</a>
+    <a href="#enabling-and-disabling-service-workers" class="docs-anchor" tabindex="-1" aria-label="Link to Enabling and disabling service workers">启用和禁用服务 Worker</a>
   </h3>
-  <p>The <code>enabled</code> option controls whether the service worker will be registered and related services will attempt to communicate with it.</p>
+  <p><code>enabled</code> 选项控制是否注册服务 Worker 以及相关服务是否会尝试与其通信。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { ApplicationConfig, isDevMode } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/core'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/service-worker/provideServiceWorker">provideServiceWorker</a> } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/service-worker'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> appConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ApplicationConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  providers: [</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    <a href="/api/service-worker/provideServiceWorker">provideServiceWorker</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'ngsw-worker.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      enabled: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">!</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/isDevMode">isDevMode</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(), </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Disable in development, enable in production</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  ],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">};</span></span></code></pre>
   </div>
   <h3 id="cache-control-with-updateviacache">
-    <a href="#cache-control-with-updateviacache" class="docs-anchor" tabindex="-1" aria-label="Link to Cache control with updateViaCache">Cache control with updateViaCache</a>
+    <a href="#cache-control-with-updateviacache" class="docs-anchor" tabindex="-1" aria-label="Link to Cache control with updateViaCache">使用 updateViaCache 进行缓存控制</a>
   </h3>
-  <p>The <code>updateViaCache</code> option controls how the browser consults the HTTP cache during service worker updates. This provides fine-grained control over when the browser fetches updated service worker scripts and imported modules.</p>
+  <p><code>updateViaCache</code> 选项控制浏览器在服务 Worker 更新期间如何查询 HTTP 缓存。这可以对浏览器何时获取更新的服务 Worker 脚本和导入的模块进行精细控制。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> appConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ApplicationConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  providers: [</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    <a href="/api/service-worker/provideServiceWorker">provideServiceWorker</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'ngsw-worker.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      enabled: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">!</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/isDevMode">isDevMode</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      updateViaCache: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'imports'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  ],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">};</span></span></code></pre>
-  </div><p>The <code>updateViaCache</code> option accepts the following values:</p>
+  </div><p><code>updateViaCache</code> 选项接受以下值：</p>
 
   <ul class="docs-list">
-    <li><strong><code>&#39;imports&#39;</code></strong> - The HTTP cache is consulted for the service worker script's imported scripts, but not for the service worker script itself</li>
-<li><strong><code>&#39;all&#39;</code></strong> - The HTTP cache is consulted for both the service worker script and its imported scripts  </li>
-<li><strong><code>&#39;none&#39;</code></strong> - The HTTP cache is not consulted for the service worker script or its imported scripts</li>
+    <li><strong><code>'imports'</code></strong> - 会查询 HTTP 缓存以获取服务 Worker 脚本的导入脚本，但不会查询服务 Worker 脚本本身</li>
+<li><strong><code>'all'</code></strong> - 会查询 HTTP 缓存以获取服务 Worker 脚本及其导入的脚本</li>
+<li><strong><code>'none'</code></strong> - 不会查询 HTTP 缓存以获取服务 Worker 脚本或其导入的脚本</li>
 
   </ul>
   
   <h3 id="es-module-support-with-type-option">
-    <a href="#es-module-support-with-type-option" class="docs-anchor" tabindex="-1" aria-label="Link to ES Module support with type option">ES Module support with type option</a>
+    <a href="#es-module-support-with-type-option" class="docs-anchor" tabindex="-1" aria-label="Link to ES Module support with type option">使用 type 选项支持 ES 模块</a>
   </h3>
-  <p>The <code>type</code> option enables specifying the script type when registering service workers, providing support for ES module features in your service worker scripts.</p>
+  <p><code>type</code> 选项允许在注册服务 Worker 时指定脚本类型，为你的服务 Worker 脚本提供对 ES 模块特性的支持。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> appConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ApplicationConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  providers: [</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    <a href="/api/service-worker/provideServiceWorker">provideServiceWorker</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'ngsw-worker.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      enabled: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">!</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/isDevMode">isDevMode</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      type: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'module'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Enable ES module features</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  ],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">};</span></span></code></pre>
-  </div><p>The <code>type</code> option accepts the following values:</p>
+  </div><p><code>type</code> 选项接受以下值：</p>
 
   <ul class="docs-list">
-    <li><strong><code>&#39;classic&#39;</code></strong> (default) - Traditional service worker script execution. ES module features such as <code>import</code> and <code>export</code> are NOT allowed in the script</li>
-<li><strong><code>&#39;module&#39;</code></strong> - Registers the script as an ES module. Allows use of <code>import</code>/<code>export</code> syntax and module features</li>
+    <li><strong><code>'classic'</code></strong> (默认) - 传统的服务 Worker 脚本执行。脚本中不允许使用 <code>import</code> 和 <code>export</code> 等 ES 模块特性</li>
+<li><strong><code>'module'</code></strong> - 将脚本注册为 ES 模块。允许使用 <code>import</code>/<code>export</code> 语法和模块特性</li>
 
   </ul>
   
   <h3 id="registration-scope-control">
-    <a href="#registration-scope-control" class="docs-anchor" tabindex="-1" aria-label="Link to Registration scope control">Registration scope control</a>
+    <a href="#registration-scope-control" class="docs-anchor" tabindex="-1" aria-label="Link to Registration scope control">注册范围控制</a>
   </h3>
-  <p>The <code>scope</code> option defines the service worker's registration scope, determining what range of URLs it can control.</p>
+  <p><code>scope</code> 选项定义了服务 Worker 的注册范围，决定了它可以控制的 URL 范围。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> appConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ApplicationConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  providers: [</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    <a href="/api/service-worker/provideServiceWorker">provideServiceWorker</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'ngsw-worker.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      enabled: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">!</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/isDevMode">isDevMode</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      scope: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'/app/'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Service worker will only control URLs under /app/</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  ],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">};</span></span></code></pre>
   </div>
   <ul class="docs-list">
-    <li>Controls which URLs the service worker can intercept and manage</li>
-<li>By default, the scope is the directory containing the service worker script</li>
-<li>Used when calling <code>ServiceWorkerContainer.register()</code></li>
+    <li>控制服务 Worker 可以拦截和管理的 URL</li>
+<li>默认情况下，范围是包含服务 Worker 脚本的目录</li>
+<li>在调用 <code>ServiceWorkerContainer.register()</code> 时使用</li>
 
   </ul>
   
   <h3 id="registration-strategy-configuration">
-    <a href="#registration-strategy-configuration" class="docs-anchor" tabindex="-1" aria-label="Link to Registration strategy configuration">Registration strategy configuration</a>
+    <a href="#registration-strategy-configuration" class="docs-anchor" tabindex="-1" aria-label="Link to Registration strategy configuration">注册策略配置</a>
   </h3>
-  <p>The <code>registrationStrategy</code> option defines when the service worker will be registered with the browser, providing control over the timing of registration.</p>
+  <p><code>registrationStrategy</code> 选项定义了服务 Worker 何时向浏览器注册，从而控制注册时机。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> appConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ApplicationConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  providers: [</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    <a href="/api/service-worker/provideServiceWorker">provideServiceWorker</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'ngsw-worker.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      enabled: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">!</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/isDevMode">isDevMode</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      registrationStrategy: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'registerWhenStable:30000'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  ],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">};</span></span></code></pre>
-  </div><p>Available registration strategies:</p>
+  </div><p>可用的注册策略：</p>
 
   <ul class="docs-list">
-    <li><strong><code>&#39;registerWhenStable:timeout&#39;</code></strong> (default: <code>&#39;registerWhenStable:30000&#39;</code>) - Register as soon as the application stabilizes (no pending micro-/macro-tasks) but no later than the specified timeout in milliseconds</li>
-<li><strong><code>&#39;registerImmediately&#39;</code></strong> - Register the service worker immediately</li>
-<li><strong><code>&#39;registerWithDelay:timeout&#39;</code></strong> - Register with a delay of the specified timeout in milliseconds</li>
+    <li><strong><code>'registerWhenStable:timeout'</code></strong> (默认: <code>'registerWhenStable:30000'</code>) - 在应用稳定后（没有待处理的微任务/宏任务）立即注册，但最晚不超过指定的超时毫秒数</li>
+<li><strong><code>'registerImmediately'</code></strong> - 立即注册服务 Worker</li>
+<li><strong><code>'registerWithDelay:timeout'</code></strong> - 延迟指定的超时毫秒数后注册</li>
 
   </ul>
   <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Register immediately</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> immediateConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ApplicationConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  providers: [</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    <a href="/api/service-worker/provideServiceWorker">provideServiceWorker</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'ngsw-worker.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      enabled: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">!</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/isDevMode">isDevMode</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      registrationStrategy: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'registerImmediately'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  ],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">};</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Register with a 5-second delay</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> delayedConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ApplicationConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  providers: [</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    <a href="/api/service-worker/provideServiceWorker">provideServiceWorker</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'ngsw-worker.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      enabled: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">!</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/isDevMode">isDevMode</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      registrationStrategy: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'registerWithDelay:5000'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  ],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">};</span></span></code></pre>
-  </div><p>You can also provide an Observable factory function for custom registration timing:</p>
+  </div><p>你还可以为自定义注册时序提供一个 Observable 工厂函数：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { timer } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> 'rxjs'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> customConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ApplicationConfig</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  providers: [</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    <a href="/api/service-worker/provideServiceWorker">provideServiceWorker</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'ngsw-worker.js'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      enabled: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">!</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/isDevMode">isDevMode</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(),</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">      registrationStrategy</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: () </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=&gt;</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> timer</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">10_000</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">), </span><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Register after 10 seconds</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  ],</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">};</span></span></code></pre>
   </div>
   <h2 id="more-on-angular-service-workers">
-    <a href="#more-on-angular-service-workers" class="docs-anchor" tabindex="-1" aria-label="Link to More on Angular service workers">More on Angular service workers</a>
+    <a href="#more-on-angular-service-workers" class="docs-anchor" tabindex="-1" aria-label="Link to More on Angular service workers">有关 Angular Service Worker 的更多信息</a>
   </h2>
-  <p>You might also be interested in the following:</p>
+  <p>你可能也会对以下内容感兴趣：</p>
 
     <nav class="docs-pill-row">
       
     <a class="docs-pill" href="ecosystem/service-workers/config">
-      Configuration file
+      配置文件
     </a>
     
     <a class="docs-pill" href="ecosystem/service-workers/communications">
-      Communicating with the Service Worker
+      与 Service Worker 通信
     </a>
     
     <a class="docs-pill" href="ecosystem/service-workers/push-notifications">
-      Push notifications
+      推送通知
     </a>
     
     <a class="docs-pill" href="ecosystem/service-workers/devops">
-      Service Worker devops
+      Service Worker 运维
     </a>
     
     <a class="docs-pill" href="ecosystem/service-workers/app-shell">
-      App shell pattern
+      App Shell 模式
     </a>
     
 

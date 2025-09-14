@@ -1,11 +1,10 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Adding harness support for additional testing environments</h1>
+    <h1 tabindex="-1">为其他测试环境添加组件测试工具支持</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/guide/testing/component-harnesses-testing-environments.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
@@ -14,94 +13,94 @@
     </header>
     
   <h2 id="before-you-start">
-    <a href="#before-you-start" class="docs-anchor" tabindex="-1" aria-label="Link to Before you start">Before you start</a>
+    <a href="#before-you-start" class="docs-anchor" tabindex="-1" aria-label="Link to Before you start">开始之前</a>
   </h2>
   
     <div class="docs-alert docs-alert-tip">
-    <p><strong>TIP:</strong> This guide assumes you've already read the <a href="guide/testing/component-harnesses-overview">component harnesses overview guide</a>. Read that first if you're new to using component harnesses.</p>
+    <p><strong>提示：</strong> 本指南假定你已阅读过<a href="guide/testing/component-harnesses-overview">组件测试工具概览指南</a>。如果你是组件测试工具的新手，请先阅读该指南。</p>
 
     </div>
     
   <h3 id="when-does-adding-support-for-a-test-environment-make-sense">
-    <a href="#when-does-adding-support-for-a-test-environment-make-sense" class="docs-anchor" tabindex="-1" aria-label="Link to When does adding support for a test environment make sense?">When does adding support for a test environment make sense?</a>
+    <a href="#when-does-adding-support-for-a-test-environment-make-sense" class="docs-anchor" tabindex="-1" aria-label="Link to When does adding support for a test environment make sense?">什么时候为测试环境添加支持才有意义？</a>
   </h3>
-  <p>To use component harnesses in the following environments, you can use Angular CDK's two built-in environments:</p>
+  <p>要在以下环境中使用组件测试工具，你可以使用 Angular CDK 的两个内置环境：</p>
 
   <ul class="docs-list">
-    <li>Unit tests</li>
-<li>WebDriver end-to-end tests</li>
+    <li>单元测试</li>
+<li>WebDriver 端到端测试</li>
 
   </ul>
-  <p>To use a supported testing environment, read the <a href="guide/testing/creating-component-harnesses">Creating harnesses for your components guide</a>.</p>
-<p>Otherwise, to add support for other environments, you need to define how to interact with a DOM element and how DOM interactions work in your environment. Continue reading to learn more.</p>
+  <p>要使用受支持的测试环境，请阅读<a href="guide/testing/creating-component-harnesses">为你的组件创建测试工具指南</a>。</p>
+<p>否则，要为其他环境添加支持，你需要定义如何与 DOM 元素交互以及 DOM 交互在你的环境中如何工作。继续阅读以了解更多信息。</p>
 
   <h3 id="cdk-installation">
-    <a href="#cdk-installation" class="docs-anchor" tabindex="-1" aria-label="Link to CDK Installation">CDK Installation</a>
+    <a href="#cdk-installation" class="docs-anchor" tabindex="-1" aria-label="Link to CDK Installation">CDK 安装</a>
   </h3>
-  <p>The <a href="https://material.angular.dev/cdk/categories" target="_blank">Component Dev Kit (CDK)</a> is a set of behavior primitives for building components. To use the component harnesses, first install <code>@angular/cdk</code> from npm. You can do this from your terminal using the Angular CLI:</p>
+  <p><a href="https://material.angular.dev/cdk/categories" target="_blank">组件开发工具包 (CDK)</a> 是一组用于构建组件的行为基元。要使用组件 harnesses，请首先从 npm 安装 <code>@angular/cdk</code>。您可以使用 Angular CLI 从终端执行此操作：</p>
 <div class="docs-code shell">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">ng</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> add</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> @angular/cdk</span></span></code></pre>
   </div>
   <h2 id="creating-a-testelement-implementation">
-    <a href="#creating-a-testelement-implementation" class="docs-anchor" tabindex="-1" aria-label="Link to Creating a <code>TestElement</code> implementation">Creating a <code>TestElement</code> implementation</a>
+    <a href="#creating-a-testelement-implementation" class="docs-anchor" tabindex="-1" aria-label="Link to Creating a <code>TestElement</code> implementation">创建 <code>TestElement</code> 实现</a>
   </h2>
-  <p>Every test environment must define a <a href="/api/cdk/testing/TestElement"><code>TestElement</code></a> implementation. The <a href="/api/cdk/testing/TestElement"><code>TestElement</code></a> interface serves as an environment-agnostic representation of a DOM element. It enables harnesses to interact with DOM elements regardless of the underlying environment. Because some environments don't support interacting with DOM elements synchronously (e.g. WebDriver), all <a href="/api/cdk/testing/TestElement"><code>TestElement</code></a> methods are asynchronous, returning a <code>Promise</code> with the result of the operation.</p>
-<p><a href="/api/cdk/testing/TestElement"><code>TestElement</code></a> offers a number of methods to interact with the underlying DOM such as <code>blur()</code>, <code>click()</code>, <code>getAttribute()</code>, and more. See the <a href="/api/cdk/testing/TestElement">TestElement API reference page</a> for the full list of methods.</p>
-<p>The <a href="/api/cdk/testing/TestElement"><code>TestElement</code></a> interface consists largely of methods that resemble methods available on <code>HTMLElement</code>. Similar methods exist in most test environments, which makes implementing the methods fairly straightforward. However, one important difference to note when implementing the <code>sendKeys</code> method, is that the key codes in the <a href="/api/cdk/testing/TestKey"><code>TestKey</code></a> enum likely differ from the key codes used in the test environment. Environment authors should maintain a mapping from <a href="/api/cdk/testing/TestKey"><code>TestKey</code></a> codes to the codes used in the particular testing environment.</p>
-<p>The <a href="/api/cdk/testing/testbed/UnitTestElement">UnitTestElement</a> and <a href="/api/cdk/testing/selenium-webdriver/SeleniumWebDriverElement">SeleniumWebDriverElement</a> implementations in Angular CDK serve as good examples of implementations of this interface.</p>
+  <p>每个测试环境都必须定义一个 <a href="/api/cdk/testing/TestElement"><code>TestElement</code></a> 实现。 <a href="/api/cdk/testing/TestElement"><code>TestElement</code></a> 接口作为 DOM 元素的独立于环境的表示。它使 harnesses 能够与 DOM 元素进行交互，而无需考虑底层环境。由于某些环境不支持同步与 DOM 元素进行交互（例如 WebDriver），因此所有 <a href="/api/cdk/testing/TestElement"><code>TestElement</code></a> 方法都是异步的，它们返回一个包含操作结果的 <code>Promise</code>。</p>
+<p><a href="/api/cdk/testing/TestElement"><code>TestElement</code></a> 提供了许多与底层 DOM 交互的方法，例如 <code>blur()</code>、<code>click()</code>、<code>getAttribute()</code> 等。有关方法的完整列表，请参阅 <a href="/api/cdk/testing/TestElement">TestElement API 参考页</a>。</p>
+<p><a href="/api/cdk/testing/TestElement"><code>TestElement</code></a> 接口主要包含与 <code>HTMLElement</code> 类似的方法。大多数测试环境都存在类似的方法，这使得实现这些方法相当直接。但是，在实现 <code>sendKeys</code> 方法时，一个重要的区别是 <a href="/api/cdk/testing/TestKey"><code>TestKey</code></a> 枚举中的键码可能与测试环境中使用的键码不同。环境作者应维护从 <a href="/api/cdk/testing/TestKey"><code>TestKey</code></a> 码到特定测试环境中使用的码的映射。</p>
+<p>Angular CDK 中的 <a href="/api/cdk/testing/testbed/UnitTestElement">UnitTestElement</a> 和 <a href="/api/cdk/testing/selenium-webdriver/SeleniumWebDriverElement">SeleniumWebDriverElement</a> 实现是此接口实现的良好示例。</p>
 
   <h2 id="creating-a-harnessenvironment-implementation">
-    <a href="#creating-a-harnessenvironment-implementation" class="docs-anchor" tabindex="-1" aria-label="Link to Creating a <code>HarnessEnvironment</code> implementation">Creating a <code>HarnessEnvironment</code> implementation</a>
+    <a href="#creating-a-harnessenvironment-implementation" class="docs-anchor" tabindex="-1" aria-label="Link to Creating a <code>HarnessEnvironment</code> implementation">创建 <code>HarnessEnvironment</code> 实现</a>
   </h2>
-  <p>Test authors use <a href="/api/cdk/testing/HarnessEnvironment"><code>HarnessEnvironment</code></a> to create component harness instances for use in tests. <a href="/api/cdk/testing/HarnessEnvironment"><code>HarnessEnvironment</code></a> is an abstract class that must be extended to create a concrete subclass for the new environment. When supporting a new test environment, create a <a href="/api/cdk/testing/HarnessEnvironment"><code>HarnessEnvironment</code></a> subclass that adds concrete implementations for all abstract members.</p>
-<p><a href="/api/cdk/testing/HarnessEnvironment"><code>HarnessEnvironment</code></a> has a generic type parameter: <code>HarnessEnvironment&lt;E&gt;</code>. This parameter, <code>E</code>, represents the raw element type of the environment. For example, this parameter is Element for unit test environments.</p>
-<p>The following are the abstract methods that must be implemented:</p>
+  <p>测试作者使用 <a href="/api/cdk/testing/HarnessEnvironment"><code>HarnessEnvironment</code></a> 来创建组件 harness 实例以供测试使用。 <a href="/api/cdk/testing/HarnessEnvironment"><code>HarnessEnvironment</code></a> 是一个抽象类，必须对其进行扩展以创建新环境的具体子类。在支持新的测试环境时，请创建一个 <a href="/api/cdk/testing/HarnessEnvironment"><code>HarnessEnvironment</code></a> 子类，为所有抽象成员添加具体实现。</p>
+<p><a href="/api/cdk/testing/HarnessEnvironment"><code>HarnessEnvironment</code></a> 有一个泛型类型参数：<code>HarnessEnvironment&lt;E&gt;</code>。此参数 <code>E</code> 代表环境的原始元素类型。例如，对于单元测试环境，此参数为 Element。</p>
+<p>以下是必须实现的抽象方法：</p>
 
   <div class="docs-table docs-scroll-track-transparent">
     <table>
       <thead>
         <tr>
-<th align="left">Method</th>
-<th align="left">Description</th>
+<th align="left">方法</th>
+<th align="left">描述</th>
 </tr>
 
       </thead>
       <tbody>
         <tr>
 <td align="left"><code>abstract getDocumentRoot(): E</code></td>
-<td align="left">Gets the root element for the environment (e.g. <code>document.body</code>).</td>
+<td align="left">获取环境的根元素（例如 <code>document.body</code>）。</td>
 </tr>
 <tr>
 <td align="left"><code>abstract createTestElement(element: E): TestElement</code></td>
-<td align="left">Creates a <a href="/api/cdk/testing/TestElement"><code>TestElement</code></a> for the given raw element.</td>
+<td align="left">为给定的原始元素创建 <a href="/api/cdk/testing/TestElement"><code>TestElement</code></a>。</td>
 </tr>
 <tr>
 <td align="left"><code>abstract createEnvironment(element: E): HarnessEnvironment</code></td>
-<td align="left">Creates a <a href="/api/cdk/testing/HarnessEnvironment"><code>HarnessEnvironment</code></a> rooted at the given raw element.</td>
+<td align="left">创建以给定原始元素为根的 <a href="/api/cdk/testing/HarnessEnvironment"><code>HarnessEnvironment</code></a>。</td>
 </tr>
 <tr>
 <td align="left"><code>abstract getAllRawElements(selector: string): Promise&lt;E[]&gt;</code></td>
-<td align="left">Gets all of the raw elements under the root element of the environment matching the given selector.</td>
+<td align="left">获取环境中根元素下与给定选择器匹配的所有原始元素。</td>
 </tr>
 <tr>
 <td align="left"><code>abstract forceStabilize(): Promise&lt;void&gt;</code></td>
-<td align="left">Gets a <code>Promise</code> that resolves when the <a href="/api/core/NgZone"><code>NgZone</code></a> is stable. Additionally, if applicable, tells <a href="/api/core/NgZone"><code>NgZone</code></a> to stabilize (e.g. calling <a href="/api/core/testing/flush"><code>flush()</code></a> in a <a href="/api/core/testing/fakeAsync"><code>fakeAsync</code></a> test).</td>
+<td align="left">获取一个在 <a href="/api/core/NgZone"><code>NgZone</code></a> 稳定时解析的 <code>Promise</code>。此外，如果适用，会告知 <a href="/api/core/NgZone"><code>NgZone</code></a> 稳定（例如，在 <a href="/api/core/testing/fakeAsync"><code>fakeAsync</code></a> 测试中调用 <a href="/api/core/testing/flush"><code>flush()</code></a>）。</td>
 </tr>
 <tr>
 <td align="left"><code>abstract waitForTasksOutsideAngular(): Promise&lt;void&gt;</code></td>
-<td align="left">Gets a <code>Promise</code> that resolves when the parent zone of <a href="/api/core/NgZone"><code>NgZone</code></a> is stable.</td>
+<td align="left">获取一个在 <a href="/api/core/NgZone"><code>NgZone</code></a> 的父区域稳定时解析的 <code>Promise</code>。</td>
 </tr>
 
       </tbody>
     </table>
   </div>
-  <p>In addition to implementing the missing methods, this class should provide a way for test authors to get <a href="/api/cdk/testing/ComponentHarness"><code>ComponentHarness</code></a> instances. You should define a protected constructor and provide a static method called <code>loader</code> that returns a <a href="/api/cdk/testing/HarnessLoader"><code>HarnessLoader</code></a> instance. This allows test authors to write code like: <code>SomeHarnessEnvironment.loader().getHarness(...)</code>. Depending on the needs of the particular environment, the class may provide several different static methods or require arguments to be passed. (e.g. the <code>loader</code> method on <a href="/api/cdk/testing/testbed/TestbedHarnessEnvironment"><code>TestbedHarnessEnvironment</code></a> takes a <a href="/api/core/testing/ComponentFixture"><code>ComponentFixture</code></a>, and the class provides additional static methods called <code>documentRootLoader</code> and <code>harnessForFixture</code>).</p>
-<p>The <a href="/api/cdk/testing/testbed/TestbedHarnessEnvironment"><a href="/api/cdk/testing/testbed/TestbedHarnessEnvironment"><code>TestbedHarnessEnvironment</code></a></a> and <a href="/api/cdk/testing/selenium-webdriver/SeleniumWebDriverHarnessEnvironment">SeleniumWebDriverHarnessEnvironment</a> implementations in Angular CDK serve as good examples of implementations of this interface.</p>
+  <p>除了实现缺失的方法外，此类还应提供一种让测试作者获取 <a href="/api/cdk/testing/ComponentHarness"><code>ComponentHarness</code></a> 实例的方式。您应该定义一个受保护的构造函数，并提供一个名为 <code>loader</code> 的静态方法，该方法返回一个 <a href="/api/cdk/testing/HarnessLoader"><code>HarnessLoader</code></a> 实例。这允许测试作者编写类似的代码：<code>SomeHarnessEnvironment.loader().getHarness(...)</code>。根据特定环境的需求，该类可以提供几个不同的静态方法或要求传递参数。（例如，<a href="/api/cdk/testing/testbed/TestbedHarnessEnvironment"><code>TestbedHarnessEnvironment</code></a> 上的 <code>loader</code> 方法接受一个 <a href="/api/core/testing/ComponentFixture"><code>ComponentFixture</code></a>，并且该类提供名为 <code>documentRootLoader</code> 和 <code>harnessForFixture</code> 的附加静态方法）。</p>
+<p>Angular CDK 中的 <a href="/api/cdk/testing/testbed/TestbedHarnessEnvironment"></a><a href="/api/cdk/testing/testbed/TestbedHarnessEnvironment"><code>TestbedHarnessEnvironment</code></a> 和 <a href="/api/cdk/testing/selenium-webdriver/SeleniumWebDriverHarnessEnvironment">SeleniumWebDriverHarnessEnvironment</a> 实现是此接口实现的良好示例。</p>
 
   <h2 id="handling-auto-change-detection">
-    <a href="#handling-auto-change-detection" class="docs-anchor" tabindex="-1" aria-label="Link to Handling auto change detection">Handling auto change detection</a>
+    <a href="#handling-auto-change-detection" class="docs-anchor" tabindex="-1" aria-label="Link to Handling auto change detection">处理自动变更检测</a>
   </h2>
-  <p>In order to support the <a href="/api/cdk/testing/manualChangeDetection"><code>manualChangeDetection</code></a> and parallel APIs, your environment should install a handler for the auto change detection status.</p>
-<p>When your environment wants to start handling the auto change detection status it can call <code>handleAutoChangeDetectionStatus(handler)</code>. The handler function will receive a <a href="/api/cdk/testing/AutoChangeDetectionStatus"><code>AutoChangeDetectionStatus</code></a> which has two properties <code>isDisabled</code> and <code>onDetectChangesNow()</code>. See the <a href="/api/cdk/testing/AutoChangeDetectionStatus">AutoChangeDetectionStatus API reference page</a> for more information.
-If your environment wants to stop handling auto change detection status it can call <a href="/api/cdk/testing/stopHandlingAutoChangeDetectionStatus"><code>stopHandlingAutoChangeDetectionStatus()</code></a>.</p>
+  <p>为了支持 <a href="/api/cdk/testing/manualChangeDetection"><code>manualChangeDetection</code></a> 和并行 API，您的环境应安装一个自动变更检测状态的处理器。</p>
+<p>当您的环境想要开始处理自动变更检测状态时，可以调用 <code>handleAutoChangeDetectionStatus(handler)</code>。处理器函数将接收一个 <a href="/api/cdk/testing/AutoChangeDetectionStatus"><code>AutoChangeDetectionStatus</code></a>，它有两个属性 <code>isDisabled</code> 和 <code>onDetectChangesNow()</code>。有关更多信息，请参阅 <a href="/api/cdk/testing/AutoChangeDetectionStatus">AutoChangeDetectionStatus API 参考页</a>。
+如果您的环境想要停止处理自动变更检测状态，可以调用 <a href="/api/cdk/testing/stopHandlingAutoChangeDetectionStatus"><code>stopHandlingAutoChangeDetectionStatus()</code></a>。</p>

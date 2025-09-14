@@ -1,59 +1,58 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Unhandled errors in Angular</h1>
+    <h1 tabindex="-1">Angular 中的未处理错误</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/best-practices/error-handling.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>As your Angular application runs, some of your code may throw an error. If left unhandled, these errors can lead to unexpected behavior and a nonresponsive UI. This guide covers how Angular deals with errors that are not explicitly caught by your application code. For guidance on writing your own error handling logic within your application, consult best practices for error handling in JavaScript and Angular.</p>
-<p>A fundamental principle in Angular's error handling strategy is that errors should be surfaced to developers at the callsite whenever possible. This approach ensures that the code which initiated an operation has the context necessary to understand the error, handle it appropriately, and decide what the appropriate application state should be. By making errors visible at their origin, developers can implement error handling that is specific to the failed operation and has access to relevant information for recovery or providing informative feedback to the end-user. This also helps to avoid the "Overly general error" smell, where errors are reported without sufficient context to understand their cause.</p>
-<p>For example, consider a component that fetches user data from an API. The code responsible for making the API call should include error handling (e.g., using a <code>try...catch</code> block or the <code>catchError</code> operator in RxJS) to manage potential network issues or errors returned by the API. This allows the component to display a user-friendly error message or retry the request, rather than letting the error propagate unhandled.</p>
+    <p>当你的 Angular 应用运行时，你的一些代码可能会抛出错误。如果这些错误未被处理，可能会导致意外行为和无响应的 UI。本指南涵盖了 Angular 如何处理那些未被你的应用代码显式捕获的错误。有关在你的应用中编写自己的错误处理逻辑的指导，请参考 JavaScript 和 Angular 中错误处理的最佳实践。</p>
+<p>Angular 的错误处理策略的一个基本原则是，错误应尽可能在调用点暴露给开发者。这种方法确保了发起操作的代码拥有理解错误、妥善处理错误以及决定应用状态所需的上下文。通过使错误在其源头可见，开发者可以实现针对失败操作的、具有相关信息以进行恢复或向最终用户提供信息反馈的错误处理。这也有助于避免“过于笼统的错误”的弊端，即错误被报告但缺乏足够的上下文来理解其原因。</p>
+<p>例如，考虑一个从 API 获取用户数据的组件。负责进行 API 调用的代码应包含错误处理（例如，使用 <code>try...catch</code> 块或 RxJS 中的 <code>catchError</code> 操作符）来管理潜在的网络问题或 API 返回的错误。这使得组件能够显示用户友好的错误消息或重试请求，而不是让错误未被处理地传播下去。</p>
 
   <h2 id="unhandled-errors-are-reported-to-the-errorhandler">
-    <a href="#unhandled-errors-are-reported-to-the-errorhandler" class="docs-anchor" tabindex="-1" aria-label="Link to Unhandled errors are reported to the <code>ErrorHandler</code>">Unhandled errors are reported to the <code>ErrorHandler</code></a>
+    <a href="#unhandled-errors-are-reported-to-the-errorhandler" class="docs-anchor" tabindex="-1" aria-label="Link to Unhandled errors are reported to the <code>ErrorHandler</code>">未处理的错误会被报告给 <code>ErrorHandler</code></a>
   </h2>
-  <p>Angular reports unhandled errors to the application's root <a href="api/core/ErrorHandler">ErrorHandler</a>. When providing a custom <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a>, provide it in your <code>ApplicationConfig</code> as part of calling <a href="/api/platform-browser/bootstrapApplication"><code>bootstrapApplication</code></a>.</p>
-<p>When building an Angular application, often you write code that is called automatically <em>by</em> the framework. For example, Angular is responsible for calling a component's constructor and lifecycle methods when that component appears in a template. When the framework runs your code, there's nowhere you could reasonably add a <code>try</code> block to gracefully handle errors. In situations like this, Angular catches errors and sends them to the <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a>.</p>
-<p>Angular does <em>not</em> catch errors inside of APIs that are called directly by your code. For example, if you have a service with a method that throws an error and you call that method in your component, Angular will not automatically catch that error. You are responsible for handling it using mechanisms like <code>try...catch</code>.</p>
-<p>Angular catches <em>asynchronous</em> errors from user promises or observables only when:</p>
+  <p>Angular 会将未处理的错误报告给应用的根 <a href="api/core/ErrorHandler">ErrorHandler</a>。当提供自定义 <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a> 时，请在调用 <a href="/api/platform-browser/bootstrapApplication"><code>bootstrapApplication</code></a> 时将其作为 <code>ApplicationConfig</code> 的一部分提供。</p>
+<p>在构建 Angular 应用时，你经常会编写一些代码，这些代码会被框架自动调用。例如，当一个组件出现在模板中时，Angular 负责调用该组件的构造函数和生命周期方法。当框架运行你的代码时，你无法合理地添加一个 <code>try</code> 块来优雅地处理错误。在这种情况下，Angular 会捕获错误并将它们发送到 <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a>。</p>
+<p>Angular 不会捕获由你的代码直接调用的 API 中的错误。例如，如果你有一个服务，其中有一个方法会抛出错误，而你在组件中调用了该方法，Angular 不会自动捕获该错误。你需要使用 <code>try...catch</code> 等机制来处理它。</p>
+<p>Angular 仅在以下情况下捕获用户 Promise 或可观察者中的<em>异步</em>错误：</p>
 
   <ul class="docs-list">
-    <li>There is an explicit contract for Angular to wait for and use the result of the asynchronous operation, and</li>
-<li>When errors are not presented in the return value or state.</li>
+    <li>存在一个明确的约定，要求 Angular 等待并使用异步操作的结果，并且</li>
+<li>当错误未在返回值或状态中呈现时。</li>
 
   </ul>
-  <p>For example, <a href="/api/common/AsyncPipe"><code>AsyncPipe</code></a> and <a href="/api/core/PendingTasks#run"><code>PendingTasks.run</code></a> forward errors to the <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a>, whereas <a href="/api/core/resource"><code>resource</code></a> presents the error in the <code>status</code> and <code>error</code> properties.</p>
-<p>Errors that Angular reports to the <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a> are <em>unexpected</em> errors. These errors may be unrecoverable or an indication that the state of the application is corrupted. Applications should provide error handling using <code>try</code> blocks or appropriate error handling operators (like <code>catchError</code> in RxJS) where the error occurs whenever possible rather than relying on the <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a>, which is most frequently and appropriately used only as a mechanism to report potentially fatal errors to the error tracking and logging infrastructure.</p>
+  <p>例如，<a href="/api/common/AsyncPipe"><code>AsyncPipe</code></a> 和 <a href="/api/core/PendingTasks#run"><code>PendingTasks.run</code></a> 会将错误转发给 <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a>，而 <a href="/api/core/resource"><code>resource</code></a> 则在 <code>status</code> 和 <code>error</code> 属性中呈现错误。</p>
+<p>Angular 报告给 <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a> 的错误是<em>意外</em>错误。这些错误可能是无法恢复的，或者表明应用程序状态已损坏。应用程序应尽可能在错误发生的地方使用 <code>try</code> 块或适当的错误处理操作符（如 RxJS 中的 <code>catchError</code>）来提供错误处理，而不是依赖 <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a>。<code>ErrorHandler</code> 最常且最恰当地仅用作将潜在的致命错误报告给错误跟踪和日志记录基础设施的机制。</p>
 
   <h3 id="testbed-rethrows-errors-by-default">
-    <a href="#testbed-rethrows-errors-by-default" class="docs-anchor" tabindex="-1" aria-label="Link to <code>TestBed</code> rethrows errors by default"><code>TestBed</code> rethrows errors by default</a>
+    <a href="#testbed-rethrows-errors-by-default" class="docs-anchor" tabindex="-1" aria-label="Link to <code>TestBed</code> rethrows errors by default"><code>TestBed</code> 默认会重新抛出错误</a>
   </h3>
-  <p>In many cases, <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a> may only log errors and otherwise allow the application to continue running. In tests, however, you almost always want to surface these errors. Angular's <a href="/api/core/testing/TestBed"><code>TestBed</code></a> rethrows unexpected errors to ensure that errors caught by the framework cannot be unintentionally missed or ignored. In rare circumstances, a test may specifically attempt to ensure errors do not cause the application to be unresponsive or crash. In these situations, you can <a href="api/core/testing/TestModuleMetadata#rethrowApplicationErrors">configure <a href="/api/core/testing/TestBed"><code>TestBed</code></a> to <em>not</em> rethrow application errors</a> with <a href="/api/core/testing/TestBed#configureTestingModule({rethrowApplicationErrors: false})"><code>TestBed.configureTestingModule({rethrowApplicationErrors: false})</code></a>.</p>
+  <p>在许多情况下，<a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a> 可能只记录错误，并允许应用程序继续运行。然而，在测试中，你几乎总是希望暴露这些错误。Angular 的 <a href="/api/core/testing/TestBed"><code>TestBed</code></a> 会重新抛出意外错误，以确保框架捕获的错误不会被无意中遗漏或忽略。在极少数情况下，测试可能专门旨在确保错误不会导致应用程序无响应或崩溃。在这些情况下，你可以通过 <a href="/api/core/testing/TestBed#configureTestingModule({rethrowApplicationErrors: false})"><code>TestBed.configureTestingModule({rethrowApplicationErrors: false})</code></a> 来配置 <a href="/api/core/testing/TestBed"><code>TestBed</code></a>，使其<em>不</em>重新抛出应用错误。</p>
 
   <h2 id="global-error-listeners">
-    <a href="#global-error-listeners" class="docs-anchor" tabindex="-1" aria-label="Link to Global error listeners">Global error listeners</a>
+    <a href="#global-error-listeners" class="docs-anchor" tabindex="-1" aria-label="Link to Global error listeners">全局错误监听器</a>
   </h2>
-  <p>Errors that are caught neither by the application code nor by the framework's application instance may reach the global scope. Errors reaching the global scope can have unintended consequences if not accounted for. In non-browser environments, they may cause the process to crash. In the browser, these errors may go unreported and site visitors may see the errors in the browser console. Angular provides global listeners for both environments to account for these issues.</p>
+  <p>既未被应用代码也未被框架的应用实例捕获的错误可能会到达全局范围。如果未加以考虑，到达全局范围的错误可能会产生意外后果。在非浏览器环境中，它们可能导致进程崩溃。在浏览器中，这些错误可能未被报告，并且网站访问者可能会在浏览器控制台中看到这些错误。Angular 为这两种环境提供了全局监听器来处理这些问题。</p>
 
   <h3 id="client-side-rendering">
-    <a href="#client-side-rendering" class="docs-anchor" tabindex="-1" aria-label="Link to Client-side rendering">Client-side rendering</a>
+    <a href="#client-side-rendering" class="docs-anchor" tabindex="-1" aria-label="Link to Client-side rendering">客户端渲染</a>
   </h3>
-  <p>Adding <a href="/api/core/provideBrowserGlobalErrorListeners"><a href="/api/core/provideBrowserGlobalErrorListeners"><code>provideBrowserGlobalErrorListeners()</code></a></a> to the <a href="guide/di/dependency-injection#at-the-application-root-level-using-applicationconfig">ApplicationConfig</a> adds the <code>&#39;error&#39;</code> and <code>&#39;unhandledrejection&#39;</code> listeners to the browser window and forwards those errors to <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a>. The Angular CLI generates new applications with this provider by default. The Angular team recommends handling these global errors for most applications, either with the framework's built-in listeners or with your own custom listeners. If you provide custom listeners, you can remove <a href="/api/core/provideBrowserGlobalErrorListeners"><code>provideBrowserGlobalErrorListeners</code></a>.</p>
+  <p>将 <a href="/api/core/provideBrowserGlobalErrorListeners"><code>provideBrowserGlobalErrorListeners()</code></a> 添加到 <a href="guide/di/dependency-injection#at-the-application-root-level-using-applicationconfig">ApplicationConfig</a> 会将 <code>'error'</code> 和 <code>'unhandledrejection'</code> 监听器添加到浏览器窗口，并将这些错误转发给 <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a>。Angular CLI 默认会为新应用生成此提供者。Angular 团队建议大多数应用处理这些全局错误，无论是使用框架内置的监听器还是自定义监听器。如果你提供自定义监听器，可以移除 <a href="/api/core/provideBrowserGlobalErrorListeners"><code>provideBrowserGlobalErrorListeners</code></a>。</p>
 
   <h3 id="server-side-and-hybrid-rendering">
-    <a href="#server-side-and-hybrid-rendering" class="docs-anchor" tabindex="-1" aria-label="Link to Server-side and hybrid rendering">Server-side and hybrid rendering</a>
+    <a href="#server-side-and-hybrid-rendering" class="docs-anchor" tabindex="-1" aria-label="Link to Server-side and hybrid rendering">服务器端渲染和混合渲染</a>
   </h3>
-  <p>When using <a href="guide/ssr">Angular with SSR</a>, Angular automatically adds the <code>&#39;unhandledRejection&#39;</code> and <code>&#39;uncaughtException&#39;</code> listeners to the server process. These handlers prevent the server from crashing and instead log captured errors to the console.</p>
+  <p>在使用 <a href="guide/ssr">Angular with SSR</a> 时，Angular 会自动将 <code>'unhandledRejection'</code> 和 <code>'uncaughtException'</code> 监听器添加到服务器进程。这些处理器可以防止服务器崩溃，而是将捕获的错误记录到控制台。</p>
 
     <div class="docs-alert docs-alert-important">
-    <p><strong>IMPORTANT:</strong> If the application is using Zone.js, only the <code>&#39;unhandledRejection&#39;</code> handler is added. When Zone.js is present, errors inside the Application's Zone are already forwarded to the application <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a> and do not reach the server process.</p>
+    <p><strong>重要提示：</strong>如果应用正在使用 Zone.js，则只添加 <code>'unhandledRejection'</code> 处理器。当存在 Zone.js 时，应用 Zone 内的错误已转发到应用的 <a href="/api/core/ErrorHandler"><code>ErrorHandler</code></a>，并且不会到达服务器进程。</p>
 
     </div>
     

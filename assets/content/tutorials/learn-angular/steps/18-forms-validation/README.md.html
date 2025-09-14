@@ -1,20 +1,19 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Validating forms</h1>
+    <h1 tabindex="-1">验证表单</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/tutorials/learn-angular/steps/18-forms-validation/README.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>Another common scenario when working with forms is the need to validate the inputs to ensure the correct data is submitted.</p>
-<p>Note: Learn more about <a href="/guide/forms/reactive-forms#validating-form-input">validating form input in the in-depth guide</a>.</p>
-<p>In this activity, you'll learn how to validate forms with reactive forms.</p>
+    <p>使用表单时，另一个常见的场景是需要验证输入，以确保提交的数据正确。</p>
+<p>注意：在深入指南中了解有关<a href="/guide/forms/reactive-forms#validating-form-input">验证表单输入</a>的更多信息。</p>
+<p>在本活动中，你将学习如何使用响应式表单验证表单。</p>
 <hr>
 
 
@@ -24,10 +23,10 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="import-validators">
-    <a href="#import-validators" class="docs-anchor" tabindex="-1" aria-label="Link to Import Validators">Import Validators</a>
+    <a href="#import-validators" class="docs-anchor" tabindex="-1" aria-label="Link to Import Validators">导入 Validators</a>
   </h3>
   
-      <p>Angular provides a set of validation tools. To use them, first update the component to import <a href="/api/forms/Validators"><code>Validators</code></a> from <code>@angular/forms</code>.</p>
+      <p>Angular 提供了一套验证工具。要使用它们，请首先更新组件以从<code>@angular/forms</code>导入<a href="/api/forms/Validators"><code>Validators</code></a>。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line highlighted"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {<a href="/api/forms/ReactiveFormsModule">ReactiveFormsModule</a>, Validators} </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/forms'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Component">Component</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">...</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> App</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {}</span></span></code></pre>
@@ -38,12 +37,12 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="add-validation-to-form">
-    <a href="#add-validation-to-form" class="docs-anchor" tabindex="-1" aria-label="Link to Add validation to form">Add validation to form</a>
+    <a href="#add-validation-to-form" class="docs-anchor" tabindex="-1" aria-label="Link to Add validation to form">为表单添加验证</a>
   </h3>
   
-      <p>Every <a href="/api/forms/FormControl"><code>FormControl</code></a> can be passed the <a href="/api/forms/Validators"><code>Validators</code></a> you want to use for validating the <a href="/api/forms/FormControl"><code>FormControl</code></a> values. For example, if you want to make the <code>name</code> field in <code>profileForm</code> required then use <a href="/api/forms/Validators#required"><code>Validators.required</code></a>.
-For the <code>email</code> field in our Angular form, we want to ensure it's not left empty and follows a valid email address structure. We can achieve this by combining the <a href="/api/forms/Validators#required"><code>Validators.required</code></a> and <a href="/api/forms/Validators#email"><code>Validators.email</code></a> validators in an array.
-Update the <code>name</code> and <code>email</code> <a href="/api/forms/FormControl"><code>FormControl</code></a>:</p>
+      <p>每个<a href="/api/forms/FormControl"><code>FormControl</code></a>都可以传递你想要用于验证<a href="/api/forms/FormControl"><code>FormControl</code></a>值的<a href="/api/forms/Validators"><code>Validators</code></a>。例如，如果你想让<code>profileForm</code>中的<code>name</code>字段成为必填项，则使用<a href="/api/forms/Validators#required"><code>Validators.required</code></a>。
+对于我们 Angular 表单中的<code>email</code>字段，我们希望确保它不为空并且遵循有效的电子邮件地址结构。我们可以通过将<a href="/api/forms/Validators#required"><code>Validators.required</code></a>和<a href="/api/forms/Validators#email"><code>Validators.email</code></a>验证器组合在一个数组中来实现。
+更新<code>name</code>和<code>email</code>的<a href="/api/forms/FormControl"><code>FormControl</code></a>：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">profileForm </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/forms/FormGroup">FormGroup</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  name: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/forms/FormControl">FormControl</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">''</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, <a href="/api/forms/Validators">Validators</a>.required),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  email: </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">new</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/forms/FormControl">FormControl</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">''</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, [<a href="/api/forms/Validators">Validators</a>.required, Validators.email]),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">});</span></span></code></pre>
@@ -54,11 +53,11 @@ Update the <code>name</code> and <code>email</code> <a href="/api/forms/FormCont
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="check-form-validation-in-template">
-    <a href="#check-form-validation-in-template" class="docs-anchor" tabindex="-1" aria-label="Link to Check form validation in template">Check form validation in template</a>
+    <a href="#check-form-validation-in-template" class="docs-anchor" tabindex="-1" aria-label="Link to Check form validation in template">在模板中检查表单验证</a>
   </h3>
   
-      <p>To determine if a form is valid, the <a href="/api/forms/FormGroup"><code>FormGroup</code></a> class has a <code>valid</code> property.
-You can use this property to dynamically bind attributes. Update the submit <code>button</code> to be enabled based on the validity of the form.</p>
+      <p>要确定表单是否有效，<a href="/api/forms/FormGroup"><code>FormGroup</code></a>类有一个<code>valid</code>属性。
+你可以使用此属性动态绑定属性。根据表单的有效性更新提交<code>button</code>以启用它。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> type</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"submit"</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> [disabled]</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"!profileForm.valid"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Submit&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span></code></pre>
@@ -66,5 +65,5 @@ You can use this property to dynamically bind attributes. Update the submit <cod
     </li>
     
     </ol>
-    <p>You now know the basics around how validation works with reactive forms.</p>
-<p>Great job learning these core concepts of working with forms in Angular. If you want to learn more, be sure to refer to the <a href="guide/forms/form-validation">Angular forms documentation</a>.</p>
+    <p>现在你已经了解了关于验证如何与响应式表单一起工作的基础知识。</p>
+<p>出色地学习了在 Angular 中使用表单的这些核心概念。 如果你想了解更多信息，请务必参考 <a href="guide/forms/form-validation">Angular 表单文档</a>。</p>

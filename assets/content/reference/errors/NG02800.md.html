@@ -1,27 +1,26 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">JSONP support in HttpClient configuration</h1>
+    <h1 tabindex="-1">HttpClient 配置中的 JSONP 支持</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/reference/errors/NG02800.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>Angular produces this error when you attempt a <code>JSONP</code> request without providing the necessary support for it in the <a href="/api/common/http/HttpClient"><code>HttpClient</code></a> configuration.
-To enable <code>JSONP</code> support, you can do one of the following:</p>
+    <p>当您尝试进行 <code>JSONP</code> 请求但未在 <a href="/api/common/http/HttpClient"><code>HttpClient</code></a> 配置中提供必要支持时，Angular 会产生此错误。
+要启用 <code>JSONP</code> 支持，您可以执行以下任一操作：</p>
 
   <ul class="docs-list">
-    <li>add the <a href="/api/common/http/withJsonpSupport"><code>withJsonpSupport()</code></a> as an argument during the <a href="/api/common/http/provideHttpClient"><code>provideHttpClient</code></a> function call (e.g. <code>provideHttpClient(withJsonpSupport())</code>) when <a href="/api/platform-browser/bootstrapApplication"><code>bootstrapApplication</code></a> is useddocs</li>
-<li>import the <a href="/api/common/http/HttpClientJsonpModule"><code>HttpClientJsonpModule</code></a> in your root AppModule, when NgModule-based bootstrap is used.</li>
+    <li>在使用 <a href="/api/platform-browser/bootstrapApplication"><code>bootstrapApplication</code></a> 时，将 <a href="/api/common/http/withJsonpSupport"><code>withJsonpSupport()</code></a> 作为参数添加到 <a href="/api/common/http/provideHttpClient"><code>provideHttpClient</code></a> 函数调用中（例如：<code>provideHttpClient(withJsonpSupport())</code>）</li>
+<li>在使用基于 NgModule 的引导时，在根 AppModule 中导入 <a href="/api/common/http/HttpClientJsonpModule"><code>HttpClientJsonpModule</code></a>。</li>
 
   </ul>
   
   <h2 id="debugging-the-error">
-    <a href="#debugging-the-error" class="docs-anchor" tabindex="-1" aria-label="Link to Debugging the error">Debugging the error</a>
+    <a href="#debugging-the-error" class="docs-anchor" tabindex="-1" aria-label="Link to Debugging the error">调试错误</a>
   </h2>
-  <p>Make sure that the JSONP support is added into your application either by calling the <a href="/api/common/http/withJsonpSupport"><code>withJsonpSupport</code></a> function (when <a href="/api/common/http/provideHttpClient"><code>provideHttpClient</code></a> is used) or importing the <a href="/api/common/http/HttpClientJsonpModule"><code>HttpClientJsonpModule</code></a> module as described above.</p>
+  <p>请确保已通过调用 <a href="/api/common/http/withJsonpSupport"><code>withJsonpSupport</code></a> 函数（在使用 <a href="/api/common/http/provideHttpClient"><code>provideHttpClient</code></a> 时）或导入上述描述的 <a href="/api/common/http/HttpClientJsonpModule"><code>HttpClientJsonpModule</code></a> 模块，将 JSONP 支持添加到您的应用程序中。</p>

@@ -1,194 +1,193 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Router Lifecycle and Events</h1>
+    <h1 tabindex="-1">路由器生命周期和事件</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/guide/routing/lifecycle-and-events.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>Angular Router provides a comprehensive set of lifecycle hooks and events that allow you to respond to navigation changes and execute custom logic during the routing process.</p>
+    <p>Angular 路由器提供了一套全面的生命周期钩子和事件，允许你在路由过程中响应导航更改并执行自定义逻辑。</p>
 
   <h2 id="common-router-events">
-    <a href="#common-router-events" class="docs-anchor" tabindex="-1" aria-label="Link to Common router events">Common router events</a>
+    <a href="#common-router-events" class="docs-anchor" tabindex="-1" aria-label="Link to Common router events">常见的路由器事件</a>
   </h2>
-  <p>The Angular Router emits navigation events that you can subscribe to in order to track the navigation lifecycle. These events are available through the <a href="/api/router/Router#events"><code>Router.events</code></a> observable. This section covers common routing lifecycle events for navigation and error tracking (in chronological order).</p>
+  <p>Angular 路由器会发出导航事件，你可以订阅这些事件来跟踪导航生命周期。这些事件可通过 <a href="/api/router/Router#events"><code>Router.events</code></a> 可观察者获取。本节涵盖了用于导航和错误跟踪的常见路由生命周期事件（按时间顺序排列）。</p>
 
   <div class="docs-table docs-scroll-track-transparent">
     <table>
       <thead>
         <tr>
-<th>Events</th>
-<th>Description</th>
+<th>事件</th>
+<th>说明</th>
 </tr>
 
       </thead>
       <tbody>
         <tr>
-<td><a href="api/router/NavigationStart"><a href="/api/router/NavigationStart"><code>NavigationStart</code></a></a></td>
-<td>Occurs when navigation begins and contains the requested URL.</td>
+<td><a href="api/router/NavigationStart"></a><a href="/api/router/NavigationStart"><code>NavigationStart</code></a></td>
+<td>导航开始时发生，包含请求的 URL。</td>
 </tr>
 <tr>
-<td><a href="api/router/RoutesRecognized"><a href="/api/router/RoutesRecognized"><code>RoutesRecognized</code></a></a></td>
-<td>Occurs after the router determines which route matches the URL and contains the route state information.</td>
+<td><a href="api/router/RoutesRecognized"></a><a href="/api/router/RoutesRecognized"><code>RoutesRecognized</code></a></td>
+<td>路由器确定哪个路由匹配 URL 后发生，包含路由状态信息。</td>
 </tr>
 <tr>
-<td><a href="api/router/GuardsCheckStart"><a href="/api/router/GuardsCheckStart"><code>GuardsCheckStart</code></a></a></td>
-<td>Begins the route guard phase. The router evaluates route guards like <code>canActivate</code> and <code>canDeactivate</code>.</td>
+<td><a href="api/router/GuardsCheckStart"></a><a href="/api/router/GuardsCheckStart"><code>GuardsCheckStart</code></a></td>
+<td>开始路由守卫阶段。路由器会评估路由守卫，如 <code>canActivate</code> 和 <code>canDeactivate</code>。</td>
 </tr>
 <tr>
-<td><a href="api/router/GuardsCheckEnd"><a href="/api/router/GuardsCheckEnd"><code>GuardsCheckEnd</code></a></a></td>
-<td>Signals completion of guard evaluation. Contains the result (allowed/denied).</td>
+<td><a href="api/router/GuardsCheckEnd"></a><a href="/api/router/GuardsCheckEnd"><code>GuardsCheckEnd</code></a></td>
+<td>表示守卫评估已完成。包含结果（允许/拒绝）。</td>
 </tr>
 <tr>
-<td><a href="api/router/ResolveStart"><a href="/api/router/ResolveStart"><code>ResolveStart</code></a></a></td>
-<td>Begins the data resolution phase. Route resolvers start fetching data.</td>
+<td><a href="api/router/ResolveStart"></a><a href="/api/router/ResolveStart"><code>ResolveStart</code></a></td>
+<td>开始数据解析阶段。路由解析器开始获取数据。</td>
 </tr>
 <tr>
-<td><a href="api/router/ResolveEnd"><a href="/api/router/ResolveEnd"><code>ResolveEnd</code></a></a></td>
-<td>Data resolution completes. All required data becomes available.</td>
+<td><a href="api/router/ResolveEnd"></a><a href="/api/router/ResolveEnd"><code>ResolveEnd</code></a></td>
+<td>数据解析完成。所有必需的数据都可用。</td>
 </tr>
 <tr>
-<td><a href="api/router/NavigationEnd"><a href="/api/router/NavigationEnd"><code>NavigationEnd</code></a></a></td>
-<td>Final event when navigation completes successfully. The router updates the URL.</td>
+<td><a href="api/router/NavigationEnd"></a><a href="/api/router/NavigationEnd"><code>NavigationEnd</code></a></td>
+<td>导航成功完成时的最终事件。路由器会更新 URL。</td>
 </tr>
 <tr>
-<td><a href="api/router/NavigationSkipped"><a href="/api/router/NavigationSkipped"><code>NavigationSkipped</code></a></a></td>
-<td>Occurs when the router skips navigation (e.g., same URL navigation).</td>
+<td><a href="api/router/NavigationSkipped"></a><a href="/api/router/NavigationSkipped"><code>NavigationSkipped</code></a></td>
+<td>当路由器跳过导航时发生（例如，导航到相同 URL）。</td>
 </tr>
 
       </tbody>
     </table>
   </div>
-  <p>The following are common error events:</p>
+  <p>以下是常见的错误事件：</p>
 
   <div class="docs-table docs-scroll-track-transparent">
     <table>
       <thead>
         <tr>
-<th>Event</th>
-<th>Description</th>
+<th>事件</th>
+<th>说明</th>
 </tr>
 
       </thead>
       <tbody>
         <tr>
-<td><a href="api/router/NavigationCancel"><a href="/api/router/NavigationCancel"><code>NavigationCancel</code></a></a></td>
-<td>Occurs when the router cancels navigation. Often due to a guard returning false.</td>
+<td><a href="api/router/NavigationCancel"></a><a href="/api/router/NavigationCancel"><code>NavigationCancel</code></a></td>
+<td>路由器取消导航时发生。通常是因为守卫返回 false。</td>
 </tr>
 <tr>
-<td><a href="api/router/NavigationError"><a href="/api/router/NavigationError"><code>NavigationError</code></a></a></td>
-<td>Occurs when navigation fails. Could be due to invalid routes or resolver errors.</td>
+<td><a href="api/router/NavigationError"></a><a href="/api/router/NavigationError"><code>NavigationError</code></a></td>
+<td>导航失败时发生。可能是由于无效路由或解析器错误。</td>
 </tr>
 
       </tbody>
     </table>
   </div>
-  <p>For a list of all lifecycle events, check out the <a href="#all-router-events">complete table of this guide</a>.</p>
+  <p>有关所有生命周期事件的列表，请查看<a href="#all-router-events">本指南的完整表格</a>。</p>
 
   <h2 id="how-to-subscribe-to-router-events">
-    <a href="#how-to-subscribe-to-router-events" class="docs-anchor" tabindex="-1" aria-label="Link to How to subscribe to router events">How to subscribe to router events</a>
+    <a href="#how-to-subscribe-to-router-events" class="docs-anchor" tabindex="-1" aria-label="Link to How to subscribe to router events">如何订阅路由器事件</a>
   </h2>
-  <p>When you want to run code during specific navigation lifecycle events, you can do so by subscribing to the <code>router.events</code> and checking the instance of the event:</p>
+  <p>当你想在特定的导航生命周期事件期间运行代码时，可以通过订阅 <code>router.events</code> 并检查事件实例来完成：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">// Example of subscribing to router events</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/core/Component">Component</a>, inject, signal, effect } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/core'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/router/Event">Event</a>, Router, NavigationStart, NavigationEnd } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/router'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Component">Component</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({ </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">...</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> })</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> RouterEventsComponent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  private</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> readonly</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70"> router</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> inject</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(<a href="/api/router/Router">Router</a>);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  </span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  constructor</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">    // Subscribe to router events and react to events</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.router.events.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">pipe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/rxjs-interop/takeUntilDestroyed">takeUntilDestroyed</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">()).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">subscribe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">((</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">event</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/router/Event">Event</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">      if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (event </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">instanceof</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/router/NavigationStart">NavigationStart</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">        // <a href="/api/router/Navigation">Navigation</a> starting</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">log</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'<a href="/api/router/Navigation">Navigation</a> starting:'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, event.url);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      }</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">      if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (event </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">instanceof</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/router/NavigationEnd">NavigationEnd</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">        // <a href="/api/router/Navigation">Navigation</a> completed</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">log</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'<a href="/api/router/Navigation">Navigation</a> completed:'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, event.url);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    });</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
-  </div><p>Note: The <a href="api/router/Event"><a href="/api/router/Event"><code>Event</code></a></a> type from <code>@angular/router</code> is named the same as the regular global <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank"><a href="/api/router/Event"><code>Event</code></a></a> type, but it is different from the <a href="api/router/RouterEvent"><a href="/api/router/RouterEvent"><code>RouterEvent</code></a></a> type.</p>
+  </div><p>注意：来自 <code>@angular/router</code> 的 <a href="api/router/Event"></a><a href="/api/router/Event"><code>Event</code></a> 类型与全局的 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event" target="_blank"></a><a href="/api/router/Event"><code>Event</code></a> 类型同名，但它与 <a href="api/router/RouterEvent"></a><a href="/api/router/RouterEvent"><code>RouterEvent</code></a> 类型不同。</p>
 
   <h2 id="how-to-debug-routing-events">
-    <a href="#how-to-debug-routing-events" class="docs-anchor" tabindex="-1" aria-label="Link to How to debug routing events">How to debug routing events</a>
+    <a href="#how-to-debug-routing-events" class="docs-anchor" tabindex="-1" aria-label="Link to How to debug routing events">如何调试路由事件</a>
   </h2>
-  <p>Debugging router navigation issues can be challenging without visibility into the event sequence. Angular provides a built-in debugging feature that logs all router events to the console, helping you understand the navigation flow and identify where issues occur.</p>
-<p>When you need to inspect a Router event sequence, you can enable logging for internal navigation events for debugging. You can configure this by passing a configuration option (<a href="/api/router/withDebugTracing"><code>withDebugTracing()</code></a>) that enables detailed console logging of all routing events.</p>
+  <p>在没有事件序列可见性的情况下调试路由器导航问题可能很困难。Angular 提供了一个内置的调试功能，可以将所有路由器事件记录到控制台，帮助你理解导航流程并识别问题发生的位置。</p>
+<p>当你需要检查路由器事件序列时，可以启用内部导航事件的日志记录以进行调试。你可以通过传递一个配置选项（<a href="/api/router/withDebugTracing"><code>withDebugTracing()</code></a>）来配置此功能，该选项会启用所有路由事件的详细控制台日志记录。</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/router/provideRouter">provideRouter</a>, withDebugTracing } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/router'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">const</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> appRoutes</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/router/Routes">Routes</a></span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> [];</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/platform-browser/bootstrapApplication">bootstrapApplication</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(AppComponent,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    providers: [</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">      <a href="/api/router/provideRouter">provideRouter</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(appRoutes, </span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/router/withDebugTracing">withDebugTracing</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">())</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    ]</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span></code></pre>
-  </div><p>For more information, check out the official docs on <a href="api/router/withDebugTracing"><a href="/api/router/withDebugTracing"><code>withDebugTracing</code></a></a>.</p>
+  </div><p>有关更多信息，请查看关于 <a href="api/router/withDebugTracing"></a><a href="/api/router/withDebugTracing"><code>withDebugTracing</code></a> 的官方文档。</p>
 
   <h2 id="common-use-cases">
-    <a href="#common-use-cases" class="docs-anchor" tabindex="-1" aria-label="Link to Common use cases">Common use cases</a>
+    <a href="#common-use-cases" class="docs-anchor" tabindex="-1" aria-label="Link to Common use cases">常见用例</a>
   </h2>
-  <p>Router events enable many practical features in real-world applications. Here are some common patterns that are used with router events.</p>
+  <p>路由器事件在实际应用中实现了许多实用功能。以下是一些与路由器事件一起使用的常见模式。</p>
 
   <h3 id="loading-indicators">
-    <a href="#loading-indicators" class="docs-anchor" tabindex="-1" aria-label="Link to Loading indicators">Loading indicators</a>
+    <a href="#loading-indicators" class="docs-anchor" tabindex="-1" aria-label="Link to Loading indicators">加载指示器</a>
   </h3>
-  <p>Show loading indicators during navigation:</p>
+  <p>在导航期间显示加载指示器：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/core/Component">Component</a>, inject } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/core'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/router/Router">Router</a> } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/router'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/core/rxjs-interop/toSignal">toSignal</a> } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/core/rxjs-interop'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { map } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> 'rxjs/operators'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Component">Component</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  selector: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'app-loading'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  template: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">`</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    @if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">loading</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">()) {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">div</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"loading-spinner"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Loading...&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">div</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span><span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">  `</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> AppComponent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  private</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70"> router</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> inject</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(<a href="/api/router/Router">Router</a>);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  </span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  readonly</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70"> loading</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/core/rxjs-interop/toSignal">toSignal</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.router.events.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">pipe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">      map</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(() </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=&gt;</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> !!</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.router.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">getCurrentNavigation</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">())</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    ),</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    { initialValue: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">false</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  );</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
   </div>
   <h3 id="analytics-tracking">
-    <a href="#analytics-tracking" class="docs-anchor" tabindex="-1" aria-label="Link to Analytics tracking">Analytics tracking</a>
+    <a href="#analytics-tracking" class="docs-anchor" tabindex="-1" aria-label="Link to Analytics tracking">分析跟踪</a>
   </h3>
-  <p>Track page views for analytics:</p>
+  <p>跟踪页面浏览量以进行分析：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/core/Component">Component</a>, inject, signal, effect } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/core'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/router/Router">Router</a>, NavigationEnd } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/router'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Injectable">Injectable</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({ providedIn: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'root'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> })</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> AnalyticsService</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  private</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70"> router</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> inject</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(<a href="/api/router/Router">Router</a>);</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  private</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70"> destroyRef</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> inject</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(<a href="/api/core/DestroyRef">DestroyRef</a>);</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  startTracking</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.router.events.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">pipe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/rxjs-interop/takeUntilDestroyed">takeUntilDestroyed</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.destroyRef))</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      .</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">subscribe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">event</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">        // Track page views when URL changes</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">        if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (event </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">instanceof</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/router/NavigationEnd">NavigationEnd</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span><span class="line"><span style="--shiki-light:#6A737D;--shiki-dark:#6A737D">           // Send page view to analytics</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">          this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.analytics.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">trackPageView</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(url);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      });</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  private</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70"> analytics</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">    trackPageView</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">: (</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">url</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">:</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF"> string</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">=&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">log</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'Page view tracked:'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, url);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  };</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
   </div>
   <h3 id="error-handling">
-    <a href="#error-handling" class="docs-anchor" tabindex="-1" aria-label="Link to Error handling">Error handling</a>
+    <a href="#error-handling" class="docs-anchor" tabindex="-1" aria-label="Link to Error handling">错误处理</a>
   </h3>
-  <p>Handle navigation errors gracefully and provide user feedback:</p>
+  <p>优雅地处理导航错误并提供用户反馈：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/core/Component">Component</a>, inject, signal } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/core'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">import</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> { <a href="/api/router/Router">Router</a>, NavigationStart, NavigationError, NavigationCancel, NavigationCancellationCode } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">from</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF"> '@angular/router'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Component">Component</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  selector: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'app-error-handler'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">,</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  template: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">`</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">    @if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">errorMessage</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">()) {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">div</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> class</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"error-banner"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        {{ </span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">errorMessage</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() }}</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        &lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> (click)</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"dismissError()"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;Dismiss&lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">button</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      &lt;/</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">div</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    }</span></span><span class="line"><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">  `</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">export</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> ErrorHandlerComponent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  private</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70"> router</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> inject</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(<a href="/api/router/Router">Router</a>);</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  readonly</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70"> errorMessage</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/core/signal">signal</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">''</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  constructor</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.router.events.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">pipe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/rxjs-interop/takeUntilDestroyed">takeUntilDestroyed</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">()).</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">subscribe</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">event</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =&gt;</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">      if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (event </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">instanceof</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/router/NavigationStart">NavigationStart</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">        this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.errorMessage.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">set</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">''</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">else</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (event </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">instanceof</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/router/NavigationError">NavigationError</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">error</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'<a href="/api/router/Navigation">Navigation</a> error:'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, event.error);</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">        this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.errorMessage.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">set</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'Failed to load page. Please try again.'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      } </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">else</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (event </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">instanceof</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/router/NavigationCancel">NavigationCancel</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">) {</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        console.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">warn</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'<a href="/api/router/Navigation">Navigation</a> cancelled:'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">, event.reason);</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">        if</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> (event.reason </span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">===</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> <a href="/api/router/NavigationCancellationCode">NavigationCancellationCode</a>.GuardRejected) {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">          this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.errorMessage.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">set</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'Access denied. Please check your permissions.'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">        }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">      }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">    });</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  dismissError</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.errorMessage.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">set</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">''</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
   </div>
   <h2 id="all-router-events">
-    <a href="#all-router-events" class="docs-anchor" tabindex="-1" aria-label="Link to All router events">All router events</a>
+    <a href="#all-router-events" class="docs-anchor" tabindex="-1" aria-label="Link to All router events">所有路由器事件</a>
   </h2>
-  <p>For reference, here is the complete list of all router events available in Angular. These events are organized by category and listed in the order they typically occur during navigation.</p>
+  <p>供参考，以下是 Angular 中所有可用路由器事件的完整列表。这些事件按类别组织，并按它们在导航期间通常发生的顺序排列。</p>
 
   <h3 id="navigation-events">
-    <a href="#navigation-events" class="docs-anchor" tabindex="-1" aria-label="Link to Navigation events">Navigation events</a>
+    <a href="#navigation-events" class="docs-anchor" tabindex="-1" aria-label="Link to Navigation events">导航事件</a>
   </h3>
-  <p>These events track the core navigation process from start through route recognition, guard checks, and data resolution. They provide visibility into each phase of the navigation lifecycle.</p>
+  <p>这些事件跟踪从开始到路由识别、守卫检查和数据解析的核心导航过程。它们提供了导航生命周期每个阶段的可见性。</p>
 
   <div class="docs-table docs-scroll-track-transparent">
     <table>
       <thead>
         <tr>
-<th>Event</th>
-<th>Description</th>
+<th>事件</th>
+<th>说明</th>
 </tr>
 
       </thead>
       <tbody>
         <tr>
-<td><a href="api/router/NavigationStart"><a href="/api/router/NavigationStart"><code>NavigationStart</code></a></a></td>
-<td>Occurs when navigation starts</td>
+<td><a href="api/router/NavigationStart"></a><a href="/api/router/NavigationStart"><code>NavigationStart</code></a></td>
+<td>导航开始时发生</td>
 </tr>
 <tr>
-<td><a href="api/router/RouteConfigLoadStart"><a href="/api/router/RouteConfigLoadStart"><code>RouteConfigLoadStart</code></a></a></td>
-<td>Occurs before lazy loading a route configuration</td>
+<td><a href="api/router/RouteConfigLoadStart"></a><a href="/api/router/RouteConfigLoadStart"><code>RouteConfigLoadStart</code></a></td>
+<td>在惰性加载路由配置之前发生</td>
 </tr>
 <tr>
-<td><a href="api/router/RouteConfigLoadEnd"><a href="/api/router/RouteConfigLoadEnd"><code>RouteConfigLoadEnd</code></a></a></td>
-<td>Occurs after a lazy-loaded route configuration loads</td>
+<td><a href="api/router/RouteConfigLoadEnd"></a><a href="/api/router/RouteConfigLoadEnd"><code>RouteConfigLoadEnd</code></a></td>
+<td>惰性加载的路由配置加载后发生</td>
 </tr>
 <tr>
-<td><a href="api/router/RoutesRecognized"><a href="/api/router/RoutesRecognized"><code>RoutesRecognized</code></a></a></td>
-<td>Occurs when the router parses the URL and recognizes the routes</td>
+<td><a href="api/router/RoutesRecognized"></a><a href="/api/router/RoutesRecognized"><code>RoutesRecognized</code></a></td>
+<td>路由器解析 URL 并识别路由时发生</td>
 </tr>
 <tr>
-<td><a href="api/router/GuardsCheckStart"><a href="/api/router/GuardsCheckStart"><code>GuardsCheckStart</code></a></a></td>
-<td>Occurs at the start of the guard phase</td>
+<td><a href="api/router/GuardsCheckStart"></a><a href="/api/router/GuardsCheckStart"><code>GuardsCheckStart</code></a></td>
+<td>在守卫阶段开始时发生</td>
 </tr>
 <tr>
-<td><a href="api/router/GuardsCheckEnd"><a href="/api/router/GuardsCheckEnd"><code>GuardsCheckEnd</code></a></a></td>
-<td>Occurs at the end of the guard phase</td>
+<td><a href="api/router/GuardsCheckEnd"></a><a href="/api/router/GuardsCheckEnd"><code>GuardsCheckEnd</code></a></td>
+<td>在守卫阶段结束时发生</td>
 </tr>
 <tr>
-<td><a href="api/router/ResolveStart"><a href="/api/router/ResolveStart"><code>ResolveStart</code></a></a></td>
-<td>Occurs at the start of the resolve phase</td>
+<td><a href="api/router/ResolveStart"></a><a href="/api/router/ResolveStart"><code>ResolveStart</code></a></td>
+<td>在解析阶段开始时发生</td>
 </tr>
 <tr>
-<td><a href="api/router/ResolveEnd"><a href="/api/router/ResolveEnd"><code>ResolveEnd</code></a></a></td>
+<td><a href="api/router/ResolveEnd"></a><a href="/api/router/ResolveEnd"><code>ResolveEnd</code></a></td>
 <td>Occurs at the end of the resolve phase</td>
 </tr>
 
@@ -205,26 +204,26 @@
     <table>
       <thead>
         <tr>
-<th>Event</th>
-<th>Description</th>
+<th>事件</th>
+<th>说明</th>
 </tr>
 
       </thead>
       <tbody>
         <tr>
-<td><a href="api/router/ActivationStart"><a href="/api/router/ActivationStart"><code>ActivationStart</code></a></a></td>
+<td><a href="api/router/ActivationStart"></a><a href="/api/router/ActivationStart"><code>ActivationStart</code></a></td>
 <td>Occurs at the start of route activation</td>
 </tr>
 <tr>
-<td><a href="api/router/ChildActivationStart"><a href="/api/router/ChildActivationStart"><code>ChildActivationStart</code></a></a></td>
+<td><a href="api/router/ChildActivationStart"></a><a href="/api/router/ChildActivationStart"><code>ChildActivationStart</code></a></td>
 <td>Occurs at the start of child route activation</td>
 </tr>
 <tr>
-<td><a href="api/router/ActivationEnd"><a href="/api/router/ActivationEnd"><code>ActivationEnd</code></a></a></td>
+<td><a href="api/router/ActivationEnd"></a><a href="/api/router/ActivationEnd"><code>ActivationEnd</code></a></td>
 <td>Occurs at the end of route activation</td>
 </tr>
 <tr>
-<td><a href="api/router/ChildActivationEnd"><a href="/api/router/ChildActivationEnd"><code>ChildActivationEnd</code></a></a></td>
+<td><a href="api/router/ChildActivationEnd"></a><a href="/api/router/ChildActivationEnd"><code>ChildActivationEnd</code></a></td>
 <td>Occurs at the end of child route activation</td>
 </tr>
 
@@ -241,26 +240,26 @@
     <table>
       <thead>
         <tr>
-<th>Event</th>
-<th>Description</th>
+<th>事件</th>
+<th>说明</th>
 </tr>
 
       </thead>
       <tbody>
         <tr>
-<td><a href="api/router/NavigationEnd"><a href="/api/router/NavigationEnd"><code>NavigationEnd</code></a></a></td>
+<td><a href="api/router/NavigationEnd"></a><a href="/api/router/NavigationEnd"><code>NavigationEnd</code></a></td>
 <td>Occurs when navigation ends successfully</td>
 </tr>
 <tr>
-<td><a href="api/router/NavigationCancel"><a href="/api/router/NavigationCancel"><code>NavigationCancel</code></a></a></td>
+<td><a href="api/router/NavigationCancel"></a><a href="/api/router/NavigationCancel"><code>NavigationCancel</code></a></td>
 <td>Occurs when the router cancels navigation</td>
 </tr>
 <tr>
-<td><a href="api/router/NavigationError"><a href="/api/router/NavigationError"><code>NavigationError</code></a></a></td>
+<td><a href="api/router/NavigationError"></a><a href="/api/router/NavigationError"><code>NavigationError</code></a></td>
 <td>Occurs when navigation fails due to an unexpected error</td>
 </tr>
 <tr>
-<td><a href="api/router/NavigationSkipped"><a href="/api/router/NavigationSkipped"><code>NavigationSkipped</code></a></a></td>
+<td><a href="api/router/NavigationSkipped"></a><a href="/api/router/NavigationSkipped"><code>NavigationSkipped</code></a></td>
 <td>Occurs when the router skips navigation (e.g., same URL navigation)</td>
 </tr>
 
@@ -277,14 +276,14 @@
     <table>
       <thead>
         <tr>
-<th>Event</th>
-<th>Description</th>
+<th>事件</th>
+<th>说明</th>
 </tr>
 
       </thead>
       <tbody>
         <tr>
-<td><a href="api/router/Scroll"><a href="/api/router/Scroll"><code>Scroll</code></a></a></td>
+<td><a href="api/router/Scroll"></a><a href="/api/router/Scroll"><code>Scroll</code></a></td>
 <td>Occurs during scrolling</td>
 </tr>
 
@@ -293,6 +292,6 @@
   </div>
   
   <h2 id="next-steps">
-    <a href="#next-steps" class="docs-anchor" tabindex="-1" aria-label="Link to Next steps">Next steps</a>
+    <a href="#next-steps" class="docs-anchor" tabindex="-1" aria-label="Link to Next steps">后续步骤</a>
   </h2>
   <p>Learn more about <a href="/guide/routing/route-guards">route guards</a> and <a href="/guide/routing/common-router-tasks">common router tasks</a>.</p>

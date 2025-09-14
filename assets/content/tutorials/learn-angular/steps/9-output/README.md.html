@@ -1,33 +1,32 @@
-
-    <header class="docs-header">
+<header class="docs-header">
       <docs-breadcrumb></docs-breadcrumb>
 
       
   <!-- Page title -->
   <div class="docs-page-title">
-    <h1 tabindex="-1">Component output properties</h1>
+    <h1 tabindex="-1">组件输出属性</h1>
     <a class="docs-github-links" target="_blank" href="https://github.com/angular/angular/edit/main/adev/src/content/tutorials/learn-angular/steps/9-output/README.md" title="Edit this page" aria-label="Edit this page">
       <!-- Pencil -->
       <docs-icon role="presentation">edit</docs-icon>
     </a>
   </div>
     </header>
-    <p>When working with components it may be required to notify other components that something has happened. Perhaps a button has been clicked, an item has been added/removed from a list or some other important update has occurred. In this scenario components need to communicate with parent components.</p>
-<p>Angular uses the <a href="/api/core/output"><code>output()</code></a> function to enable this type of behavior.</p>
-<p>Note: Learn more about <a href="/guide/components/outputs">custom events in the outputs guide</a>.</p>
-<p>In this activity, you'll learn how to use the <a href="/api/core/output"><code>output()</code></a> function to communicate with components.</p>
-<hr />
+    <p>在与组件一起工作时，可能需要通知其他组件发生了某些事情。 也许是按钮被点击了，条目已从列表中添加/删除，或者发生了一些其他重要的更新。 在这种情况下，组件需要与父组件通信。</p>
+<p>Angular 使用 <a href="/api/core/output"><code>output()</code></a> 函数来实现这种行为。</p>
+<p>注意：在输出指南中了解有关<a href="/guide/components/outputs">自定义事件</a>的更多信息。</p>
+<p>在此活动中，您将学习如何使用 <a href="/api/core/output"><code>output()</code></a> 函数与组件进行通信。</p>
+<hr>
 
-<p>To create the communication path from child to parent components, use the <a href="/api/core/output"><code>output</code></a> function to initialize a class property.</p>
+<p>要创建从子组件到父组件的通信路径，请使用 <a href="/api/core/output"><code>output</code></a> 函数来初始化类属性。</p>
 <div class="docs-code" header="child.ts">
     <div class="docs-code-header"><h3>child.ts</h3></div>
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">@</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"><a href="/api/core/Component">Component</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">({</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">...</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">})</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Child</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70">  incrementCountEvent</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583"> =</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> <a href="/api/core/output">output</a></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">number</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&gt;();</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
-  </div><p>Now the component can generate events that can be listened to by the parent component. Trigger events by calling the <code>emit</code> method:</p>
+  </div><p>现在，该组件可以生成可由父组件监听的事件。 通过调用 <code>emit</code> 方法触发事件：</p>
 <div class="docs-code" header="child.ts">
     <div class="docs-code-header"><h3>child.ts</h3></div>
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">class</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> Child</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> {</span></span><span class="line"><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">  ...</span></span><span class="line"></span><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">  onClick</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.count</span><span style="--shiki-light:#D73A49;--shiki-dark:#F97583">++</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">;</span></span><span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">    this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.incrementCountEvent.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">emit</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.count);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">  }</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
-  </div><p>The emit function will generate an event with the same type as defined by the <a href="/api/core/output"><code>output</code></a>.</p>
-<p>Alright, your turn to give this a try. Complete the code by following these tasks:</p>
+  </div><p>emit 函数将生成与 <a href="/api/core/output"><code>output</code></a> 定义的类型相同的事件。</p>
+<p>好的，轮到你来尝试一下了。 通过完成以下任务来完成代码：</p>
 
     <ol class="docs-steps">
       
@@ -35,10 +34,10 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="add-an-output-property">
-    <a href="#add-an-output-property" class="docs-anchor" tabindex="-1" aria-label="Link to Add an <code>output()</code> property">Add an <code>output()</code> property</a>
+    <a href="#add-an-output-property" class="docs-anchor" tabindex="-1" aria-label="Link to Add an <code>output()</code> property">添加一个 <code>output()</code> 属性</a>
   </h3>
   
-      <p>Update <code>child.ts</code> by adding an output property called <code>addItemEvent</code>, be sure to set the output type to be <code>string</code>.</p>
+      <p>通过添加一个名为 <code>addItemEvent</code> 的输出属性来更新 <code>child.ts</code>，请确保将输出类型设置为 <code>string</code>。</p>
 
     </li>
     
@@ -46,10 +45,10 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="complete-additem-method">
-    <a href="#complete-additem-method" class="docs-anchor" tabindex="-1" aria-label="Link to Complete <code>addItem</code> method">Complete <code>addItem</code> method</a>
+    <a href="#complete-additem-method" class="docs-anchor" tabindex="-1" aria-label="Link to Complete <code>addItem</code> method">完成 <code>addItem</code> 方法</a>
   </h3>
   
-      <p>In <code>child.ts</code> update the <code>addItem</code> method; use the following code as the logic:</p>
+      <p>在 <code>child.ts</code> 中更新 <code>addItem</code> 方法；使用以下代码作为逻辑：</p>
 <div class="docs-code" header="child.ts">
     <div class="docs-code-header"><h3>child.ts</h3></div>
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">addItem</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">() {</span></span><span class="line highlighted"><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF">  this</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">.addItemEvent.</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0">emit</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">(</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">'🐢'</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">);</span></span><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">}</span></span></code></pre>
@@ -60,17 +59,17 @@
       <span class="docs-step-number" aria-hidden="true"></span>
       
   <h3 id="update-the-app-template">
-    <a href="#update-the-app-template" class="docs-anchor" tabindex="-1" aria-label="Link to Update the <code>App</code> template">Update the <code>App</code> template</a>
+    <a href="#update-the-app-template" class="docs-anchor" tabindex="-1" aria-label="Link to Update the <code>App</code> template">更新 <code>App</code> 模板</a>
   </h3>
   
-      <p>In <code>app.ts</code> update the template to listen to the emitted event by adding the following code:</p>
+      <p>在 <code>app.ts</code> 中通过添加以下代码来更新模板以监听发出的事件：</p>
 <div class="docs-code">
     
     <pre class="shiki shiki-themes github-light github-dark" style="--shiki-light:#24292e;--shiki-dark:#e1e4e8;--shiki-light-bg:#fff;--shiki-dark-bg:#24292e" tabindex="0"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">&lt;</span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D">app-child</span><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0"> (addItemEvent)</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8">=</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF">"addItem($event)"</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8"> /&gt;</span></span></code></pre>
-  </div><p>Now, the "Add Item" button adds a new item to the list every time the button is clicked.</p>
+  </div><p>现在，“添加条目”按钮在每次单击时都会向列表中添加一个新条目。</p>
 
     </li>
     
     </ol>
-    <p><span class="docs-emoji">Wow, at this point you've completed the component fundamentals - impressive 👏</span></p>
-<p>Keep learning to unlock more of Angular's great features.</p>
+    <p><span class="docs-emoji">哇，至此你已经完成了组件基础知识的学习 - 令人印象深刻 👏</span></p>
+<p>继续学习以解锁 Angular 更多强大的特性。</p>
