@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": ["src/content/examples/animations/src/app/native-css/reorder.component.css"],
-  "sourcesContent": [".items {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\n.items .item {\n  transition-property: opacity, transform;\n  transition-duration: 500ms;\n\n  @starting-style {\n    opacity: 0;\n    transform: translateX(-10px);\n  }\n}\n\n.items .item.fade {\n  animation: fade-out 500ms;\n}\n\n@keyframes fade-out {\n  from {\n    opacity: 1;\n  }\n\n  to {\n    opacity: 0;\n  }\n}\n"],
-  "mappings": ";AAAA,CAAC;AACC,cAAY;AACZ,WAAS;AACT,UAAQ;AACV;AAEA,CANC,MAMM,CAAC;AACN,uBAAqB,OAAO,EAAE;AAC9B,uBAAqB;AAMvB;AAJE;AAAA,EAJF,CANC,MAMM,CAAC;AAKJ,aAAS;AACT,eAAW,WAAW;AAAA;AACxB;AAGF,CAhBC,MAgBM,CAVC,IAUI,CAAC;AACX,aAAW,SAAS;AACtB;AAEA,WAHa;AAIX;AACE,aAAS;AACX;AAEA;AACE,aAAS;AACX;AACF;",
+  "sources": ["src/content/examples/animations/src/app/animations-package/reorder.component.css"],
+  "sourcesContent": [".items {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,cAAY;AACZ,WAAS;AACT,UAAQ;AACV;",
   "names": []
 }

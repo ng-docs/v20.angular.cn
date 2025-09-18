@@ -1,7 +1,7 @@
 {
   "version": 3,
-  "sources": ["src/content/examples/animations/src/app/animations-package/stagger.component.css"],
-  "sourcesContent": [".items {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n"],
-  "mappings": ";AAAA,CAAC;AACC,cAAY;AACZ,WAAS;AACT,UAAQ;AACV;",
+  "sources": ["src/content/examples/animations/src/app/native-css/stagger.component.css"],
+  "sourcesContent": [".items {\n  list-style: none;\n  padding: 0;\n  margin: 0;\n}\n\n.items .item {\n  transition-property: opacity, transform;\n  transition-duration: 500ms;\n  transition-delay: calc(200ms * var(--index));\n\n  @starting-style {\n    opacity: 0;\n    transform: translateX(-10px);\n  }\n}\n"],
+  "mappings": ";AAAA,CAAC;AACC,cAAY;AACZ,WAAS;AACT,UAAQ;AACV;AAEA,CANC,MAMM,CAAC;AACN,uBAAqB,OAAO,EAAE;AAC9B,uBAAqB;AACrB,oBAAkB,KAAK,MAAM,EAAE,IAAI;AAMrC;AAJE;AAAA,EALF,CANC,MAMM,CAAC;AAMJ,aAAS;AACT,eAAW,WAAW;AAAA;AACxB;",
   "names": []
 }

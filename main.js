@@ -1,6 +1,6 @@
 import {
   ErrorSnackBar
-} from "./chunk-77HKTVJH.js";
+} from "./chunk-5F3EYLXG.js";
 import {
   getApiNavigationItems,
   mapApiManifestToRoutes
@@ -221,16 +221,16 @@ var PREVIEWS_COMPONENTS_MAP = {
   ["adev/src/content/examples/hello-world/src/app/app.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-RC4IOBMV.js").then((c) => c.HelloWorldComponent), "adev/src/content/examples/hello-world/src/app/app.component.ts"),
   ["adev/src/content/examples/forms/src/app/app.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-4BGSFQB4.js").then((c) => c.AppComponent), "adev/src/content/examples/forms/src/app/app.component.ts"),
   ["adev/src/content/examples/forms-overview/src/app/app.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-DLTIPX2Y.js").then((c) => c.AppComponent), "adev/src/content/examples/forms-overview/src/app/app.component.ts"),
-  ["adev/src/content/examples/pipes/src/app/app.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-WGPG6TEY.js").then((c) => c.AppComponent), "adev/src/content/examples/pipes/src/app/app.component.ts"),
+  ["adev/src/content/examples/pipes/src/app/app.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-5O2FRRVB.js").then((c) => c.AppComponent), "adev/src/content/examples/pipes/src/app/app.component.ts"),
   ["adev/src/content/examples/pipes/src/app/birthday-formatting.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-CQUTYQZC.js").then((c) => c.BirthdayFormattingComponent), "adev/src/content/examples/pipes/src/app/birthday-formatting.component.ts"),
   ["adev/src/content/examples/pipes/src/app/birthday-pipe-chaining.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-ZONCIGBM.js").then((c) => c.BirthdayPipeChainingComponent), "adev/src/content/examples/pipes/src/app/birthday-pipe-chaining.component.ts"),
   ["adev/src/content/examples/pipes/src/app/birthday.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-PGPWV5LC.js").then((c) => c.BirthdayComponent), "adev/src/content/examples/pipes/src/app/birthday.component.ts"),
-  ["adev/src/content/examples/pipes/src/app/flying-heroes.component.ts_FlyingHeroesComponent"]: /* @__PURE__ */ __name(() => import("./chunk-V3VZ5UPS.js").then((c) => c.FlyingHeroesComponent), "adev/src/content/examples/pipes/src/app/flying-heroes.component.ts_FlyingHeroesComponent"),
-  ["adev/src/content/examples/pipes/src/app/flying-heroes.component.ts_FlyingHeroesImpureComponent"]: /* @__PURE__ */ __name(() => import("./chunk-V3VZ5UPS.js").then((c) => c.FlyingHeroesImpureComponent), "adev/src/content/examples/pipes/src/app/flying-heroes.component.ts_FlyingHeroesImpureComponent"),
+  ["adev/src/content/examples/pipes/src/app/flying-heroes.component.ts_FlyingHeroesComponent"]: /* @__PURE__ */ __name(() => import("./chunk-SDXWEYTU.js").then((c) => c.FlyingHeroesComponent), "adev/src/content/examples/pipes/src/app/flying-heroes.component.ts_FlyingHeroesComponent"),
+  ["adev/src/content/examples/pipes/src/app/flying-heroes.component.ts_FlyingHeroesImpureComponent"]: /* @__PURE__ */ __name(() => import("./chunk-SDXWEYTU.js").then((c) => c.FlyingHeroesImpureComponent), "adev/src/content/examples/pipes/src/app/flying-heroes.component.ts_FlyingHeroesImpureComponent"),
   ["adev/src/content/examples/pipes/src/app/hero-async-message.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-ECAXPESX.js").then((c) => c.HeroAsyncMessageComponent), "adev/src/content/examples/pipes/src/app/hero-async-message.component.ts"),
   ["adev/src/content/examples/pipes/src/app/json-pipe.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-HITIKG6B.js").then((c) => c.JsonPipeComponent), "adev/src/content/examples/pipes/src/app/json-pipe.component.ts"),
   ["adev/src/content/examples/pipes/src/app/power-booster.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-UPOLBSCJ.js").then((c) => c.PowerBoosterComponent), "adev/src/content/examples/pipes/src/app/power-booster.component.ts"),
-  ["adev/src/content/examples/pipes/src/app/precedence.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-Q6S3J5CF.js").then((c) => c.PrecedenceComponent), "adev/src/content/examples/pipes/src/app/precedence.component.ts"),
+  ["adev/src/content/examples/pipes/src/app/precedence.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-MM53D3MO.js").then((c) => c.PrecedenceComponent), "adev/src/content/examples/pipes/src/app/precedence.component.ts"),
   ["adev/src/content/examples/security/src/app/app.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-HBODEFXN.js").then((c) => c.AppComponent), "adev/src/content/examples/security/src/app/app.component.ts"),
   ["adev/src/content/examples/security/src/app/bypass-security.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-3ID4YHEG.js").then((c) => c.BypassSecurityComponent), "adev/src/content/examples/security/src/app/bypass-security.component.ts"),
   ["adev/src/content/examples/security/src/app/inner-html-binding.component.ts"]: /* @__PURE__ */ __name(() => import("./chunk-B2CDMVIX.js").then((c) => c.InnerHtmlBindingComponent), "adev/src/content/examples/security/src/app/inner-html-binding.component.ts"),
@@ -1532,10 +1532,10 @@ var DOCS_SUB_NAVIGATION_DATA = [
   },
   ...isDevMode() ? [
     {
-      label: "Adev Dev Guide",
+      label: "Adev \u5F00\u53D1\u8005\u6307\u5357",
       children: [
         {
-          label: "Kitchen Sink",
+          label: "\u5927\u6742\u70E9",
           path: "kitchen-sink",
           contentPath: "kitchen-sink"
         }
@@ -2006,7 +2006,7 @@ var docsTutorialsRoutes = mapNavigationItemsToRoutes(tutorialsNavigationItems.fi
   data: __spreadValues({}, commonTutorialRouteData)
 }, false ? { \u0275entryName: "src/app/features/docs/docs.component.ts" } : {}));
 var tutorialComponentRoutes = mapNavigationItemsToRoutes(tutorialsNavigationItems.filter((route) => route.path !== DEFAULT_PAGES.TUTORIALS), __spreadValues({
-  loadComponent: /* @__PURE__ */ __name(() => import("./chunk-IWG4AYJB.js"), "loadComponent"),
+  loadComponent: /* @__PURE__ */ __name(() => import("./chunk-3BGK2WSD.js"), "loadComponent"),
   data: __spreadValues({}, commonTutorialRouteData)
 }, false ? { \u0275entryName: "src/app/features/tutorial/tutorial.component.ts" } : {}));
 var TUTORIALS_ROUTES = [...docsTutorialsRoutes, ...tutorialComponentRoutes];
@@ -2163,7 +2163,7 @@ var routes = [
     children: [
       __spreadValues({
         path: "",
-        loadComponent: /* @__PURE__ */ __name(() => import("./chunk-IDNJY3Y6.js"), "loadComponent"),
+        loadComponent: /* @__PURE__ */ __name(() => import("./chunk-UVMHHQTK.js"), "loadComponent"),
         data: { label: "Home" }
       }, false ? { \u0275entryName: "src/app/features/home/home.component.ts" } : {}),
       {
@@ -2176,7 +2176,7 @@ var routes = [
       },
       __spreadValues({
         path: PAGE_PREFIX.PLAYGROUND,
-        loadComponent: /* @__PURE__ */ __name(() => import("./chunk-GR3H2OMJ.js"), "loadComponent"),
+        loadComponent: /* @__PURE__ */ __name(() => import("./chunk-TNYENHQP.js"), "loadComponent"),
         data: __spreadProps(__spreadValues({}, commonTutorialRouteData), { label: "Playground" })
       }, false ? { \u0275entryName: "src/app/features/playground/playground.component.ts" } : {}),
       ...SUB_NAVIGATION_ROUTES,

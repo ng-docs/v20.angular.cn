@@ -1,7 +1,7 @@
 {
   "version": 3,
   "sources": ["src/content/examples/pipes/src/app/app.component.ts"],
-  "sourcesContent": ["a:hover {text-decoration: none;}"],
-  "mappings": ";AAAA,CAAA;AAAS,mBAAA;;",
+  "sourcesContent": ["h2 {margin: 0;}"],
+  "mappings": ";AAAA;AAAI,UAAA;;",
   "names": []
 }
